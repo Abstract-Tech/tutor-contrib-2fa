@@ -1,0 +1,7 @@
+{% if TWO_FACTOR_ENABLED %}
+from openedx_two_factor.configuration import configure as configure_two_factor
+configure_two_factor(globals())
+OPENEDX_2FA_LMS_URL = LMS_ROOT_URL
+{% else %}
+OPENEDX_2FA_ENABLED = False
+{% endif %}

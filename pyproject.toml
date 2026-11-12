@@ -1,0 +1,55 @@
+[project]
+name = "tutor-contrib-2fa"
+description = "Authenticator-based two-factor authentication for Open edX with Tutor"
+authors = [{name = "Abstract Technology"}]
+license = {text = "AGPL-3.0-only"}
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = ["tutor>=22.0.0,<23.0.0"]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+dev = ["build", "twine", "pytest", "pytest-django", "Django>=5.2,<5.3", "ruff"]
+
+[project.urls]
+Documentation = "https://github.com/Abstract-Tech/tutor-contrib-2fa#readme"
+Issues = "https://github.com/Abstract-Tech/tutor-contrib-2fa/issues"
+Source = "https://github.com/Abstract-Tech/tutor-contrib-2fa"
+
+[project.entry-points."tutor.plugin.v1"]
+"2fa" = "tutor2fa.plugin"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "tutor2fa/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tutor2fa"]
+
+[tool.hatch.build.targets.sdist]
+include = ["/tutor2fa", "/tests", "/README.md", "/CHANGELOG.md", "/LICENSE.txt", "/Makefile", "/pyproject.toml"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/settings.py" = ["E402"]
