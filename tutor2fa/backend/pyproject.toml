@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Open edX runtime integration bundled with tutor-contrib-2fa"
 license = {text = "AGPL-3.0-only"}
 requires-python = ">=3.11"
-dependencies = ["django-two-factor-auth[phonenumberslite]==1.18.1", "requests>=2.31,<3"]
+dependencies = ["django-two-factor-auth[phonenumberslite]", "requests>=2.31,<3"]
 
 [project.entry-points."lms.djangoapp"]
 openedx_two_factor = "openedx_two_factor.apps:OpenEdxTwoFactorConfig"

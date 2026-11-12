@@ -226,3 +226,15 @@ def test_background_requests_do_not_redirect_or_reset_setup(client, user, destin
     )
     assert response.status_code == 302
     assert TOTPDevice.objects.filter(user=user, confirmed=True).exists()
+
+
+def test_disabled_integration_leaves_login_and_api_access_unchanged(user, settings):
+    settings.OPENEDX_2FA_ENABLED = False
+    client = Client()
+    response = sign_in(client)
+    assert response.status_code == 200
+    assert response.json()["redirect_url"] == "/dashboard"
+    assert response.cookies["edx-jwt-cookie-header-payload"].value == "first-factor-token"
+    assert client.get("/dashboard").status_code == 200
+    response = client.get("/api/protected/", HTTP_AUTHORIZATION="Bearer test")
+    assert response.status_code == 200

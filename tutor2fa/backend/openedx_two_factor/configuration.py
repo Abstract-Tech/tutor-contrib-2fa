@@ -4,7 +4,6 @@ from pathlib import Path
 
 
 def configure(settings):
-    settings["OPENEDX_2FA_ENABLED"] = True
     settings["INSTALLED_APPS"] = list(
         dict.fromkeys(
             [
@@ -41,7 +40,6 @@ def configure(settings):
     settings["TWO_FACTOR_REMEMBER_COOKIE_AGE"] = 0
     settings["OTP_TOTP_THROTTLE_FACTOR"] = 1
     settings["OTP_STATIC_THROTTLE_FACTOR"] = 1
-    settings["LOGIN_REDIRECT_URL"] = "/2fa/"
     # Open edX tracking otherwise records arbitrary POST fields, including OTPs.
     settings["TRACKING_IGNORE_URL_PATTERNS"] = list(
         dict.fromkeys(

@@ -44,6 +44,8 @@ def gate_url(request):
 
 class RequireTwoFactorMiddleware(MiddlewareMixin):
     def process_view(self, request, view_func, view_args, view_kwargs):
+        if not getattr(settings, "OPENEDX_2FA_ENABLED", False):
+            return None
         path = request.path
         if (
             path in PUBLIC_ASSET_PATHS
@@ -98,6 +100,8 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
         return HttpResponseRedirect(gate_url(request))
 
     def process_response(self, request, response):
+        if not getattr(settings, "OPENEDX_2FA_ENABLED", False):
+            return response
         if not hasattr(request, "user") or not request.user.is_authenticated:
             return response
         if verified(request):

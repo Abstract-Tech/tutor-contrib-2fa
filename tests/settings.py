@@ -36,3 +36,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 from openedx_two_factor.configuration import configure
 
 configure(globals())
+
+OPENEDX_2FA_ENABLED = True

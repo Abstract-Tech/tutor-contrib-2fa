@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-dependencies = ["tutor>=22.0.0,<23.0.0"]
+dependencies = ["tutor>=22.0.0,<23.0.0", "packaging>=23"]
 dynamic = ["version"]
 
 [project.optional-dependencies]

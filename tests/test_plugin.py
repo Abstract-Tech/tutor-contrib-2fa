@@ -39,7 +39,10 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
     env = tmp_path / "env"
     dockerfile = (env / "build/openedx/Dockerfile").read_text()
     assert "COPY two-factor /openedx/two-factor" in dockerfile
-    assert "RUN pip install /openedx/two-factor" in dockerfile
+    assert (
+        'RUN pip install "django-two-factor-auth[phonenumberslite]==1.18.1" /openedx/two-factor'
+        in dockerfile
+    )
     backend = env / "build/openedx/two-factor"
     assert (backend / "pyproject.toml").is_file()
     template = (backend / "openedx_two_factor/templates/openedx_two_factor/home.html").read_text()
@@ -49,14 +52,20 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
         for mode in ("development", "production"):
             source = (env / f"apps/openedx/settings/{service}/{mode}.py").read_text()
             compile(source, "<settings>", "exec")
-            assert "configure_two_factor(globals())" in source
+            assert "OPENEDX_2FA_ENABLED = True" in source
+            assert "configure_two_factor" not in source
             assert "OPENEDX_2FA_LMS_URL = LMS_ROOT_URL" in source
     assert "two-factor-migrate" in tutor(tmp_path, "local", "do", "--help").stdout
     assert "two-factor-migrate" in tutor(tmp_path, "dev", "do", "--help").stdout
-    tutor(tmp_path, "config", "save", "--set", "TWO_FACTOR_ENABLED=false")
+    tutor(tmp_path, "config", "save", "--set", "TWO_FACTOR_AUTH_ENABLED=false")
     source = (env / "apps/openedx/settings/lms/production.py").read_text()
     assert "OPENEDX_2FA_ENABLED = False" in source
     assert "configure_two_factor" not in source
+    tutor(tmp_path, "config", "save", "--set", "TWO_FACTOR_AUTH_VERSION=1.18.0")
+    dockerfile = (env / "build/openedx/Dockerfile").read_text()
+    assert "django-two-factor-auth[phonenumberslite]==1.18.0" in dockerfile
+    assert "django-two-factor-auth[phonenumberslite]==1.18.1" not in dockerfile
+    assert "==1.18.1" not in (backend / "pyproject.toml").read_text()
     # Once disabled entirely, neither installation nor settings patches remain.
     tutor(tmp_path, "plugins", "disable", "2fa")
     tutor(tmp_path, "config", "save")
@@ -66,10 +75,10 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
 def test_invalid_enable_setting_rejected(tmp_path):
     tutor(tmp_path, "plugins", "enable", "2fa")
     result = tutor(
-        tmp_path, "config", "save", "--set", "TWO_FACTOR_ENABLED=not-a-bool", check=False
+        tmp_path, "config", "save", "--set", "TWO_FACTOR_AUTH_ENABLED=not-a-bool", check=False
     )
     assert result.returncode != 0
-    assert "TWO_FACTOR_ENABLED must be true or false" in result.stdout + result.stderr
+    assert "TWO_FACTOR_AUTH_ENABLED must be true or false" in result.stdout + result.stderr
 
 
 def test_settings_use_public_or_development_lms_url():
@@ -79,7 +88,7 @@ def test_settings_use_public_or_development_lms_url():
     ]:
         for service in ("lms", "cms"):
             _, patch = plugin.patch(f"openedx-{service}-{mode}-settings")
-            source = Environment().from_string(patch).render(TWO_FACTOR_ENABLED=True)
+            source = Environment().from_string(patch).render(TWO_FACTOR_AUTH_ENABLED=True)
             settings = {
                 "LMS_ROOT_URL": url,
                 "INSTALLED_APPS": [],
@@ -94,8 +103,8 @@ def test_settings_use_public_or_development_lms_url():
 def test_migration_job_is_guarded_and_contains_both_apps():
     assert plugin.migrate.callback() == [("lms", plugin.MIGRATE)]
     source = Environment().from_string(plugin.MIGRATE)
-    assert source.render(TWO_FACTOR_ENABLED=False).strip() == ""
-    enabled = source.render(TWO_FACTOR_ENABLED=True)
+    assert source.render(TWO_FACTOR_AUTH_ENABLED=False).strip() == ""
+    enabled = source.render(TWO_FACTOR_AUTH_ENABLED=True)
     assert "migrate otp_totp --noinput" in enabled
     assert "migrate otp_static --noinput" in enabled
 
@@ -122,3 +131,19 @@ def test_url_registration_respects_enable_setting():
             assert len(importlib.reload(plugin_urls).urlpatterns) > 0
     finally:
         importlib.reload(plugin_urls)
+
+
+def test_invalid_library_version_rejected(tmp_path):
+    tutor(tmp_path, "plugins", "enable", "2fa")
+    result = tutor(
+        tmp_path,
+        "config",
+        "save",
+        "--set",
+        "TWO_FACTOR_AUTH_VERSION=1.18.1; echo unsafe",
+        check=False,
+    )
+    assert result.returncode != 0
+    assert (
+        "TWO_FACTOR_AUTH_VERSION must be a valid package version" in result.stdout + result.stderr
+    )
