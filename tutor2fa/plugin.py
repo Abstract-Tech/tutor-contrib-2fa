@@ -4,7 +4,6 @@ import shutil
 from importlib.resources import files
 from pathlib import Path
 
-import click
 from packaging.version import InvalidVersion, Version
 from tutor import hooks
 from tutor.exceptions import TutorError
@@ -65,14 +64,6 @@ set -e
 {% endif %}
 """
 
-# Included automatically in Tutor's standard launch/init workflow.
+# Tutor loads this registration in the 2fa plugin context, so both regular init
+# and `tutor local do init -l 2fa` select these migrations.
 hooks.Filters.CLI_DO_INIT_TASKS.add_item(("lms", MIGRATE))
-
-
-@click.command(name="two-factor-migrate")
-def migrate():
-    """Create the OTP tables after building the Open edX image."""
-    return [("lms", MIGRATE)]
-
-
-hooks.Filters.CLI_DO_COMMANDS.add_item(migrate)

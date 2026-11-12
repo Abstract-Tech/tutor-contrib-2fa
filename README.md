@@ -30,7 +30,7 @@ For an existing development environment:
 ```bash
 tutor images build openedx-dev
 tutor dev stop lms cms
-tutor dev do two-factor-migrate
+tutor dev do init -l 2fa
 tutor dev start -d lms cms
 ```
 
@@ -44,7 +44,7 @@ Back up the database and activate during a maintenance window:
 ```bash
 tutor config save --set ENABLE_HTTPS=true
 tutor local stop lms cms lms-worker cms-worker
-tutor local do two-factor-migrate
+tutor local do init -l 2fa
 tutor local start -d lms cms lms-worker cms-worker
 ```
 

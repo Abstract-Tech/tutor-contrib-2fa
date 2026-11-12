@@ -1,5 +1,6 @@
 """Exercise Tutor through its installed entry point, isolated from host config."""
 
+import json
 import os
 import subprocess
 import sys
@@ -10,13 +11,18 @@ from jinja2 import Environment
 from tutor2fa import plugin
 
 
-def tutor(root, *args, check=True):
+def tutor(root, *args, check=True, capture_tasks=False):
     env = dict(os.environ, TUTOR_ROOT=str(root), TUTOR_PLUGINS_ROOT=str(root / "plugins"))
     # A parent shell may already have selected plugins for another project.
     env.pop("TUTOR_PLUGINS", None)
     env.pop("TUTOR_APP", None)
+    command = (
+        [sys.executable, "-m", "tests.capture_init"]
+        if capture_tasks
+        else [str(Path(sys.executable).with_name("tutor"))]
+    )
     return subprocess.run(
-        [str(Path(sys.executable).with_name("tutor")), *args],
+        [*command, *args],
         env=env,
         capture_output=True,
         text=True,
@@ -55,10 +61,30 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
             assert "OPENEDX_2FA_ENABLED = True" in source
             assert "configure_two_factor" not in source
             assert "OPENEDX_2FA_LMS_URL = LMS_ROOT_URL" in source
-    assert "two-factor-migrate" in tutor(tmp_path, "local", "do", "--help").stdout
-    assert "two-factor-migrate" in tutor(tmp_path, "dev", "do", "--help").stdout
+    for mode in ("local", "dev"):
+        assert "two-factor-migrate" not in tutor(tmp_path, mode, "do", "--help").stdout
+        result = tutor(tmp_path, mode, "do", "init", "-l", "2fa", capture_tasks=True)
+        tasks = [
+            json.loads(line.removeprefix("TASK:"))
+            for line in result.stdout.splitlines()
+            if line.startswith("TASK:")
+        ]
+        assert tasks == [
+            [
+                "lms",
+                "set -e\n./manage.py lms migrate otp_totp --noinput\n./manage.py lms migrate otp_static --noinput",
+            ]
+        ]
+
     tutor(tmp_path, "config", "save", "--set", "TWO_FACTOR_AUTH_ENABLED=false")
     source = (env / "apps/openedx/settings/lms/production.py").read_text()
+    result = tutor(tmp_path, "local", "do", "init", "-l", "2fa", capture_tasks=True)
+    tasks = [
+        json.loads(line.removeprefix("TASK:"))
+        for line in result.stdout.splitlines()
+        if line.startswith("TASK:")
+    ]
+    assert tasks == [["lms", ""]]
     assert "OPENEDX_2FA_ENABLED = False" in source
     assert "configure_two_factor" not in source
     tutor(tmp_path, "config", "save", "--set", "TWO_FACTOR_AUTH_VERSION=1.18.0")
@@ -101,7 +127,6 @@ def test_settings_use_public_or_development_lms_url():
 
 
 def test_migration_job_is_guarded_and_contains_both_apps():
-    assert plugin.migrate.callback() == [("lms", plugin.MIGRATE)]
     source = Environment().from_string(plugin.MIGRATE)
     assert source.render(TWO_FACTOR_AUTH_ENABLED=False).strip() == ""
     enabled = source.render(TWO_FACTOR_AUTH_ENABLED=True)
