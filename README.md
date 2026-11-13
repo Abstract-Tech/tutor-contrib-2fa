@@ -109,9 +109,25 @@ environment. Test the selected version on staging before production use.
 ### Scope
 
 - Browser-session TOTP only; FIDO2/passkeys, role-specific enforcement and invitation codes are not included.
-- Non-browser API/token requests without a verified session are rejected; SSO, mobile and service clients need separate validation.
+- Studio SSO supports authorization codes issued after LMS MFA. OAuth Toolkit still
+  validates client credentials, redirect URIs, PKCE and code expiry/replay. Studio
+  receives the verified device through a short-lived server-side proof and records
+  it in its own session; browser cookies are not forwarded to the token endpoint.
+- LMS workers and Studio must use the same shared default Django cache (Tutor's
+  Redis default cache). Authorization proof expires with the code; Studio's session
+  handoff expires after 60 seconds. Cache loss fails closed: restart Studio sign-in.
+  Codes issued before this update must also be replaced by restarting sign-in.
+- Other non-browser API/token requests without a verified session are rejected;
+  mobile, service clients and refresh-token grants need separate validation.
 - First enrollment accepts an existing authenticated session; agree a reauthentication and recovery policy before production rollout.
-- Login finishes at the security page; course-specific login/checkout redirects are not preserved.
+- MFA is a step in the existing browser login: after verification the plugin
+  resumes the platform-selected destination, including `finish_auth`, course links
+  and Studio authorization. Destinations use Open edX's `LOGIN_REDIRECT_WHITELIST`
+  and are bound to the signing-in user. Configure approved MFE hosts there as usual.
+- A verified LMS session keeps using the normal login redirects and JWT refresh;
+  moving between MFEs does not require another OTP. Studio's separate session is
+  verified through LMS OAuth. This is SSO, not a shared cookie across arbitrary
+  domains, and does not change Open edX's session expiry or logout semantics.
 - Email verification and password reset remain Open edX features.
 
 ## Development

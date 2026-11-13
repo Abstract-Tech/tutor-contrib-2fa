@@ -7,6 +7,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "openedx_two_factor",
+    "oauth2_provider",
 ]
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -38,3 +39,4 @@ from openedx_two_factor.configuration import configure
 configure(globals())
 
 OPENEDX_2FA_ENABLED = True
+OAUTH2_PROVIDER = {"SCOPES": {"read": "Read"}}

@@ -1,7 +1,7 @@
 """Restrict partially authenticated sessions to enrollment/challenge/logout.
 
-This integration requires a verified browser session for token APIs.
-It is not a mobile/service-client MFA implementation.
+Studio may redeem an authorization code issued after browser MFA without
+forwarding browser cookies. Other non-browser grant types remain blocked.
 """
 
 import json
@@ -16,6 +16,9 @@ from django_otp import DEVICE_ID_SESSION_KEY
 from django_otp.models import Device
 from two_factor.utils import default_device
 
+from .continuation import SESSION_KEY, remember_destination
+from .oauth import AUTHORIZE_PATHS, remember_authorization, remember_token, verified_code_exchange
+
 LOGIN_PATHS = {
     "/login_ajax",
     "/api/user/v1/account/login_session/",
@@ -27,6 +30,7 @@ LOGIN_PATHS = {
 # Public browser assets must never be redirected into the enrollment wizard:
 # a background GET to setup resets its session state and invalidates the QR.
 PUBLIC_ASSET_PATHS = {"/favicon.ico", "/robots.txt"}
+PUBLIC_CONFIG_PATHS = {"/api/mfe_config/v1", "/api/mfe_config/v1/"}
 
 
 def verified(request):
@@ -37,9 +41,13 @@ def verified(request):
     return bool(device and device.confirmed and device.user_id == request.user.pk)
 
 
-def gate_url(request):
+def gate_url():
     base = getattr(settings, "OPENEDX_2FA_LMS_URL", "").rstrip("/")
     return base + "/2fa/"
+
+
+def mfa_required(status=403):
+    return JsonResponse({"error": "mfa_required", "redirect_url": gate_url()}, status=status)
 
 
 class RequireTwoFactorMiddleware(MiddlewareMixin):
@@ -47,6 +55,11 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
         if not getattr(settings, "OPENEDX_2FA_ENABLED", False):
             return None
         path = request.path
+        # Bootstrap config is public even for anonymous visitors. MFEs need it
+        # before they know the login/refresh endpoints; stale JWT cookies must
+        # not turn this request into an MFA-gated API request.
+        if path in PUBLIC_CONFIG_PATHS and request.method in {"GET", "HEAD"}:
+            return None
         if (
             path in PUBLIC_ASSET_PATHS
             or path.startswith(("/static/", "/media/"))
@@ -55,27 +68,41 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
             return None
         if path in LOGIN_PATHS and request.method == "POST":
             request.session.pop(DEVICE_ID_SESSION_KEY, None)
-        is_verified = verified(request)
+            request.session.pop(SESSION_KEY, None)
+        # A completed browser login follows Open edX's ordinary routing, JWT
+        # refresh and authorization flow. Visiting another app is not a login.
+        if verified(request):
+            return None
+        if path == "/login_refresh":
+            # frontend-platform treats 401 as signed out; 403 aborts MFE startup.
+            # Never issue refreshed JWTs to an unverified session.
+            from openedx.core.djangoapps.user_authn.cookies import delete_logged_in_cookies
+
+            return delete_logged_in_cookies(mfa_required(status=401))
+        if verified_code_exchange(request):
+            return None
         # DRF authenticates bearer/JWT clients after middleware. Fail closed here.
         token_request = path.startswith(("/oauth2/access_token", "/oauth2/exchange_access_token"))
         has_credentials = bool(request.META.get("HTTP_AUTHORIZATION"))
         jwt_cookies = any(
             name.startswith("edx-jwt-cookie") and value for name, value in request.COOKIES.items()
         )
-        jwt_api = jwt_cookies and (
-            path.startswith(("/api/", "/user_api/")) or path == "/login_refresh"
-        )
-        if (token_request or has_credentials or jwt_api) and not is_verified:
-            if path not in LOGIN_PATHS and not path.startswith(("/2fa/", "/logout")):
-                return JsonResponse(
-                    {"error": "mfa_required", "redirect_url": gate_url(request)}, status=403
-                )
-        if not request.user.is_authenticated or is_verified:
+        jwt_api = jwt_cookies and path.startswith(("/api/", "/user_api/"))
+        if (
+            (token_request or has_credentials or jwt_api)
+            and path not in LOGIN_PATHS
+            and not path.startswith(("/2fa/", "/logout"))
+        ):
+            return mfa_required()
+        if not request.user.is_authenticated:
             return None
         started = request.session.setdefault("openedx_2fa_started", time.time())
         if time.time() - started > 600:
             logout(request)
-            return HttpResponseRedirect("/login?" + urlencode({"next": gate_url(request)}))
+            return HttpResponseRedirect("/login?" + urlencode({"next": gate_url()}))
+        if path in AUTHORIZE_PATHS and request.method == "GET":
+            remember_destination(request, request.get_full_path())
+            return HttpResponseRedirect(gate_url())
         if path in ("/logout", "/logout/"):
             return None
         if path.startswith("/2fa/"):
@@ -94,17 +121,18 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
             or path.startswith(("/api/", "/user_api/", "/oauth2/"))
             or request.method != "GET"
         ):
-            return JsonResponse(
-                {"error": "mfa_required", "redirect_url": gate_url(request)}, status=403
-            )
-        return HttpResponseRedirect(gate_url(request))
+            return mfa_required()
+        remember_destination(request, request.get_full_path())
+        return HttpResponseRedirect(gate_url())
 
     def process_response(self, request, response):
         if not getattr(settings, "OPENEDX_2FA_ENABLED", False):
             return response
+        remember_token(request, response)
         if not hasattr(request, "user") or not request.user.is_authenticated:
             return response
         if verified(request):
+            remember_authorization(request, response)
             return response
         # Password login/registration may have issued Open edX JWT cookies: withhold
         # them until OTP succeeds. Keep the Django session for the MFA challenge only.
@@ -118,6 +146,9 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
                 return response
             if payload.get("success"):
                 request.session["openedx_2fa_started"] = time.time()
-                payload["redirect_url"] = gate_url(request)
+                # Keep the platform-selected destination (including finish_auth
+                # and course enrollment), rather than replacing the login flow.
+                remember_destination(request, payload.get("redirect_url") or "/dashboard")
+                payload["redirect_url"] = gate_url()
                 response.content = json.dumps(payload)
         return response

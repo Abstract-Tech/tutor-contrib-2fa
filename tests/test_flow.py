@@ -9,6 +9,7 @@ from django_otp import DEVICE_ID_SESSION_KEY
 from django_otp.oath import totp
 from django_otp.plugins.otp_static.models import StaticDevice, StaticToken
 from django_otp.plugins.otp_totp.models import TOTPDevice
+from openedx_two_factor.continuation import SESSION_KEY
 
 pytestmark = pytest.mark.django_db
 
@@ -123,10 +124,39 @@ def test_token_endpoints_and_bearer_without_verified_session_denied(client):
     assert client.get("/api/protected/").status_code == 403
 
 
+@pytest.mark.parametrize("path", ["/api/mfe_config/v1", "/api/mfe_config/v1/"])
+@pytest.mark.parametrize("partial_login", [False, True])
+def test_public_mfe_config_loads_before_mfa_with_stale_jwt(client, user, path, partial_login):
+    if partial_login:
+        sign_in(client)
+    client.cookies["edx-jwt-cookie-header-payload"] = "old-token"
+    assert client.get(path).json()["LMS_BASE_URL"] == "http://lms"
+    assert client.head(path).status_code == 200
+    assert client.post(path).status_code == 403
+    assert client.get("/api/protected/").status_code == 403
+    assert client.post("/oauth2/access_token").status_code == 403
+
+
 def test_csrf_required(user, device):
     client = Client(enforce_csrf_checks=True)
     client.force_login(user)
     assert client.post("/2fa/challenge/", {"otp_token": token(device)}).status_code == 403
+
+
+@pytest.mark.parametrize("partial_login", [False, True])
+def test_refresh_reports_signed_out_until_mfa(client, user, partial_login):
+    if partial_login:
+        sign_in(client)
+    client.cookies["edx-jwt-cookie-header-payload"] = "old-token"
+    response = client.post("/login_refresh")
+    assert response.status_code == 401
+    assert response.cookies["edx-jwt-cookie-header-payload"]["max-age"] == 0
+
+
+def test_verified_session_can_refresh(client, user, device):
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert client.post("/login_refresh").json()["refreshed"] is True
 
 
 def test_deleted_device_invalidates_session(client, user, device):
@@ -238,3 +268,89 @@ def test_disabled_integration_leaves_login_and_api_access_unchanged(user, settin
     assert client.get("/dashboard").status_code == 200
     response = client.get("/api/protected/", HTTP_AUTHORIZATION="Bearer test")
     assert response.status_code == 200
+
+
+def password_login(client, destination):
+    return client.post(
+        "/login_ajax",
+        {
+            "username": "learner",
+            "password": "test-password",
+            "next": destination,
+        },
+    )
+
+
+@pytest.mark.parametrize(
+    "destination",
+    [
+        "/dashboard",
+        "/courses/course-v1:Org+Course+Run/course/",
+        "/account/finish_auth/?course_id=course-v1%3AOrg%2BCourse%2BRun&enrollment_action=enroll",
+        "https://apps.example/learning/course/course-v1:Org+Course+Run/home",
+    ],
+)
+def test_login_resumes_original_destination_after_mfa(client, user, device, settings, destination):
+    settings.LOGIN_REDIRECT_WHITELIST = ["apps.example"]
+    assert password_login(client, destination).json()["redirect_url"] == "/2fa/"
+    assert DEVICE_ID_SESSION_KEY not in client.session
+    response = client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert response.url == "/2fa/"
+    assert client.get("/2fa/").url == destination
+    assert SESSION_KEY not in client.session
+    assert client.get("/api/protected/").status_code == 200
+    assert client.post("/login_refresh").status_code == 200
+
+
+@pytest.mark.parametrize(
+    "destination",
+    [
+        "https://attacker.example/",
+        "//attacker.example/",
+        "javascript:alert(1)",
+        "/\\attacker.example/",
+        "/2fa/challenge/",
+        "/logout",
+    ],
+)
+def test_untrusted_or_looping_destinations_are_not_saved(client, user, destination):
+    password_login(client, destination)
+    assert SESSION_KEY not in client.session
+
+
+def test_pending_destination_cannot_transfer_to_another_user(client, user, device):
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    session = client.session
+    session[SESSION_KEY] = {"user_id": user.pk + 1, "url": "/dashboard"}
+    session.save()
+    assert client.get("/2fa/").status_code == 200
+
+
+def test_repeated_verified_visits_do_not_rotate_session_or_challenge(client, user, device):
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    client.get("/2fa/")
+    session_key = client.session.session_key
+    for _ in range(2):
+        assert client.get("/dashboard").status_code == 200
+        assert client.get("/api/protected/", HTTP_AUTHORIZATION="JWT token").status_code == 200
+        assert client.post("/login_refresh").status_code == 200
+        assert client.get("/2fa/").status_code == 200
+        assert client.session.session_key == session_key
+
+
+def test_logout_requires_mfa_on_next_login(client, user, device):
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    client.get("/logout")
+    password_login(client, "/dashboard")
+    assert DEVICE_ID_SESSION_KEY not in client.session
+    assert client.get("/dashboard").url == "/2fa/"
+
+
+def test_protected_browser_page_resumes_after_mfa(client, user, device):
+    sign_in(client)
+    assert client.get("/dashboard?tab=courses").url == "/2fa/"
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert client.get("/2fa/").url == "/dashboard?tab=courses"

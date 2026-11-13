@@ -17,7 +17,7 @@ dependencies = ["tutor>=22.0.0,<23.0.0", "packaging>=23"]
 dynamic = ["version"]
 
 [project.optional-dependencies]
-dev = ["build", "twine", "pytest", "pytest-django", "Django>=5.2,<5.3", "ruff"]
+dev = ["build", "twine", "pytest", "pytest-django", "Django>=5.2,<5.3", "django-oauth-toolkit==1.7.1", "ruff"]
 
 [project.urls]
 Documentation = "https://github.com/Abstract-Tech/tutor-contrib-2fa#readme"

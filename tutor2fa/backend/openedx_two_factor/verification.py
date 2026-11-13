@@ -109,6 +109,9 @@ class LoginVerification:
             TOTPDevice.objects.filter(user=self.user, confirmed=True).exists(),
             "Enrollment did not save a confirmed device.",
         )
+        require(
+            self.get("/2fa/").status_code == 302, "Verified login did not resume its destination."
+        )
         require(self.get("/2fa/").status_code == 200, "Verified account page failed.")
         require(
             bool(self.session.cookies.get_dict().get("edx-jwt-cookie-header-payload")),

@@ -9,14 +9,15 @@ from two_factor.forms import AuthenticationTokenForm, BackupTokenForm
 from two_factor.utils import default_device
 from two_factor.views import SetupView
 
+from .continuation import take_destination
 from .middleware import verified
 
 
 def finish(request, response):
     from openedx.core.djangoapps.user_authn.cookies import set_logged_in_cookies
 
-    request.session.pop("openedx_2fa_started", None)
-    request.session.cycle_key()
+    if request.session.pop("openedx_2fa_started", None) is not None:
+        request.session.cycle_key()
     return set_logged_in_cookies(request, response, request.user)
 
 
@@ -27,6 +28,9 @@ def home(request):
         return redirect(
             "openedx_2fa_challenge" if default_device(request.user) else "two_factor:setup"
         )
+    destination = take_destination(request)
+    if destination:
+        return finish(request, redirect(destination))
     return finish(request, render(request, "openedx_two_factor/home.html"))
 
 

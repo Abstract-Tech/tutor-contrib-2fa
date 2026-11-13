@@ -46,6 +46,9 @@ def configure(settings):
             [
                 *settings.get("TRACKING_IGNORE_URL_PATTERNS", []),
                 r"^/2fa/",
+                # OAuth requests contain client secrets and authorization codes.
+                r"^/oauth2/",
+                r"^/complete/edx-oauth2/",
             ]
         )
     )
