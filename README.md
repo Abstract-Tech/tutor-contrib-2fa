@@ -169,9 +169,17 @@ at <https://test.pypi.org/manage/account/publishing/>:
 The GitHub owner does not automatically assign PyPI account or organization
 ownership. Configure the publisher from the intended owning account.
 
-In GitHub Actions, select **Publish to TestPyPI** on `main` and click **Run workflow**.
-It tests and builds the package, publishes with OIDC, then checks installation from
-TestPyPI. The workflow has no production PyPI publishing job and does not run on tags.
+Push a version tag matching both package versions to trigger publishing:
+
+```bash
+git tag -a v0.1.0 -m "Release 0.1.0"
+git push origin v0.1.0
+```
+
+Create the tag only once. For later releases, update both package versions and use
+a new matching tag. The workflow checks the versions, tests and builds the package,
+publishes with OIDC, then checks installation from TestPyPI. It has no production
+PyPI publishing job. Configure the TestPyPI publisher before pushing the tag.
 
 To test installation manually in a fresh virtual environment:
 
