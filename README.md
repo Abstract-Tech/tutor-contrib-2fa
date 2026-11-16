@@ -5,7 +5,7 @@ recovery codes, and access checks for LMS and Studio. The plugin installs
 [`django-two-factor-auth`](https://github.com/jazzband/django-two-factor-auth)
 and the bundled Open edX integration in the Open edX image.
 
-Targets Tutor 22 / Open edX Verawood. This review version is not published to PyPI.
+Targets Tutor 22 / Open edX Verawood. Version 1.0.0 is available as a Git tag; it is not published to PyPI.
 
 ## Installation
 
