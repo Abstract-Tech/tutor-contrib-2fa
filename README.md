@@ -5,7 +5,7 @@ recovery codes, and access checks for LMS and Studio. The plugin installs
 [`django-two-factor-auth`](https://github.com/jazzband/django-two-factor-auth)
 and the bundled Open edX integration in the Open edX image.
 
-Targets Tutor 22 / Open edX Verawood. Version 1.0.0 is available as a Git tag; it is not published to PyPI.
+Targets Tutor 22 / Open edX Verawood. Version 0.1.0 is being prepared for TestPyPI; it is not published to production PyPI.
 
 ## Installation
 
@@ -149,6 +149,42 @@ in sync with `tutor2fa/__about__.py`.
 Scaffold generated from
 [`overhangio/cookiecutter-tutor-plugin`](https://github.com/overhangio/cookiecutter-tutor-plugin)
 at commit `5d664b0f3436f375e22be789a4aaef445c3532d2`.
+
+## TestPyPI publishing
+
+The first package-index version is `0.1.0`. The earlier `v1.0.0` Git tag remains
+unchanged; it was not a PyPI release.
+
+Using the TestPyPI account that should own this package, add a pending publisher
+at <https://test.pypi.org/manage/account/publishing/>:
+
+| Field | Value |
+| --- | --- |
+| Project name | `tutor-contrib-2fa` |
+| GitHub owner | `Abstract-Tech` |
+| Repository | `tutor-contrib-2fa` |
+| Workflow | `release.yml` |
+| Environment | `testpypi` |
+
+The GitHub owner does not automatically assign PyPI account or organization
+ownership. Configure the publisher from the intended owning account.
+
+In GitHub Actions, select **Publish to TestPyPI** on `main` and click **Run workflow**.
+It tests and builds the package, publishes with OIDC, then checks installation from
+TestPyPI. The workflow has no production PyPI publishing job and does not run on tags.
+
+To test installation manually in a fresh virtual environment:
+
+```bash
+python -m pip install 'tutor>=22,<23' 'packaging>=23'
+python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==0.1.0
+python -m pip check
+tutor plugins list
+```
+
+Dependencies come from PyPI; only this plugin comes from TestPyPI. Do this after
+the upload succeeds. TestPyPI accounts and publishers are separate from PyPI.
+An already uploaded version cannot be overwritten; use a new version for changes.
 
 ## License
 

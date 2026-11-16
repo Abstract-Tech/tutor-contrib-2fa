@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0 — Initial package-index release (testing)
+
+- Prepare the existing plugin for its first TestPyPI release under Abstract-Tech.
+- Add a manual Trusted Publisher workflow with tests and an installation check.
+- Keep the earlier `v1.0.0` Git tag unchanged; it was never published to PyPI.
+
 ## 1.0.0 — 2026-11-16
 
 - Generate the Tutor plugin scaffold from overhangio/cookiecutter-tutor-plugin.
