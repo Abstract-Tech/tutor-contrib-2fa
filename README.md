@@ -150,7 +150,7 @@ Scaffold generated from
 [`overhangio/cookiecutter-tutor-plugin`](https://github.com/overhangio/cookiecutter-tutor-plugin)
 at commit `5d664b0f3436f375e22be789a4aaef445c3532d2`.
 
-## TestPyPI publishing
+## Publishing
 
 The first package-index version is `0.1.0`. The earlier `v1.0.0` Git tag remains
 unchanged; it was not a PyPI release.
@@ -178,8 +178,23 @@ git push origin v0.1.0
 
 Create the tag only once. For later releases, update both package versions and use
 a new matching tag. The workflow checks the versions, tests and builds the package,
-publishes with OIDC, then checks installation from TestPyPI. It has no production
-PyPI publishing job. Configure the TestPyPI publisher before pushing the tag.
+publishes to TestPyPI with OIDC, and checks installation from TestPyPI. Only after
+that check succeeds does it publish the same distribution artifacts to production
+PyPI, without rebuilding them.
+
+Configure both publishers before pushing a release tag. On production PyPI, use
+<https://pypi.org/manage/account/publishing/> with the same project, owner,
+repository and workflow values above, but set the environment to `pypi`.
+
+Existing tags retain their original workflow. Do not move an existing release tag.
+
+To publish the already-tested `0.1.0` release, select **Publish Python package** in
+GitHub Actions, click **Run workflow**, and choose `main`. This manual path downloads
+the original distributions from successful run `43866826685`, verifies their SHA-256
+hashes against TestPyPI, and publishes those exact files to production PyPI. It does
+not rebuild or re-upload to TestPyPI. Run it once; PyPI versions cannot be overwritten.
+The original GitHub artifact must still be available (it expires under the repository's
+artifact retention policy). Future releases use the normal version-tag flow.
 
 To test installation manually in a fresh virtual environment:
 
