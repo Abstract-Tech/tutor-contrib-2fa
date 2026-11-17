@@ -84,8 +84,7 @@ TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES:
   - staff
 ```
 
-These are the defaults. Use `all` to require 2FA for every authenticated user, or add
-`instructor` and/or `student` for more targeted enforcement.
+These are the defaults. Add `instructor` and/or `student` to require 2FA for them too.
 
 | Role | Who matches |
 | --- | --- |
@@ -93,11 +92,9 @@ These are the defaults. Use `all` to require 2FA for every authenticated user, o
 | `staff` | Platform staff (`is_staff`). |
 | `instructor` | Users with course or organization `instructor` or `staff` access. |
 | `student` | Users with at least one active course enrollment. |
-| `all` | Every authenticated user. |
 | Custom name | An existing course/organization role or Django group with that exact name. |
 
-A match on **any** role requires setup and 2FA at sign-in. The special `all` value
-requires 2FA for every authenticated user. These roles apply across
+A match on **any** role requires setup and 2FA at sign-in. These roles apply across
 the account, not just while visiting a particular course. A newly registered user
 without an active enrollment does not yet match `student`.
 
