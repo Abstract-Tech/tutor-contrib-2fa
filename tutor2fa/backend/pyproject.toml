@@ -20,4 +20,4 @@ openedx_two_factor = "openedx_two_factor.apps:OpenEdxTwoFactorConfig"
 include = ["openedx_two_factor*"]
 
 [tool.setuptools.package-data]
-openedx_two_factor = ["templates/**/*.html"]
+openedx_two_factor = ["templates/**/*.html", "static/**/*.css"]
