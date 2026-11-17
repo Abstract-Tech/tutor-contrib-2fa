@@ -315,6 +315,54 @@ body.two-factor-page .two-factor-card .errorlist {
   color: var(--two-factor-error);
 }
 
+/* Django renders both field and non-field validation errors as <ul>s. */
+body.two-factor-page .two-factor-card .errorlist {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 12px;
+  padding: 12px 16px;
+  border-width: 0 0 0 4px;
+  border-radius: 0 0.3rem 0.3rem 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+body.two-factor-page .two-factor-card .errorlist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+}
+
+body.two-factor-page .two-factor-card .errorlist li::before {
+  content: "!";
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--two-factor-error);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+body.two-factor-page .two-factor-card form .errorlist + p {
+  margin-top: 0;
+}
+
+body.two-factor-page .two-factor-card form .errorlist + p input:not([type="hidden"]):not([type="submit"]),
+body.two-factor-page .two-factor-card form .errorlist + p select,
+body.two-factor-page .two-factor-card form .errorlist + p textarea {
+  border-color: var(--two-factor-error);
+}
+
 body.two-factor-page .two-factor-card .alert-warning {
   border-color: var(--two-factor-warning);
   background: var(--two-factor-warning-background);
