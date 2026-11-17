@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   build:
-    if: github.repository == 'Abstract-Tech/tutor-contrib-2fa' && startsWith(github.ref, 'refs/tags/v')
+    if: github.repository == 'Abstract-Tech/tutor-contrib-2fa' && startsWith(github.ref, 'refs/tags/v') && github.ref != 'refs/tags/v1.0.1'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -120,8 +120,8 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
 
   prepare-existing-release:
-    name: Verify tested 0.1.0 distributions
-    if: github.event_name == 'workflow_dispatch' && github.repository == 'Abstract-Tech/tutor-contrib-2fa' && github.ref == 'refs/heads/main'
+    name: Verify tested 1.0.1 distributions
+    if: github.repository == 'Abstract-Tech/tutor-contrib-2fa' && github.ref == 'refs/tags/v1.0.1'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -130,7 +130,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - name: Verify the successful TestPyPI run
+      - name: Verify original build and TestPyPI upload
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -139,26 +139,31 @@ jobs:
           import os
           import urllib.request
 
-          url = "https://api.github.com/repos/Abstract-Tech/tutor-contrib-2fa/actions/runs/43866826685"
+          url = "https://api.github.com/repos/Abstract-Tech/tutor-contrib-2fa/actions/runs/44086284160"
           request = urllib.request.Request(url, headers={"Authorization": "Bearer " + os.environ["GH_TOKEN"]})
           with urllib.request.urlopen(request, timeout=30) as response:
               run = json.load(response)
           expected = {
-              "conclusion": "success",
+              "conclusion": "cancelled",
               "event": "push",
               "path": ".github/workflows/release.yml",
-              "head_sha": "2fb9a454891972bbf34f7c95c9c3f30982b570f4",
+              "head_sha": "6314094dc1c4c38d3f7891a3d16467c5155f0169",
           }
           for key, value in expected.items():
               if run[key] != value:
                   raise SystemExit(f"Unexpected source run {key}")
+          request = urllib.request.Request(url + "/jobs", headers={"Authorization": "Bearer " + os.environ["GH_TOKEN"]})
+          with urllib.request.urlopen(request, timeout=30) as response:
+              jobs = {job["name"]: job["conclusion"] for job in json.load(response)["jobs"]}
+          if jobs.get("build") != "success" or jobs.get("publish") != "success":
+              raise SystemExit("Original tests, build and TestPyPI upload must have succeeded")
           PYTHON
       - name: Download original tested distributions
         uses: actions/download-artifact@v4
         with:
           name: python-distributions
           path: dist/
-          run-id: 43866826685
+          run-id: 44086284160
           github-token: ${{ github.token }}
       - name: Verify files match TestPyPI exactly
         run: |
@@ -168,38 +173,50 @@ jobs:
           import urllib.request
           from pathlib import Path
 
-          with urllib.request.urlopen("https://test.pypi.org/pypi/tutor-contrib-2fa/0.1.0/json", timeout=30) as response:
+          with urllib.request.urlopen("https://test.pypi.org/pypi/tutor-contrib-2fa/1.0.1/json", timeout=30) as response:
               release = json.load(response)
           expected = {item["filename"]: item["digests"]["sha256"] for item in release["urls"]}
-          names = {"tutor_contrib_2fa-0.1.0-py3-none-any.whl", "tutor_contrib_2fa-0.1.0.tar.gz"}
+          names = {"tutor_contrib_2fa-1.0.1-py3-none-any.whl", "tutor_contrib_2fa-1.0.1.tar.gz"}
           files = list(Path("dist").iterdir())
           if set(expected) != names or {file.name for file in files} != names:
-              raise SystemExit("Expected exactly the 0.1.0 wheel and source distribution")
+              raise SystemExit("Expected exactly the 1.0.1 wheel and source distribution")
           for file in files:
               if hashlib.sha256(file.read_bytes()).hexdigest() != expected[file.name]:
                   raise SystemExit(f"TestPyPI hash mismatch: {file.name}")
           print("Both distributions match the tested TestPyPI release")
           PYTHON
+      - name: Verify installation of the original release
+        working-directory: ${{ runner.temp }}
+        env:
+          TUTOR_ROOT: ${{ runner.temp }}/tutor-release-test
+          TUTOR_PLUGINS_ROOT: ${{ runner.temp }}/tutor-release-test/plugins
+        run: |
+          python -m pip install 'tutor>=22,<23' 'packaging>=23'
+          python -m pip install --no-deps "${{ github.workspace }}/dist/tutor_contrib_2fa-1.0.1-py3-none-any.whl"
+          python -m pip check
+          tutor plugins enable 2fa
+          tutor config save
+          tutor plugins list
       - uses: actions/upload-artifact@v4
         with:
-          name: verified-0.1.0-distributions
+          name: verified-1.0.1-distributions
           path: dist/
           if-no-files-found: error
 
   promote-existing-release:
-    name: Publish tested 0.1.0 to PyPI
+    name: Publish tested 1.0.1 to PyPI
     needs: prepare-existing-release
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/project/tutor-contrib-2fa/0.1.0/
+      url: https://pypi.org/project/tutor-contrib-2fa/1.0.1/
     permissions:
       contents: read
       id-token: write
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: verified-0.1.0-distributions
+          name: verified-1.0.1-distributions
           path: dist/
       - name: Publish original distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
