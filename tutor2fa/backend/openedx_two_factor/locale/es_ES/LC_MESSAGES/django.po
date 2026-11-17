@@ -334,19 +334,19 @@ msgstr "Desactivar"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "Hola, soy %(site_name)s llamando. Presione cualquier tecla para continuar."
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "No presionaste ninguna tecla. Adiós."
 
 msgid "Your token is:"
-msgstr ""
+msgstr "Tu ficha es:"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "Repetir:"
 
 msgid "Good bye."
-msgstr ""
+msgstr "Adiós."
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"

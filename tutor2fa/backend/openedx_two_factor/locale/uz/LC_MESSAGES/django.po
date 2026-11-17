@@ -16,19 +16,19 @@ msgstr ""
 
 #: templates/two_factor/core/phone_register.html:5
 msgid "Add Backup Phone"
-msgstr ""
+msgstr "Zaxira telefon qo'shing"
 
 #: templates/two_factor/core/phone_register.html:8
 msgid ""
 "You'll be adding a backup phone number to your account. This number will be "
 "used if your primary method of registration is not available."
-msgstr ""
+msgstr "Hisobingizga zaxira telefon raqamini qo'shasiz. Agar asosiy roʻyxatdan oʻtish usuli mavjud boʻlmasa, bu raqam ishlatiladi."
 
 #: templates/two_factor/core/phone_register.html:12
 msgid ""
 "We've sent a token to your phone number. Please enter the token you've "
 "received."
-msgstr ""
+msgstr "Telefon raqamingizga token yubordik. Iltimos, olgan tokenni kiriting."
 
 #: templates/two_factor/_wizard_actions.html:5
 msgid "Cancel"
@@ -37,76 +37,76 @@ msgstr "Bekor qilish"
 #: templates/two_factor/_wizard_actions.html:10
 #: templates/two_factor/_wizard_actions.html:12
 msgid "Back"
-msgstr ""
+msgstr "Orqaga"
 
 #: templates/two_factor/_wizard_actions.html:14
 msgid "Next"
-msgstr ""
+msgstr "Keyingi"
 
 #: templates/two_factor/twilio/sms_message.html:2
 #, python-format
 msgid "Your OTP token is %(token)s"
-msgstr ""
+msgstr "OTP tokeningiz %(token)s"
 
 #: templates/two_factor/core/login.html:10
 msgid "Login"
-msgstr ""
+msgstr "Kirish"
 
 #: templates/two_factor/core/login.html:13
 msgid "Enter your credentials."
-msgstr ""
+msgstr "Hisob maʼlumotlaringizni kiriting."
 
 #: templates/two_factor/core/login.html:17
 msgid ""
 "Use this form for entering backup tokens for logging in. These tokens have "
 "been generated for you to print and keep safe. Please enter one of these "
 "backup tokens to login to your account."
-msgstr ""
+msgstr "Tizimga kirish uchun zaxira tokenlarini kiritish uchun ushbu shakldan foydalaning. Bu tokenlar chop etishingiz va xavfsiz saqlashingiz uchun yaratilgan. Hisobingizga kirish uchun ushbu zaxira tokenlaridan birini kiriting."
 
 #: templates/two_factor/core/login.html:29
 msgid "Or, alternatively, use one of your other authentication methods:"
-msgstr ""
+msgstr "Yoki, muqobil ravishda, boshqa autentifikatsiya usullaridan birini ishlating:"
 
 #: templates/two_factor/core/login.html:48
 msgid "As a last resort, you can use a backup token:"
-msgstr ""
+msgstr "Oxirgi chora sifatida siz zaxira tokenidan foydalanishingiz mumkin:"
 
 #: templates/two_factor/core/login.html:51
 msgid "Use Backup Token"
-msgstr ""
+msgstr "Zaxira tokenidan foydalaning"
 
 #: templates/two_factor/core/backup_tokens.html:25
 #: templates/two_factor/core/setup_complete.html:12
 #: templates/two_factor/core/setup_complete.html:19
 msgid "Back to Account Security"
-msgstr ""
+msgstr "Hisob xavfsizligi sahifasiga qaytish"
 
 #: templates/two_factor/core/otp_required.html:18
 #: templates/two_factor/core/setup.html:9
 #: templates/two_factor/core/setup_complete.html:5
 #: templates/two_factor/profile/profile.html:55
 msgid "Enable Two-Factor Authentication"
-msgstr ""
+msgstr "Ikki faktorli autentifikatsiyani yoqing"
 
 #: templates/two_factor/core/setup_complete.html:7
 msgid "Congratulations, you've successfully enabled two-factor authentication."
-msgstr ""
+msgstr "Tabriklaymiz, siz ikki faktorli autentifikatsiyani muvaffaqiyatli yoqdingiz."
 
 #: templates/two_factor/core/setup_complete.html:14
 msgid ""
 "However, it might happen that you don't have access to your primary token "
 "device. To enable account recovery, add a phone number."
-msgstr ""
+msgstr "Biroq, asosiy token qurilmangizga kirish imkoningiz bo'lmasligi mumkin. Hisobni tiklashni yoqish uchun telefon raqamini qo'shing."
 
 #: templates/two_factor/core/setup_complete.html:21
 #: templates/two_factor/profile/profile.html:29
 msgid "Add Phone Number"
-msgstr ""
+msgstr "Telefon raqamini qo'shish"
 
 #: templates/two_factor/core/backup_tokens.html:5
 #: templates/two_factor/profile/profile.html:32
 msgid "Backup Tokens"
-msgstr ""
+msgstr "Zaxira tokenlar"
 
 #: templates/two_factor/core/backup_tokens.html:6
 msgid ""
@@ -114,69 +114,69 @@ msgid ""
 "available. The backup tokens below can be used for login verification. If "
 "you've used up all your backup tokens, you can generate a new set of backup "
 "tokens. Only the backup tokens shown below will be valid."
-msgstr ""
+msgstr "Zaxira tokenlaridan asosiy va zaxira telefon raqamlari mavjud boʻlmaganda foydalanish mumkin. Quyidagi zaxira tokenlar kirishni tekshirish uchun ishlatilishi mumkin. Agar siz barcha zaxira tokenlaringizni ishlatgan bo'lsangiz, yangi zaxira tokenlar to'plamini yaratishingiz mumkin. Faqat quyida ko'rsatilgan zaxira tokenlari amal qiladi."
 
 #: templates/two_factor/core/backup_tokens.html:18
 msgid "Print these tokens and keep them somewhere safe."
-msgstr ""
+msgstr "Ushbu tokenlarni chop eting va ularni xavfsiz joyda saqlang."
 
 #: templates/two_factor/core/backup_tokens.html:20
 msgid "You don't have any backup codes yet."
-msgstr ""
+msgstr "Sizda hali zaxira kodlari yoʻq."
 
 #: templates/two_factor/core/backup_tokens.html:26
 msgid "Generate Tokens"
-msgstr ""
+msgstr "Tokenlarni yaratish"
 
 #: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
 msgid "We are calling your phone right now, please enter the digits you hear."
-msgstr ""
+msgstr "Biz hozir telefoningizga qo'ng'iroq qilyapmiz, eshitgan raqamlarni kiriting."
 
 #: templates/two_factor/core/setup.html:11
 msgid ""
 "You are about to take your account security to the next level. Follow the "
 "steps in this wizard to enable two-factor authentication."
-msgstr ""
+msgstr "Hisobingiz xavfsizligini keyingi bosqichga olib chiqmoqchisiz. Ikki faktorli autentifikatsiyani yoqish uchun ushbu sehrgardagi amallarni bajaring."
 
 #: templates/two_factor/core/setup.html:15
 msgid "Please select which authentication method you would like to use."
-msgstr ""
+msgstr "Qaysi autentifikatsiya usulidan foydalanmoqchi ekanligingizni tanlang."
 
 #: templates/two_factor/core/setup.html:18
 msgid ""
 "To start using a token generator, please use your smartphone to scan the QR "
 "code below. For example, use Google Authenticator."
-msgstr ""
+msgstr "Token generatoridan foydalanishni boshlash uchun quyidagi QR kodni skanerlash uchun smartfoningizdan foydalaning. Masalan, Google Authenticator-dan foydalaning."
 
 #: templates/two_factor/core/setup.html:22
 msgid ""
 "Alternatively you can use the following secret to setup TOTP in your "
 "authenticator or password manager manually."
-msgstr ""
+msgstr "Shu bilan bir qatorda, autentifikator yoki parol menejerida TOTPni qo'lda o'rnatish uchun quyidagi sirdan foydalanishingiz mumkin."
 
 #: templates/two_factor/core/setup.html:24
 msgid "TOTP Secret:"
-msgstr ""
+msgstr "TOTP siri:"
 
 #: templates/two_factor/core/setup.html:25
 msgid "Then, enter the token generated by the app."
-msgstr ""
+msgstr "Keyin, ilova tomonidan yaratilgan tokenni kiriting."
 
 #: templates/two_factor/core/setup.html:28
 msgid ""
 "Please enter the phone number you wish to receive the text messages on. This "
 "number will be validated in the next step."
-msgstr ""
+msgstr "Iltimos, matnli xabarlarni olmoqchi bo'lgan telefon raqamini kiriting. Bu raqam keyingi bosqichda tasdiqlanadi."
 
 #: templates/two_factor/core/setup.html:32
 msgid ""
 "Please enter the phone number you wish to be called on. This number will be "
 "validated in the next step."
-msgstr ""
+msgstr "Iltimos, qo'ng'iroq qilishni xohlagan telefon raqamingizni kiriting. Bu raqam keyingi bosqichda tasdiqlanadi."
 
 #: templates/two_factor/core/setup.html:40
 msgid "We sent you a text message, please enter the tokens we sent."
-msgstr ""
+msgstr "Biz sizga SMS yubordik, biz yuborgan tokenlarni kiriting."
 
 #: templates/two_factor/core/setup.html:44
 msgid ""
@@ -184,13 +184,13 @@ msgid ""
 "go back and verify that you entered your information correctly, try again, "
 "or use a different authentication method instead. If the issue persists, "
 "contact the site administrator."
-msgstr ""
+msgstr "Tanlangan autentifikatsiya usulida muammoga duch keldik. Orqaga qayting va maʼlumotlaringizni toʻgʻri kiritganingizni tasdiqlang, qayta urinib koʻring yoki uning oʻrniga boshqa autentifikatsiya usulidan foydalaning. Muammo davom etsa, sayt administratoriga murojaat qiling."
 
 #: templates/two_factor/core/setup.html:51
 msgid ""
 "To identify and verify your YubiKey, please insert a token in the field "
 "below. Your YubiKey will be linked to your account."
-msgstr ""
+msgstr "YubiKeyingizni aniqlash va tasdiqlash uchun quyidagi maydonga token kiriting. Sizning YubiKey hisobingizga bog'lanadi."
 
 #: templates/two_factor/core/otp_required.html:5
 msgid "Permission Denied"
@@ -201,14 +201,14 @@ msgid ""
 "The page you requested, enforces users to verify using two-factor "
 "authentication for security reasons. You need to enable these security "
 "features in order to access this page."
-msgstr ""
+msgstr "Siz soʻragan sahifa xavfsizlik nuqtai nazaridan foydalanuvchilarni ikki faktorli autentifikatsiya yordamida tekshirishga majbur qiladi. Ushbu sahifaga kirish uchun ushbu xavfsizlik xususiyatlarini yoqishingiz kerak."
 
 #: templates/two_factor/core/otp_required.html:11
 #: templates/two_factor/profile/profile.html:51
 msgid ""
 "Two-factor authentication is not enabled for your account. Enable two-factor "
 "authentication for enhanced account security."
-msgstr ""
+msgstr "Hisobingiz uchun ikki faktorli autentifikatsiya yoqilmagan. Hisob xavfsizligini oshirish uchun ikki faktorli autentifikatsiyani yoqing."
 
 #: templates/two_factor/core/otp_required.html:16
 msgid "Go back"
@@ -216,87 +216,87 @@ msgstr "Ortga qaytish"
 
 #: templates/two_factor/profile/profile.html:6
 msgid "Account Security"
-msgstr ""
+msgstr "Hisob xavfsizligi"
 
 #: templates/two_factor/profile/profile.html:9
 #, python-format
 msgid "Primary method: %(primary)s"
-msgstr ""
+msgstr "Asosiy usul: %(primary)s"
 
 #: templates/two_factor/profile/profile.html:12
 msgid "Backup Phone Numbers"
-msgstr ""
+msgstr "Zaxira telefon raqamlari"
 
 #: templates/two_factor/profile/profile.html:13
 msgid ""
 "If your primary method is not available, we are able to send backup tokens "
 "to the phone numbers listed below."
-msgstr ""
+msgstr "Agar asosiy usulingiz mavjud bo'lmasa, biz quyida keltirilgan telefon raqamlariga zaxira tokenlarini yuborishimiz mumkin."
 
 #: templates/two_factor/profile/profile.html:20
 msgid "Are you sure?"
-msgstr ""
+msgstr "Ishonchingiz komilmi?"
 
 #: templates/two_factor/profile/profile.html:23
 msgid "Unregister"
-msgstr ""
+msgstr "Roʻyxatdan oʻtish"
 
 #: templates/two_factor/profile/profile.html:34
 msgid ""
 "If you don't have any device with you, you can access your account using "
 "backup tokens."
-msgstr ""
+msgstr "Agar sizda hech qanday qurilma bo'lmasa, zaxira tokenlari yordamida hisobingizga kirishingiz mumkin."
 
 #: templates/two_factor/profile/profile.html:36
 #, python-format
 msgid "You have only one backup token remaining."
 msgid_plural "You have %(counter)s backup tokens remaining."
-msgstr[0] ""
+msgstr[0] "Sizda %(counter)s ta zaxira token qoldi."
 
 #: templates/two_factor/profile/profile.html:43
 msgid "Show Codes"
-msgstr ""
+msgstr "Kodlarni ko'rsatish"
 
 #: templates/two_factor/profile/profile.html:45
 #: templates/two_factor/profile/profile.html:49
 msgid "Disable Two-Factor Authentication"
-msgstr ""
+msgstr "Ikki faktorli autentifikatsiyani o'chiring"
 
 #: templates/two_factor/profile/profile.html:46
 msgid ""
 "However we strongly discourage you to do so, you can also disable two-factor "
 "authentication for your account."
-msgstr ""
+msgstr "Shunga qaramay, biz sizni buni qilishni qat'iyan rad etamiz, siz hisobingiz uchun ikki faktorli autentifikatsiyani ham o'chirib qo'yishingiz mumkin."
 
 #: templates/two_factor/profile/disable.html:5
 msgid "Disable Two-factor Authentication"
-msgstr ""
+msgstr "Ikki faktorli autentifikatsiyani o'chirib qo'ying"
 
 #: templates/two_factor/profile/disable.html:6
 msgid ""
 "You are about to disable two-factor authentication. This weakens your "
 "account security, are you sure?"
-msgstr ""
+msgstr "Ikki faktorli autentifikatsiyani o‘chirib qo‘ymoqchisiz. Bu hisobingiz xavfsizligini zaiflashtiradi, ishonchingiz komilmi?"
 
 #: templates/two_factor/profile/disable.html:12
 msgid "Disable"
-msgstr ""
+msgstr "Oʻchirish"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "Salom, bu %(site_name)s qo‘ng‘iroq qilmoqda. Davom etish uchun istalgan tugmani bosing."
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "Siz hech qanday tugmani bosmadingiz. Xayr. Salomat bo'ling."
 
 msgid "Your token is:"
-msgstr ""
+msgstr "Sizning tokeningiz:"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "Takrorlash:"
 
 msgid "Good bye."
-msgstr ""
+msgstr "Xayr."
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"
@@ -308,60 +308,60 @@ msgstr "Hisob xavfsizligi"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Enter a recovery code"
-msgstr ""
+msgstr "Qayta tiklash kodini kiriting"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Verify your sign-in"
-msgstr ""
+msgstr "Tizimga kirganingizni tasdiqlang"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Each recovery code can be used only once."
-msgstr ""
+msgstr "Har bir tiklash kodidan faqat bir marta foydalanish mumkin."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Enter the six-digit code from your authenticator app."
-msgstr ""
+msgstr "Autentifikatsiya ilovasidan olti xonali kodni kiriting."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
 msgid "Verify and continue"
-msgstr ""
+msgstr "Tasdiqlang va davom eting"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use authenticator app"
-msgstr ""
+msgstr "Autentifikatsiya ilovasidan foydalaning"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use a recovery code"
-msgstr ""
+msgstr "Qayta tiklash kodidan foydalaning"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:4
 msgid "Two-factor authentication is active"
-msgstr ""
+msgstr "Ikki faktorli autentifikatsiya faol"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:5
 #, python-format
 msgid ""
 "You are signed in as <strong>%(username)s</strong>. This session has passed "
 "verification."
-msgstr ""
+msgstr "Siz <strong>%(username)s</strong> sifatida tizimga kirgansiz. Bu seans tekshiruvdan oʻtdi."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:6
 msgid "Continue to learning"
-msgstr ""
+msgstr "O'rganishda davom eting"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Generate or view recovery codes"
-msgstr ""
+msgstr "Qayta tiklash kodlarini yarating yoki ko'ring"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Save them somewhere safe in case you lose your phone."
-msgstr ""
+msgstr "Telefoningizni yo'qotib qo'ysangiz, ularni xavfsiz joyda saqlang."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:8
 msgid ""
 "To test again, sign out and sign back in. You will be asked for a fresh code."
-msgstr ""
+msgstr "Qayta sinovdan o'tish uchun tizimdan chiqing va qayta kiring. Sizdan yangi kod so'raladi."
 
 #: two_factor/forms.py
 msgid "Token"
-msgstr ""
+msgstr "Token"

@@ -23,13 +23,13 @@ msgstr "Adăugați Telefon de recuperare"
 msgid ""
 "You'll be adding a backup phone number to your account. This number will be "
 "used if your primary method of registration is not available."
-msgstr ""
+msgstr "Veți adăuga un număr de telefon de rezervă în contul dvs. Acest număr va fi folosit dacă metoda dvs. principală de înregistrare nu este disponibilă."
 
 #: templates/two_factor/core/phone_register.html:12
 msgid ""
 "We've sent a token to your phone number. Please enter the token you've "
 "received."
-msgstr ""
+msgstr "Am trimis un token la numărul tău de telefon. Vă rugăm să introduceți simbolul pe care l-ați primit."
 
 #: templates/two_factor/_wizard_actions.html:5
 msgid "Cancel"
@@ -47,7 +47,7 @@ msgstr "Înainte"
 #: templates/two_factor/twilio/sms_message.html:2
 #, python-format
 msgid "Your OTP token is %(token)s"
-msgstr ""
+msgstr "Indicativul dvs. OTP este %(token)s"
 
 #: templates/two_factor/core/login.html:10
 msgid "Login"
@@ -62,11 +62,11 @@ msgid ""
 "Use this form for entering backup tokens for logging in. These tokens have "
 "been generated for you to print and keep safe. Please enter one of these "
 "backup tokens to login to your account."
-msgstr ""
+msgstr "Utilizați acest formular pentru a introduce jetoane de rezervă pentru a vă conecta. Aceste jetoane au fost generate pentru ca dvs. să le imprimați și să le păstrați în siguranță. Introduceți unul dintre aceste jetoane de rezervă pentru a vă conecta la contul dvs."
 
 #: templates/two_factor/core/login.html:29
 msgid "Or, alternatively, use one of your other authentication methods:"
-msgstr ""
+msgstr "Sau, alternativ, utilizați una dintre celelalte metode de autentificare:"
 
 #: templates/two_factor/core/login.html:48
 msgid "As a last resort, you can use a backup token:"
@@ -91,13 +91,13 @@ msgstr "Activați verificarea în doi pași"
 
 #: templates/two_factor/core/setup_complete.html:7
 msgid "Congratulations, you've successfully enabled two-factor authentication."
-msgstr ""
+msgstr "Felicitări, ați activat cu succes autentificarea cu doi factori."
 
 #: templates/two_factor/core/setup_complete.html:14
 msgid ""
 "However, it might happen that you don't have access to your primary token "
 "device. To enable account recovery, add a phone number."
-msgstr ""
+msgstr "Cu toate acestea, s-ar putea întâmpla să nu aveți acces la dispozitivul principal cu simbol. Pentru a activa recuperarea contului, adăugați un număr de telefon."
 
 #: templates/two_factor/core/setup_complete.html:21
 #: templates/two_factor/profile/profile.html:29
@@ -115,7 +115,7 @@ msgid ""
 "available. The backup tokens below can be used for login verification. If "
 "you've used up all your backup tokens, you can generate a new set of backup "
 "tokens. Only the backup tokens shown below will be valid."
-msgstr ""
+msgstr "Jetoanele de rezervă pot fi folosite atunci când numerele de telefon principal și de rezervă nu sunt disponibile. Tokenurile de rezervă de mai jos pot fi folosite pentru verificarea autentificărilor. Dacă ați epuizat toate jetoanele de rezervă, puteți genera un nou set de jetoane de rezervă. Doar jetoanele de rezervă afișate mai jos vor fi valide."
 
 #: templates/two_factor/core/backup_tokens.html:18
 msgid "Print these tokens and keep them somewhere safe."
@@ -133,53 +133,53 @@ msgstr "Obțineți Coduri"
 
 #: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
 msgid "We are calling your phone right now, please enter the digits you hear."
-msgstr ""
+msgstr "Vă sunăm la telefon chiar acum, vă rugăm să introduceți cifrele pe care le auziți."
 
 #: templates/two_factor/core/setup.html:11
 msgid ""
 "You are about to take your account security to the next level. Follow the "
 "steps in this wizard to enable two-factor authentication."
-msgstr ""
+msgstr "Sunteți pe cale să duceți securitatea contului la următorul nivel. Urmați pașii din acest expert pentru a activa autentificarea cu doi factori."
 
 #: templates/two_factor/core/setup.html:15
 msgid "Please select which authentication method you would like to use."
-msgstr ""
+msgstr "Vă rugăm să selectați ce metodă de autentificare doriți să utilizați."
 
 #: templates/two_factor/core/setup.html:18
 msgid ""
 "To start using a token generator, please use your smartphone to scan the QR "
 "code below. For example, use Google Authenticator."
-msgstr ""
+msgstr "Pentru a începe să utilizați un generator de jetoane, vă rugăm să utilizați smartphone-ul pentru a scana codul QR de mai jos. De exemplu, utilizați Google Authenticator."
 
 #: templates/two_factor/core/setup.html:22
 msgid ""
 "Alternatively you can use the following secret to setup TOTP in your "
 "authenticator or password manager manually."
-msgstr ""
+msgstr "Alternativ, puteți utiliza următorul secret pentru a configura manual TOTP în autentificatorul sau managerul de parole."
 
 #: templates/two_factor/core/setup.html:24
 msgid "TOTP Secret:"
-msgstr ""
+msgstr "Secretul TOTP:"
 
 #: templates/two_factor/core/setup.html:25
 msgid "Then, enter the token generated by the app."
-msgstr ""
+msgstr "Apoi, introduceți simbolul generat de aplicație."
 
 #: templates/two_factor/core/setup.html:28
 msgid ""
 "Please enter the phone number you wish to receive the text messages on. This "
 "number will be validated in the next step."
-msgstr ""
+msgstr "Vă rugăm să introduceți numărul de telefon pe care doriți să primiți mesajele text. Acest număr va fi validat în pasul următor."
 
 #: templates/two_factor/core/setup.html:32
 msgid ""
 "Please enter the phone number you wish to be called on. This number will be "
 "validated in the next step."
-msgstr ""
+msgstr "Vă rugăm să introduceți numărul de telefon la care doriți să fiți apelat. Acest număr va fi validat în pasul următor."
 
 #: templates/two_factor/core/setup.html:40
 msgid "We sent you a text message, please enter the tokens we sent."
-msgstr ""
+msgstr "V-am trimis un mesaj text, vă rugăm să introduceți jetoanele pe care le-am trimis."
 
 #: templates/two_factor/core/setup.html:44
 msgid ""
@@ -187,13 +187,13 @@ msgid ""
 "go back and verify that you entered your information correctly, try again, "
 "or use a different authentication method instead. If the issue persists, "
 "contact the site administrator."
-msgstr ""
+msgstr "Am întâmpinat o problemă cu metoda de autentificare selectată. Vă rugăm să reveniți și să verificați dacă ați introdus corect informațiile, să încercați din nou sau să utilizați o altă metodă de autentificare. Dacă problema persistă, contactați administratorul site-ului."
 
 #: templates/two_factor/core/setup.html:51
 msgid ""
 "To identify and verify your YubiKey, please insert a token in the field "
 "below. Your YubiKey will be linked to your account."
-msgstr ""
+msgstr "Pentru a identifica și verifica YubiKey, vă rugăm să introduceți un simbol în câmpul de mai jos. YubiKey va fi conectat la contul dvs."
 
 #: templates/two_factor/core/otp_required.html:5
 msgid "Permission Denied"
@@ -204,14 +204,14 @@ msgid ""
 "The page you requested, enforces users to verify using two-factor "
 "authentication for security reasons. You need to enable these security "
 "features in order to access this page."
-msgstr ""
+msgstr "Pagina pe care ați solicitat-o îi obligă pe utilizatori să verifice folosind autentificarea cu doi factori din motive de securitate. Trebuie să activați aceste funcții de securitate pentru a accesa această pagină."
 
 #: templates/two_factor/core/otp_required.html:11
 #: templates/two_factor/profile/profile.html:51
 msgid ""
 "Two-factor authentication is not enabled for your account. Enable two-factor "
 "authentication for enhanced account security."
-msgstr ""
+msgstr "Autentificarea cu doi factori nu este activată pentru contul dvs. Activați autentificarea cu doi factori pentru o securitate sporită a contului."
 
 #: templates/two_factor/core/otp_required.html:16
 msgid "Go back"
@@ -234,11 +234,11 @@ msgstr "Numere de telefon de recuperare"
 msgid ""
 "If your primary method is not available, we are able to send backup tokens "
 "to the phone numbers listed below."
-msgstr ""
+msgstr "Dacă metoda dvs. principală nu este disponibilă, putem trimite jetoane de rezervă la numerele de telefon enumerate mai jos."
 
 #: templates/two_factor/profile/profile.html:20
 msgid "Are you sure?"
-msgstr ""
+msgstr "esti sigur?"
 
 #: templates/two_factor/profile/profile.html:23
 msgid "Unregister"
@@ -248,15 +248,15 @@ msgstr "Anulați înregistrarea"
 msgid ""
 "If you don't have any device with you, you can access your account using "
 "backup tokens."
-msgstr ""
+msgstr "Dacă nu aveți niciun dispozitiv cu dvs., vă puteți accesa contul folosind jetoane de rezervă."
 
 #: templates/two_factor/profile/profile.html:36
 #, python-format
 msgid "You have only one backup token remaining."
 msgid_plural "You have %(counter)s backup tokens remaining."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Mai aveți %(counter)s jetoane de rezervă rămase."
+msgstr[1] "Mai aveți %(counter)s jetoane de rezervă rămase."
+msgstr[2] "Mai aveți %(counter)s jetoane de rezervă rămase."
 
 #: templates/two_factor/profile/profile.html:43
 msgid "Show Codes"
@@ -271,7 +271,7 @@ msgstr "Dezactivați verificarea în doi pași"
 msgid ""
 "However we strongly discourage you to do so, you can also disable two-factor "
 "authentication for your account."
-msgstr ""
+msgstr "Cu toate acestea, vă descurajăm cu tărie să faceți acest lucru, puteți, de asemenea, să dezactivați autentificarea cu doi factori pentru contul dvs."
 
 #: templates/two_factor/profile/disable.html:5
 msgid "Disable Two-factor Authentication"
@@ -281,7 +281,7 @@ msgstr "Dezactivați verificarea în doi pași"
 msgid ""
 "You are about to disable two-factor authentication. This weakens your "
 "account security, are you sure?"
-msgstr ""
+msgstr "Sunteți pe cale să dezactivați autentificarea cu doi factori. Acest lucru slăbește securitatea contului dvs., sunteți sigur?"
 
 #: templates/two_factor/profile/disable.html:12
 msgid "Disable"
@@ -289,19 +289,19 @@ msgstr "Dezactivați"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "Bună, acesta este un apel %(site_name)s. Apăsați orice tastă pentru a continua."
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "Nu ai apăsat nicio tastă. La revedere."
 
 msgid "Your token is:"
-msgstr ""
+msgstr "Jetonul tău este:"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "Repetați:"
 
 msgid "Good bye."
-msgstr ""
+msgstr "la revedere."
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"
@@ -313,59 +313,59 @@ msgstr "Securitatea contului"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Enter a recovery code"
-msgstr ""
+msgstr "Introduceți un cod de recuperare"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Verify your sign-in"
-msgstr ""
+msgstr "Verificați conectarea"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Each recovery code can be used only once."
-msgstr ""
+msgstr "Fiecare cod de recuperare poate fi folosit o singură dată."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Enter the six-digit code from your authenticator app."
-msgstr ""
+msgstr "Introdu codul din șase cifre din aplicația de autentificare."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
 msgid "Verify and continue"
-msgstr ""
+msgstr "Verificați și continuați"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use authenticator app"
-msgstr ""
+msgstr "Utilizați aplicația de autentificare"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use a recovery code"
-msgstr ""
+msgstr "Utilizați un cod de recuperare"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:4
 msgid "Two-factor authentication is active"
-msgstr ""
+msgstr "Autentificarea cu doi factori este activă"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:5
 #, python-format
 msgid ""
 "You are signed in as <strong>%(username)s</strong>. This session has passed "
 "verification."
-msgstr ""
+msgstr "Sunteți conectat ca <strong>%(username)s</strong>. Această sesiune a trecut verificarea."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:6
 msgid "Continue to learning"
-msgstr ""
+msgstr "Continuați să învățați"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Generate or view recovery codes"
-msgstr ""
+msgstr "Generați sau vizualizați coduri de recuperare"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Save them somewhere safe in case you lose your phone."
-msgstr ""
+msgstr "Salvați-le undeva în siguranță în cazul în care vă pierdeți telefonul."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:8
 msgid ""
 "To test again, sign out and sign back in. You will be asked for a fresh code."
-msgstr ""
+msgstr "Pentru a testa din nou, deconectați-vă și conectați-vă din nou. Vi se va solicita un cod nou."
 
 #: two_factor/forms.py
 msgid "Token"

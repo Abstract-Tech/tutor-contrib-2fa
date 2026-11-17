@@ -16,19 +16,19 @@ msgstr ""
 
 #: templates/two_factor/core/phone_register.html:5
 msgid "Add Backup Phone"
-msgstr ""
+msgstr "დაამატეთ სარეზერვო ტელეფონი"
 
 #: templates/two_factor/core/phone_register.html:8
 msgid ""
 "You'll be adding a backup phone number to your account. This number will be "
 "used if your primary method of registration is not available."
-msgstr ""
+msgstr "თქვენ დაამატებთ სარეზერვო ტელეფონის ნომერს თქვენს ანგარიშზე. ეს ნომერი გამოყენებული იქნება, თუ თქვენი რეგისტრაციის ძირითადი მეთოდი მიუწვდომელია."
 
 #: templates/two_factor/core/phone_register.html:12
 msgid ""
 "We've sent a token to your phone number. Please enter the token you've "
 "received."
-msgstr ""
+msgstr "ჩვენ გამოგიგზავნეთ ჟეტონი თქვენს ტელეფონის ნომერზე. გთხოვთ, შეიყვანოთ მიღებული ჟეტონი."
 
 #: templates/two_factor/_wizard_actions.html:5
 msgid "Cancel"
@@ -37,76 +37,76 @@ msgstr "გაუქმება"
 #: templates/two_factor/_wizard_actions.html:10
 #: templates/two_factor/_wizard_actions.html:12
 msgid "Back"
-msgstr ""
+msgstr "უკან"
 
 #: templates/two_factor/_wizard_actions.html:14
 msgid "Next"
-msgstr ""
+msgstr "შემდეგი"
 
 #: templates/two_factor/twilio/sms_message.html:2
 #, python-format
 msgid "Your OTP token is %(token)s"
-msgstr ""
+msgstr "თქვენი OTP ჟეტონი არის %(token)s"
 
 #: templates/two_factor/core/login.html:10
 msgid "Login"
-msgstr ""
+msgstr "შესვლა"
 
 #: templates/two_factor/core/login.html:13
 msgid "Enter your credentials."
-msgstr ""
+msgstr "შეიყვანეთ თქვენი რწმუნებათა სიგელები."
 
 #: templates/two_factor/core/login.html:17
 msgid ""
 "Use this form for entering backup tokens for logging in. These tokens have "
 "been generated for you to print and keep safe. Please enter one of these "
 "backup tokens to login to your account."
-msgstr ""
+msgstr "გამოიყენეთ ეს ფორმა შესვლისთვის სარეზერვო ნიშნების შესაყვანად. ეს ჟეტონები შექმნილია იმისთვის, რომ დაბეჭდოთ და დაიცვან უსაფრთხოება. გთხოვთ, შეიყვანოთ ერთ-ერთი სარეზერვო ნიშანი თქვენს ანგარიშში შესასვლელად."
 
 #: templates/two_factor/core/login.html:29
 msgid "Or, alternatively, use one of your other authentication methods:"
-msgstr ""
+msgstr "ან, ალტერნატიულად, გამოიყენეთ თქვენი ავთენტიფიკაციის ერთ-ერთი სხვა მეთოდი:"
 
 #: templates/two_factor/core/login.html:48
 msgid "As a last resort, you can use a backup token:"
-msgstr ""
+msgstr "როგორც ბოლო საშუალება, შეგიძლიათ გამოიყენოთ სარეზერვო ნიშანი:"
 
 #: templates/two_factor/core/login.html:51
 msgid "Use Backup Token"
-msgstr ""
+msgstr "გამოიყენეთ სარეზერვო ჟეტონი"
 
 #: templates/two_factor/core/backup_tokens.html:25
 #: templates/two_factor/core/setup_complete.html:12
 #: templates/two_factor/core/setup_complete.html:19
 msgid "Back to Account Security"
-msgstr ""
+msgstr "დაუბრუნდით ანგარიშის უსაფრთხოებას"
 
 #: templates/two_factor/core/otp_required.html:18
 #: templates/two_factor/core/setup.html:9
 #: templates/two_factor/core/setup_complete.html:5
 #: templates/two_factor/profile/profile.html:55
 msgid "Enable Two-Factor Authentication"
-msgstr ""
+msgstr "ჩართეთ ორფაქტორიანი ავთენტიფიკაცია"
 
 #: templates/two_factor/core/setup_complete.html:7
 msgid "Congratulations, you've successfully enabled two-factor authentication."
-msgstr ""
+msgstr "გილოცავთ, თქვენ წარმატებით ჩართეთ ორფაქტორიანი ავთენტიფიკაცია."
 
 #: templates/two_factor/core/setup_complete.html:14
 msgid ""
 "However, it might happen that you don't have access to your primary token "
 "device. To enable account recovery, add a phone number."
-msgstr ""
+msgstr "თუმცა, შეიძლება მოხდეს, რომ არ გქონდეთ წვდომა თქვენს ძირითად ჟეტონ მოწყობილობაზე. ანგარიშის აღდგენის ჩასართავად დაამატეთ ტელეფონის ნომერი."
 
 #: templates/two_factor/core/setup_complete.html:21
 #: templates/two_factor/profile/profile.html:29
 msgid "Add Phone Number"
-msgstr ""
+msgstr "დაამატეთ ტელეფონის ნომერი"
 
 #: templates/two_factor/core/backup_tokens.html:5
 #: templates/two_factor/profile/profile.html:32
 msgid "Backup Tokens"
-msgstr ""
+msgstr "სარეზერვო ნიშნები"
 
 #: templates/two_factor/core/backup_tokens.html:6
 msgid ""
@@ -114,69 +114,69 @@ msgid ""
 "available. The backup tokens below can be used for login verification. If "
 "you've used up all your backup tokens, you can generate a new set of backup "
 "tokens. Only the backup tokens shown below will be valid."
-msgstr ""
+msgstr "სარეზერვო ნიშნების გამოყენება შესაძლებელია, როდესაც თქვენი ძირითადი და სარეზერვო ტელეფონის ნომრები მიუწვდომელია. ქვემოთ მოცემული სარეზერვო ნიშნები შეიძლება გამოყენებულ იქნას შესვლის გადამოწმებისთვის. თუ თქვენ გამოიყენეთ ყველა თქვენი სარეზერვო ჟეტონები, შეგიძლიათ შექმნათ სარეზერვო ნიშნების ახალი ნაკრები. მხოლოდ ქვემოთ ნაჩვენები სარეზერვო ნიშნები იქნება მოქმედი."
 
 #: templates/two_factor/core/backup_tokens.html:18
 msgid "Print these tokens and keep them somewhere safe."
-msgstr ""
+msgstr "დაბეჭდეთ ეს ნიშნები და შეინახეთ სადმე უსაფრთხო ადგილას."
 
 #: templates/two_factor/core/backup_tokens.html:20
 msgid "You don't have any backup codes yet."
-msgstr ""
+msgstr "თქვენ ჯერ არ გაქვთ სარეზერვო კოდები."
 
 #: templates/two_factor/core/backup_tokens.html:26
 msgid "Generate Tokens"
-msgstr ""
+msgstr "ტოკენების გენერირება"
 
 #: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
 msgid "We are calling your phone right now, please enter the digits you hear."
-msgstr ""
+msgstr "ჩვენ ვურეკავთ თქვენს ტელეფონს ახლა, გთხოვთ, შეიყვანოთ ის ციფრები, რომლებიც გესმით."
 
 #: templates/two_factor/core/setup.html:11
 msgid ""
 "You are about to take your account security to the next level. Follow the "
 "steps in this wizard to enable two-factor authentication."
-msgstr ""
+msgstr "თქვენ აპირებთ თქვენი ანგარიშის უსაფრთხოების შემდეგ დონეზე აყვანას. მიჰყევით ამ ოსტატის ნაბიჯებს ორფაქტორიანი ავთენტიფიკაციის გასააქტიურებლად."
 
 #: templates/two_factor/core/setup.html:15
 msgid "Please select which authentication method you would like to use."
-msgstr ""
+msgstr "გთხოვთ, აირჩიოთ ავტორიზაციის რომელი მეთოდის გამოყენება გსურთ."
 
 #: templates/two_factor/core/setup.html:18
 msgid ""
 "To start using a token generator, please use your smartphone to scan the QR "
 "code below. For example, use Google Authenticator."
-msgstr ""
+msgstr "ტოკენის გენერატორის გამოყენების დასაწყებად, გთხოვთ, გამოიყენოთ თქვენი სმარტფონი ქვემოთ მოცემული QR კოდის სკანირებისთვის. მაგალითად, გამოიყენეთ Google Authenticator."
 
 #: templates/two_factor/core/setup.html:22
 msgid ""
 "Alternatively you can use the following secret to setup TOTP in your "
 "authenticator or password manager manually."
-msgstr ""
+msgstr "ალტერნატიულად, შეგიძლიათ გამოიყენოთ შემდეგი საიდუმლო TOTP თქვენს ავთენტიფიკატორში ან პაროლის მენეჯერში ხელით დასაყენებლად."
 
 #: templates/two_factor/core/setup.html:24
 msgid "TOTP Secret:"
-msgstr ""
+msgstr "TOTP საიდუმლო:"
 
 #: templates/two_factor/core/setup.html:25
 msgid "Then, enter the token generated by the app."
-msgstr ""
+msgstr "შემდეგ, შეიყვანეთ აპლიკაციის მიერ გენერირებული ჟეტონი."
 
 #: templates/two_factor/core/setup.html:28
 msgid ""
 "Please enter the phone number you wish to receive the text messages on. This "
 "number will be validated in the next step."
-msgstr ""
+msgstr "გთხოვთ, შეიყვანოთ ტელეფონის ნომერი, რომელზეც გსურთ ტექსტური შეტყობინებების მიღება. ეს რიცხვი დამოწმებული იქნება შემდეგ ეტაპზე."
 
 #: templates/two_factor/core/setup.html:32
 msgid ""
 "Please enter the phone number you wish to be called on. This number will be "
 "validated in the next step."
-msgstr ""
+msgstr "გთხოვთ, შეიყვანოთ ტელეფონის ნომერი, რომელზეც გსურთ დარეკვა. ეს რიცხვი დამოწმებული იქნება შემდეგ ეტაპზე."
 
 #: templates/two_factor/core/setup.html:40
 msgid "We sent you a text message, please enter the tokens we sent."
-msgstr ""
+msgstr "ჩვენ გამოგიგზავნეთ ტექსტური შეტყობინება, გთხოვთ, შეიყვანოთ ჩვენ მიერ გაგზავნილი ნიშნები."
 
 #: templates/two_factor/core/setup.html:44
 msgid ""
@@ -184,13 +184,13 @@ msgid ""
 "go back and verify that you entered your information correctly, try again, "
 "or use a different authentication method instead. If the issue persists, "
 "contact the site administrator."
-msgstr ""
+msgstr "ჩვენ შეგვხვდა პრობლემა შერჩეული ავთენტიფიკაციის მეთოდთან დაკავშირებით. გთხოვთ, დაბრუნდეთ და დაადასტუროთ, რომ სწორად შეიყვანეთ თქვენი ინფორმაცია, სცადეთ ხელახლა ან გამოიყენეთ ავტორიზაციის სხვა მეთოდი. თუ პრობლემა შენარჩუნებულია, დაუკავშირდით საიტის ადმინისტრატორს."
 
 #: templates/two_factor/core/setup.html:51
 msgid ""
 "To identify and verify your YubiKey, please insert a token in the field "
 "below. Your YubiKey will be linked to your account."
-msgstr ""
+msgstr "თქვენი YubiKey-ის იდენტიფიცირებისთვის და დასადასტურებლად, გთხოვთ, ჩასვათ ჟეტონი ქვემოთ მოცემულ ველში. თქვენი YubiKey იქნება დაკავშირებული თქვენს ანგარიშთან."
 
 #: templates/two_factor/core/otp_required.html:5
 msgid "Permission Denied"
@@ -201,14 +201,14 @@ msgid ""
 "The page you requested, enforces users to verify using two-factor "
 "authentication for security reasons. You need to enable these security "
 "features in order to access this page."
-msgstr ""
+msgstr "თქვენ მიერ მოთხოვნილი გვერდი აიძულებს მომხმარებლებს გადაამოწმონ ორფაქტორიანი ავთენტიფიკაციის გამოყენებით უსაფრთხოების მიზეზების გამო. თქვენ უნდა ჩართოთ უსაფრთხოების ეს ფუნქციები ამ გვერდზე შესასვლელად."
 
 #: templates/two_factor/core/otp_required.html:11
 #: templates/two_factor/profile/profile.html:51
 msgid ""
 "Two-factor authentication is not enabled for your account. Enable two-factor "
 "authentication for enhanced account security."
-msgstr ""
+msgstr "ორფაქტორიანი ავთენტიფიკაცია არ არის ჩართული თქვენი ანგარიშისთვის. ჩართეთ ორფაქტორიანი ავთენტიფიკაცია ანგარიშის გაძლიერებული უსაფრთხოებისთვის."
 
 #: templates/two_factor/core/otp_required.html:16
 msgid "Go back"
@@ -216,88 +216,88 @@ msgstr "უკან დაბრუნება"
 
 #: templates/two_factor/profile/profile.html:6
 msgid "Account Security"
-msgstr ""
+msgstr "ანგარიშის უსაფრთხოება"
 
 #: templates/two_factor/profile/profile.html:9
 #, python-format
 msgid "Primary method: %(primary)s"
-msgstr ""
+msgstr "ძირითადი მეთოდი: %(primary)s"
 
 #: templates/two_factor/profile/profile.html:12
 msgid "Backup Phone Numbers"
-msgstr ""
+msgstr "სარეზერვო ტელეფონის ნომრები"
 
 #: templates/two_factor/profile/profile.html:13
 msgid ""
 "If your primary method is not available, we are able to send backup tokens "
 "to the phone numbers listed below."
-msgstr ""
+msgstr "თუ თქვენი ძირითადი მეთოდი მიუწვდომელია, ჩვენ შეგვიძლია გავაგზავნოთ სარეზერვო ნიშნები ქვემოთ ჩამოთვლილ ტელეფონის ნომრებზე."
 
 #: templates/two_factor/profile/profile.html:20
 msgid "Are you sure?"
-msgstr ""
+msgstr "დარწმუნებული ხარ?"
 
 #: templates/two_factor/profile/profile.html:23
 msgid "Unregister"
-msgstr ""
+msgstr "გაუქმება რეგისტრაცია"
 
 #: templates/two_factor/profile/profile.html:34
 msgid ""
 "If you don't have any device with you, you can access your account using "
 "backup tokens."
-msgstr ""
+msgstr "თუ თქვენთან არ გაქვთ მოწყობილობა, შეგიძლიათ თქვენს ანგარიშზე წვდომა სარეზერვო ტოკენების გამოყენებით."
 
 #: templates/two_factor/profile/profile.html:36
 #, python-format
 msgid "You have only one backup token remaining."
 msgid_plural "You have %(counter)s backup tokens remaining."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "თქვენ გაქვთ დარჩენილი %(counter)s სარეზერვო ჟეტონი."
+msgstr[1] "თქვენ გაქვთ დარჩენილი %(counter)s სარეზერვო ჟეტონი."
 
 #: templates/two_factor/profile/profile.html:43
 msgid "Show Codes"
-msgstr ""
+msgstr "კოდების ჩვენება"
 
 #: templates/two_factor/profile/profile.html:45
 #: templates/two_factor/profile/profile.html:49
 msgid "Disable Two-Factor Authentication"
-msgstr ""
+msgstr "გამორთეთ ორფაქტორიანი ავთენტიფიკაცია"
 
 #: templates/two_factor/profile/profile.html:46
 msgid ""
 "However we strongly discourage you to do so, you can also disable two-factor "
 "authentication for your account."
-msgstr ""
+msgstr "თუმცა ჩვენ მკაცრად გიკრძალავთ ამის გაკეთებას, თქვენ ასევე შეგიძლიათ გამორთოთ თქვენი ანგარიშის ორფაქტორიანი ავტორიზაცია."
 
 #: templates/two_factor/profile/disable.html:5
 msgid "Disable Two-factor Authentication"
-msgstr ""
+msgstr "გამორთეთ ორფაქტორიანი ავთენტიფიკაცია"
 
 #: templates/two_factor/profile/disable.html:6
 msgid ""
 "You are about to disable two-factor authentication. This weakens your "
 "account security, are you sure?"
-msgstr ""
+msgstr "თქვენ აპირებთ გამორთოთ ორფაქტორიანი ავთენტიფიკაცია. ეს ასუსტებს თქვენი ანგარიშის უსაფრთხოებას, დარწმუნებული ხართ?"
 
 #: templates/two_factor/profile/disable.html:12
 msgid "Disable"
-msgstr ""
+msgstr "გამორთვა"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "გამარჯობა, ეს არის %(site_name)s ზარი. დააჭირეთ ნებისმიერ ღილაკს გასაგრძელებლად."
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "თქვენ არ დააჭირეთ არცერთ ღილაკს. ნახვამდის."
 
 msgid "Your token is:"
-msgstr ""
+msgstr "თქვენი ნიშანი არის:"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "გაიმეორეთ:"
 
 msgid "Good bye."
-msgstr ""
+msgstr "ნახვამდის."
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"
@@ -309,60 +309,60 @@ msgstr "ანგარიშის უსაფრთხოება"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Enter a recovery code"
-msgstr ""
+msgstr "შეიყვანეთ აღდგენის კოდი"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Verify your sign-in"
-msgstr ""
+msgstr "დაადასტურეთ თქვენი შესვლა"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Each recovery code can be used only once."
-msgstr ""
+msgstr "თითოეული აღდგენის კოდი შეიძლება გამოყენებულ იქნას მხოლოდ ერთხელ."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Enter the six-digit code from your authenticator app."
-msgstr ""
+msgstr "შეიყვანეთ ექვსნიშნა კოდი თქვენი ავთენტიფიკატორის აპიდან."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
 msgid "Verify and continue"
-msgstr ""
+msgstr "გადაამოწმეთ და გააგრძელეთ"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use authenticator app"
-msgstr ""
+msgstr "გამოიყენეთ ავტორიზაციის აპი"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use a recovery code"
-msgstr ""
+msgstr "გამოიყენეთ აღდგენის კოდი"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:4
 msgid "Two-factor authentication is active"
-msgstr ""
+msgstr "ორფაქტორიანი ავთენტიფიკაცია აქტიურია"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:5
 #, python-format
 msgid ""
 "You are signed in as <strong>%(username)s</strong>. This session has passed "
 "verification."
-msgstr ""
+msgstr "თქვენ შესული ხართ, როგორც <strong>%(username)s</strong>. ამ სესიამ გადამოწმება გაიარა."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:6
 msgid "Continue to learning"
-msgstr ""
+msgstr "განაგრძეთ სწავლა"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Generate or view recovery codes"
-msgstr ""
+msgstr "შექმენით ან ნახეთ აღდგენის კოდები"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Save them somewhere safe in case you lose your phone."
-msgstr ""
+msgstr "შეინახეთ ისინი სადმე უსაფრთხო ადგილას, ტელეფონის დაკარგვის შემთხვევაში."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:8
 msgid ""
 "To test again, sign out and sign back in. You will be asked for a fresh code."
-msgstr ""
+msgstr "ხელახლა შესამოწმებლად გამოდით სისტემაში და შედით ხელახლა. თქვენ მოგეთხოვებათ ახალი კოდი."
 
 #: two_factor/forms.py
 msgid "Token"
-msgstr ""
+msgstr "ჟეტონი"

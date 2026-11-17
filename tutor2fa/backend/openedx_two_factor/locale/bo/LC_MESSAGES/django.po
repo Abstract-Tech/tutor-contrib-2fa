@@ -16,19 +16,19 @@ msgstr ""
 
 #: templates/two_factor/core/phone_register.html:5
 msgid "Add Backup Phone"
-msgstr ""
+msgstr "རྒྱབ་ཕྱོགས་ཁ་པར་ཁ་སྣོན།"
 
 #: templates/two_factor/core/phone_register.html:8
 msgid ""
 "You'll be adding a backup phone number to your account. This number will be "
 "used if your primary method of registration is not available."
-msgstr ""
+msgstr "ཁྱེད་རང་གིས་ཁྱེད་རང་གི་ཁ་བྱང་ལ་རྒྱབ་ལྗོངས་ཁ་པར་ཨང་གྲངས་ཁ་སྣོན་བྱེད་ཀྱི་ཡོད། གལ་ཏེ་ཁྱེད་ཀྱི་ཐོ་འགོད་བྱེད་ཐབས་གཙོ་བོ་མེད་ན་ཨང་གྲངས་འདི་བེད་སྤྱོད་གཏོང་རྒྱུ་རེད།"
 
 #: templates/two_factor/core/phone_register.html:12
 msgid ""
 "We've sent a token to your phone number. Please enter the token you've "
 "received."
-msgstr ""
+msgstr "ང་ཚོས་ཁྱེད་ཀྱི་ཁ་པར་ཨང་གྲངས་ལ་རྟགས་མཚན་ཞིག་བཏང་ཡོད། ཁྱེད་ལ་ཐོབ་པའི་རྟགས་དེ་བླུགས་རོགས།"
 
 #: templates/two_factor/_wizard_actions.html:5
 msgid "Cancel"
@@ -37,76 +37,76 @@ msgstr "ཕྱིར་འཐེན།"
 #: templates/two_factor/_wizard_actions.html:10
 #: templates/two_factor/_wizard_actions.html:12
 msgid "Back"
-msgstr ""
+msgstr "རྒྱབ་ངོས"
 
 #: templates/two_factor/_wizard_actions.html:14
 msgid "Next"
-msgstr ""
+msgstr "རྗེས་མ"
 
 #: templates/two_factor/twilio/sms_message.html:2
 #, python-format
 msgid "Your OTP token is %(token)s"
-msgstr ""
+msgstr "ཁྱེད་ཀྱི་OTPརྟགས་མཚན་ནི་%(token)sཡིན།"
 
 #: templates/two_factor/core/login.html:10
 msgid "Login"
-msgstr ""
+msgstr "ནང་འཛུལ།"
 
 #: templates/two_factor/core/login.html:13
 msgid "Enter your credentials."
-msgstr ""
+msgstr "ཁྱེད་རང་གི་ཆོག་མཆན་ཡིག་ཆ་བླུགས།"
 
 #: templates/two_factor/core/login.html:17
 msgid ""
 "Use this form for entering backup tokens for logging in. These tokens have "
 "been generated for you to print and keep safe. Please enter one of these "
 "backup tokens to login to your account."
-msgstr ""
+msgstr "ནང་འཛུལ་བྱེད་པའི་ཆེད་དུ་རྒྱབ་ལྗོངས་བརྡ་རྟགས་བླུགས་པའི་ཆེད་དུ་འབྲི་ཤོག་འདི་བེད་སྤྱོད་བྱོས། བརྡ་རྟགས་འདི་དག་ཁྱེད་ཀྱིས་པར་སྐྲུན་དང་བདེ་འཇགས་ཡོང་བའི་ཆེད་དུ་བཟོས་ཡོད། ཁྱེད་རང་གི་ཁ་བྱང་ནང་འཛུལ་ཆེད་དུ་རྒྱབ་ལྗོངས་རྟགས་མཚན་འདི་དག་ལས་གཅིག་བླུགས་རོགས།"
 
 #: templates/two_factor/core/login.html:29
 msgid "Or, alternatively, use one of your other authentication methods:"
-msgstr ""
+msgstr "ཡང་ན་གདམ་ག་གཞན་ཞིག་ལ་ཁྱེད་རང་གི་བདེན་དཔང་བྱེད་ཐབས་གཞན་ཞིག་བེད་སྤྱོད་བྱེད་དགོས།"
 
 #: templates/two_factor/core/login.html:48
 msgid "As a last resort, you can use a backup token:"
-msgstr ""
+msgstr "མཐའ་མའི་ཐབས་ཤེས་ཤིག་ཡིན་པའི་ཆ་ནས་ཁྱོད་ཀྱིས་རྒྱབ་ལྗོངས་བརྡ་རྟགས་བེད་སྤྱོད་གཏོང་ཐུབ།"
 
 #: templates/two_factor/core/login.html:51
 msgid "Use Backup Token"
-msgstr ""
+msgstr "རྒྱབ་ལྗོངས་མཚོན་རྟགས་བེད་སྤྱོད་བྱེད།"
 
 #: templates/two_factor/core/backup_tokens.html:25
 #: templates/two_factor/core/setup_complete.html:12
 #: templates/two_factor/core/setup_complete.html:19
 msgid "Back to Account Security"
-msgstr ""
+msgstr "ཕྱིར་རྩིས་ཐོའི་བདེ་འཇགས་ལ་ལོག"
 
 #: templates/two_factor/core/otp_required.html:18
 #: templates/two_factor/core/setup.html:9
 #: templates/two_factor/core/setup_complete.html:5
 #: templates/two_factor/profile/profile.html:55
 msgid "Enable Two-Factor Authentication"
-msgstr ""
+msgstr "ཆ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་ལྕོགས་ཅན་བཟོས།"
 
 #: templates/two_factor/core/setup_complete.html:7
 msgid "Congratulations, you've successfully enabled two-factor authentication."
-msgstr ""
+msgstr "ཁྱེད་ཀྱིས་རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་ལེགས་འགྲུབ་བྱུང་བར་རྟེན་འབྲེལ་ཞུ།"
 
 #: templates/two_factor/core/setup_complete.html:14
 msgid ""
 "However, it might happen that you don't have access to your primary token "
 "device. To enable account recovery, add a phone number."
-msgstr ""
+msgstr "གང་ལྟར་ཡང་ཁྱེད་རང་གི་གཙོ་བོའི་བརྡ་རྟགས་འཕྲུལ་ཆས་ལ་འཛུལ་ཐུབ་ཀྱི་མེད་པ་འབྱུང་སྲིད། རྩིས་ཁྲ་སླར་གསོ་བྱེད་པར་ཁ་པར་ཨང་གྲངས་ཁ་སྣོན་བྱེད་དགོས།"
 
 #: templates/two_factor/core/setup_complete.html:21
 #: templates/two_factor/profile/profile.html:29
 msgid "Add Phone Number"
-msgstr ""
+msgstr "ཁ་པར་ཨང་གྲངས་ཁ་སྣོན།"
 
 #: templates/two_factor/core/backup_tokens.html:5
 #: templates/two_factor/profile/profile.html:32
 msgid "Backup Tokens"
-msgstr ""
+msgstr "རྒྱབ་ལྗོངས་བརྡ་རྟགས།"
 
 #: templates/two_factor/core/backup_tokens.html:6
 msgid ""
@@ -114,69 +114,69 @@ msgid ""
 "available. The backup tokens below can be used for login verification. If "
 "you've used up all your backup tokens, you can generate a new set of backup "
 "tokens. Only the backup tokens shown below will be valid."
-msgstr ""
+msgstr "ཁྱེད་ཀྱི་ཁ་པར་ཨང་གྲངས་གཙོ་བོ་དང་རྒྱབ་སྣོན་མེད་པའི་སྐབས་རྒྱབ་སྣོན་གྱི་རྟགས་མཚན་བེད་སྤྱོད་གཏོང་ཐུབ། གཤམ་གྱི་རྒྱབ་ལྗོངས་རྟགས་མཚན་དེ་ཚོ་ནང་འཇུག་བདེན་དཔང་བྱེད་པར་བེད་སྤྱོད་གཏོང་ཐུབ། གལ་ཏེ་ཁྱེད་ཀྱིས་རྒྱབ་ལྗོངས་ཀྱི་རྟགས་མཚན་ཚང་མ་བེད་སྤྱོད་བཏང་ཟིན་ན། ཁྱེད་ཀྱིས་རྒྱབ་ལྗོངས་ཀྱི་རྟགས་མཚན་ཆ་ཚང་གསར་པ་ཞིག་བཟོ་ཐུབ། གཤམ་དུ་སྟོན་པའི་རྒྱབ་ལྗོངས་རྟགས་མཚན་ཁོ་ན་ནུས་ལྡན་ཡིན།"
 
 #: templates/two_factor/core/backup_tokens.html:18
 msgid "Print these tokens and keep them somewhere safe."
-msgstr ""
+msgstr "རྟགས་མཚན་འདི་དག་པར་སྐྲུན་བྱས་ནས་བདེ་འཇགས་ལྡན་པའི་ས་ཆ་ཞིག་ལ་ཉར་དགོས།"
 
 #: templates/two_factor/core/backup_tokens.html:20
 msgid "You don't have any backup codes yet."
-msgstr ""
+msgstr "ཁྱེད་ལ་ད་དུང་རྒྱབ་ལྗོངས་ཨང་རྟགས་གང་ཡང་མེད།"
 
 #: templates/two_factor/core/backup_tokens.html:26
 msgid "Generate Tokens"
-msgstr ""
+msgstr "རྟགས་མཚན་བསྐྲུན་པ།"
 
 #: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
 msgid "We are calling your phone right now, please enter the digits you hear."
-msgstr ""
+msgstr "ང་ཚོས་ད་ལྟ་ཁྱེད་ཀྱི་ཁ་པར་ལ་ཁ་པར་གཏོང་བཞིན་ཡོད། ཁྱེད་ཀྱིས་གོ་ཐོས་བྱུང་བའི་ཨང་གྲངས་དེ་བླུགས་རོགས་གནང་།"
 
 #: templates/two_factor/core/setup.html:11
 msgid ""
 "You are about to take your account security to the next level. Follow the "
 "steps in this wizard to enable two-factor authentication."
-msgstr ""
+msgstr "ཁྱེད་རང་གིས་ཁྱེད་རང་གི་རྩིས་ཁྲའི་བདེ་འཇགས་དེ་རིམ་པ་གོང་མར་སྤོ་རྒྱུ་རེད། ཆ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་ལག་བསྟར་བྱེད་པར་ཝི་ཛརཌི་འདིའི་ནང་གི་གོམ་པ་ལག་བསྟར་བྱོས།"
 
 #: templates/two_factor/core/setup.html:15
 msgid "Please select which authentication method you would like to use."
-msgstr ""
+msgstr "ཁྱེད་ཀྱིས་བདེན་དཔང་བྱེད་ཐབས་གང་ཞིག་བེད་སྤྱོད་གཏོང་འདོད་ཡོད་མེད་འདེམས་རོགས།"
 
 #: templates/two_factor/core/setup.html:18
 msgid ""
 "To start using a token generator, please use your smartphone to scan the QR "
 "code below. For example, use Google Authenticator."
-msgstr ""
+msgstr "བརྡ་རྟགས་འཕྲུལ་ཆས་བེད་སྤྱོད་གཏོང་འགོ་ཚུགས་པར་ཁྱེད་རང་གི་ཁ་པར་བཀོལ་ནས་གཤམ་གྱི་QRཨང་རྟགས་དེ་བཤེར་རོགས། དཔེར་ན་གུ་གུལ་བདེན་དཔང་བྱེད་ཆས་བེད་སྤྱོད་བྱེད།"
 
 #: templates/two_factor/core/setup.html:22
 msgid ""
 "Alternatively you can use the following secret to setup TOTP in your "
 "authenticator or password manager manually."
-msgstr ""
+msgstr "ཡང་ན་ཁྱེད་ཀྱིས་གཤམ་གྱི་གསང་བ་འདི་བེད་སྤྱད་ནས་ཁྱེད་རང་གི་བདེན་དཔང་བྱེད་མཁན་ཡང་ན་གསང་གྲངས་འཛིན་སྐྱོང་བྱེད་མཁན་ནང་ལ་TOTPལག་ཐོག་ནས་སྒྲིག་འཛུགས་བྱེད་ཐུབ།"
 
 #: templates/two_factor/core/setup.html:24
 msgid "TOTP Secret:"
-msgstr ""
+msgstr "TOTP གསང་བ།"
 
 #: templates/two_factor/core/setup.html:25
 msgid "Then, enter the token generated by the app."
-msgstr ""
+msgstr "དེ་ནས་མཉེན་ཆས་ཀྱིས་བཟོས་པའི་རྟགས་མཚན་བླུགས།"
 
 #: templates/two_factor/core/setup.html:28
 msgid ""
 "Please enter the phone number you wish to receive the text messages on. This "
 "number will be validated in the next step."
-msgstr ""
+msgstr "ཁྱེད་ཀྱིས་འཕྲིན་ཐུང་འབྱོར་འདོད་པའི་ཁ་པར་ཨང་གྲངས་དེ་བླུགས་རོགས། གོམ་པ་རྗེས་མའི་ནང་ཨང་གྲངས་འདི་བདེན་དཔང་བྱ་རྒྱུ་རེད།"
 
 #: templates/two_factor/core/setup.html:32
 msgid ""
 "Please enter the phone number you wish to be called on. This number will be "
 "validated in the next step."
-msgstr ""
+msgstr "ཁྱེད་རང་ལ་ཁ་པར་གཏོང་འདོད་པའི་ཁ་པར་ཨང་གྲངས་དེ་འགོད་རོགས། གོམ་པ་རྗེས་མའི་ནང་ཨང་གྲངས་འདི་བདེན་དཔང་བྱ་རྒྱུ་རེད།"
 
 #: templates/two_factor/core/setup.html:40
 msgid "We sent you a text message, please enter the tokens we sent."
-msgstr ""
+msgstr "ང་ཚོས་ཁྱེད་ལ་འཕྲིན་ཐུང་ཞིག་བཏང་ཡོད། ང་ཚོས་བཏང་བའི་རྟགས་མཚན་བླུགས་རོགས།"
 
 #: templates/two_factor/core/setup.html:44
 msgid ""
@@ -184,119 +184,119 @@ msgid ""
 "go back and verify that you entered your information correctly, try again, "
 "or use a different authentication method instead. If the issue persists, "
 "contact the site administrator."
-msgstr ""
+msgstr "ང་ཚོས་འདེམས་སྒྲུག་བྱས་པའི་བདེན་དཔང་བྱེད་ཐབས་ལ་གནད་དོན་འཕྲད་ཡོད། ཕྱིར་ལོག་ནས་ཁྱེད་རང་གི་གནས་ཚུལ་དེ་ནོར་འཁྲུལ་མེད་པར་བརྟག་དཔྱད་བྱེད་རོགས། བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་རོགས། ཡང་ན་དེའི་ཚབ་ཏུ་བདེན་དཔང་བྱེད་ཐབས་གཞན་ཞིག་བེད་སྤྱོད་བྱེད་རོགས། གལ་ཏེ་གནད་དོན་དེ་མུ་མཐུད་གནས་ན་དྲ་ཚིགས་ཀྱི་དོ་དམ་པར་འབྲེལ་བ་བྱོས།"
 
 #: templates/two_factor/core/setup.html:51
 msgid ""
 "To identify and verify your YubiKey, please insert a token in the field "
 "below. Your YubiKey will be linked to your account."
-msgstr ""
+msgstr "ཁྱེད་རང་གི་ཡུ་བྷི་ལྡེ་མིག་ངོས་འཛིན་དང་བདེན་དཔང་བྱེད་པར་གཤམ་གྱི་ས་ཁོངས་ནང་ལ་རྟགས་མཚན་ཞིག་བཙུགས་རོགས་གནང་། ཁྱེད་ཀྱི་YubiKeyདེ་ཁྱེད་ཀྱི་རྩིས་ཁྲ་དང་འབྲེལ་མཐུད་བྱ་རྒྱུ་རེད།"
 
 #: templates/two_factor/core/otp_required.html:5
 msgid "Permission Denied"
-msgstr ""
+msgstr "ཆོག་མཆན་མ་སྤྲད་པ།"
 
 #: templates/two_factor/core/otp_required.html:7
 msgid ""
 "The page you requested, enforces users to verify using two-factor "
 "authentication for security reasons. You need to enable these security "
 "features in order to access this page."
-msgstr ""
+msgstr "ཁྱེད་ཀྱིས་རེ་ཞུ་བྱས་པའི་ཤོག་ངོས་དེས་བདེ་འཇགས་རྒྱུ་མཚན་གྱིས་སྤྱོད་མཁན་ཚོར་རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་བཀོལ་ནས་བདེན་དཔང་བྱེད་པར་བཀག་འགོག་བྱེད་ཀྱི་ཡོད། ཁྱེད་རང་གིས་ཤོག་ངོས་འདི་ལ་འཛུལ་ཞུགས་བྱེད་པར་བདེ་འཇགས་ཁྱད་ཆོས་འདི་དག་ལག་བསྟར་བྱེད་དགོས།"
 
 #: templates/two_factor/core/otp_required.html:11
 #: templates/two_factor/profile/profile.html:51
 msgid ""
 "Two-factor authentication is not enabled for your account. Enable two-factor "
 "authentication for enhanced account security."
-msgstr ""
+msgstr "ཁྱེད་ཀྱི་རྩིས་ཁྲའི་ཆེད་དུ་རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་བྱེད་མི་ཐུབ། རྩིས་ཁྲའི་བདེ་འཇགས་མཐོར་འདེགས་གཏོང་ཆེད་རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་བྱེད་ཐུབ།"
 
 #: templates/two_factor/core/otp_required.html:16
 msgid "Go back"
-msgstr ""
+msgstr "ཕྱིར་འགྲོ།"
 
 #: templates/two_factor/profile/profile.html:6
 msgid "Account Security"
-msgstr ""
+msgstr "རྩིས་ཁྲའི་བདེ་འཇགས།"
 
 #: templates/two_factor/profile/profile.html:9
 #, python-format
 msgid "Primary method: %(primary)s"
-msgstr ""
+msgstr "གཙོ་བོའི་ཐབས་ལམ། %(primary)s"
 
 #: templates/two_factor/profile/profile.html:12
 msgid "Backup Phone Numbers"
-msgstr ""
+msgstr "རྒྱབ་ལྗོངས་ཁ་པར་ཨང་གྲངས།"
 
 #: templates/two_factor/profile/profile.html:13
 msgid ""
 "If your primary method is not available, we are able to send backup tokens "
 "to the phone numbers listed below."
-msgstr ""
+msgstr "གལ་ཏེ་ཁྱེད་ཀྱི་ཐབས་ལམ་གཙོ་བོ་དེ་མེད་ན། ང་ཚོས་གཤམ་གསལ་གྱི་ཁ་པར་ཨང་གྲངས་ལ་རྒྱབ་སྣོན་གྱི་རྟགས་མཚན་གཏོང་ཐུབ་ཀྱི་ཡོད།"
 
 #: templates/two_factor/profile/profile.html:20
 msgid "Are you sure?"
-msgstr ""
+msgstr "ཁྱོད་རང་ངེས་པ་ཡིན་ནམ།"
 
 #: templates/two_factor/profile/profile.html:23
 msgid "Unregister"
-msgstr ""
+msgstr "ཐོ་འགོད་མེད་པར་བཟོ་བ།"
 
 #: templates/two_factor/profile/profile.html:34
 msgid ""
 "If you don't have any device with you, you can access your account using "
 "backup tokens."
-msgstr ""
+msgstr "གལ་ཏེ་ཁྱེད་རང་ལ་འཕྲུལ་ཆས་གང་ཡང་མེད་ན་ཁྱེད་རང་གིས་རྒྱབ་ལྗོངས་རྟགས་མཚན་བཀོལ་ནས་ཁྱེད་རང་གི་ཁ་བྱང་ལ་འཛུལ་ཐུབ།"
 
 #: templates/two_factor/profile/profile.html:36
 #, python-format
 msgid "You have only one backup token remaining."
 msgid_plural "You have %(counter)s backup tokens remaining."
-msgstr[0] ""
+msgstr[0] "ཁྱེད་ལ་ %(counter)s རྒྱབ་སྣོན་གྱི་རྟགས་མཚན་ལྷག་ཡོད།"
 
 #: templates/two_factor/profile/profile.html:43
 msgid "Show Codes"
-msgstr ""
+msgstr "ཨང་རྟགས་སྟོན།"
 
 #: templates/two_factor/profile/profile.html:45
 #: templates/two_factor/profile/profile.html:49
 msgid "Disable Two-Factor Authentication"
-msgstr ""
+msgstr "རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་ལྕོགས་མིན་བཟོས།"
 
 #: templates/two_factor/profile/profile.html:46
 msgid ""
 "However we strongly discourage you to do so, you can also disable two-factor "
 "authentication for your account."
-msgstr ""
+msgstr "གང་ལྟར་ཡང་ང་ཚོས་ཁྱེད་ལ་དེ་ལྟར་བྱེད་པར་སྐུལ་མ་ཤུགས་ཆེན་པོ་བྱེད་ཀྱི་ཡོད། ཁྱེད་ཀྱིས་ཁྱེད་རང་གི་རྩིས་ཁྲའི་ཆེད་དུ་རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་བྱེད་མི་ཐུབ།"
 
 #: templates/two_factor/profile/disable.html:5
 msgid "Disable Two-factor Authentication"
-msgstr ""
+msgstr "རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་ལྕོགས་མིན་བཟོས།"
 
 #: templates/two_factor/profile/disable.html:6
 msgid ""
 "You are about to disable two-factor authentication. This weakens your "
 "account security, are you sure?"
-msgstr ""
+msgstr "ཁྱོད་ཀྱིས་རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་མེད་པར་བཟོ་རྒྱུ་རེད། འདིས་ཁྱེད་ཀྱི་རྩིས་ཁྲའི་བདེ་འཇགས་ལ་ཞན་ཆ་བཟོ་གི་འདུག ཁྱེད་རང་གཏན་ཁེལ་ཡིན་ནམ།"
 
 #: templates/two_factor/profile/disable.html:12
 msgid "Disable"
-msgstr ""
+msgstr "ནུས་པ་འཇོམས་པ"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "ཝ་ཡེ། འདི་ནི་ %(site_name)s ཁ་པར་གཏོང་བཞིན་ཡོད། མཐེབ་གང་རུང་ཞིག་ལ་མནན་ནས་མུ་མཐུད་དུ་འགྲོ་དགོས།"
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "ཁྱོད་ཀྱིས་ལྡེ་མིག་གང་ཡང་མནན་མེད། རྗེས་སུ་མཇལ་ཡོང།"
 
 msgid "Your token is:"
-msgstr ""
+msgstr "ཁྱེད་ཀྱི་རྟགས་མཚན་ནི།"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "བསྐྱར་ཟློས:"
 
 msgid "Good bye."
-msgstr ""
+msgstr "རྗེས་སུ་མཇལ་ཡོང།"
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"
@@ -308,60 +308,60 @@ msgstr "ཐོ་ཁོངས་ཀྱི་བདེ་འཇགས།"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Enter a recovery code"
-msgstr ""
+msgstr "སླར་གསོའི་ཨང་རྟགས་བླུགས།"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Verify your sign-in"
-msgstr ""
+msgstr "ཐོ་འགོད་བདེན་དཔང་བྱེད་པ།"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Each recovery code can be used only once."
-msgstr ""
+msgstr "བསྐྱར་གསོའི་ཨང་རྟགས་རེ་རེ་བཞིན་ཐེངས་གཅིག་ལས་བེད་སྤྱོད་གཏོང་མི་ཐུབ།"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Enter the six-digit code from your authenticator app."
-msgstr ""
+msgstr "ཁྱེད་རང་གི་བདེན་དཔང་བྱེད་མཁན་གྱི་མཉེན་ཆས་ནས་ཨང་གྲངས་དྲུག་ཅན་གྱི་ཨང་གྲངས་བླུགས།"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
 msgid "Verify and continue"
-msgstr ""
+msgstr "བདེན་དཔང་དང་མུ་མཐུད།"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use authenticator app"
-msgstr ""
+msgstr "བདེན་དཔང་བྱེད་མཁན་གྱི་མཉེན་ཆས་བེད་སྤྱོད་བྱེད་པ།"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use a recovery code"
-msgstr ""
+msgstr "སླར་གསོའི་ཨང་རྟགས་སྤྱད་དེ།"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:4
 msgid "Two-factor authentication is active"
-msgstr ""
+msgstr "རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་བྱེད་ནུས་ལྡན་པ།"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:5
 #, python-format
 msgid ""
 "You are signed in as <strong>%(username)s</strong>. This session has passed "
 "verification."
-msgstr ""
+msgstr "ཁྱེད་རང་<strong>%(username)s</strong>ཞེས་མིང་ཐོ་འགོད་ཡོད། ཚོགས་ཐུན་འདིས་ཞིབ་བཤེར་བརྒྱུད་ཟིན།"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:6
 msgid "Continue to learning"
-msgstr ""
+msgstr "མུ་མཐུད་དུ་སློབ་སྦྱོང་བྱེད་པ།"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Generate or view recovery codes"
-msgstr ""
+msgstr "སླར་གསོའི་ཨང་རྟགས་བཟོ་བའམ་ལྟ་བ།"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Save them somewhere safe in case you lose your phone."
-msgstr ""
+msgstr "ཁྱེད་རང་གི་ཁ་པར་བརླག་ན་དེ་དག་ས་ཆ་ཉེན་མེད་ཅིག་ཏུ་ཉར་དགོས།"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:8
 msgid ""
 "To test again, sign out and sign back in. You will be asked for a fresh code."
-msgstr ""
+msgstr "བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་པར་ཐོ་འགོད་བྱས་ནས་ཕྱིར་ཐོ་འགོད་བྱེད་དགོས། ཁྱེད་ལ་གསང་གྲངས་གསར་པ་ཞིག་དགོས་རྒྱུ་རེད།"
 
 #: two_factor/forms.py
 msgid "Token"
-msgstr ""
+msgstr "རྟགས་མཚན།"

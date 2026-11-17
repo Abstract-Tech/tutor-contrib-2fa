@@ -331,19 +331,19 @@ msgstr "Söndür"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "Salam, bu %(site_name)s zəng edir. Davam etmək üçün istənilən düyməni basın."
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "Heç bir düyməni basmamısınız. sağol."
 
 msgid "Your token is:"
-msgstr ""
+msgstr "Tokeniniz:"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "Təkrar edin:"
 
 msgid "Good bye."
-msgstr ""
+msgstr "sağol."
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"
@@ -355,59 +355,59 @@ msgstr "Hesab təhlükəsizliyi"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Enter a recovery code"
-msgstr ""
+msgstr "Bərpa kodu daxil edin"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Verify your sign-in"
-msgstr ""
+msgstr "Girişinizi doğrulayın"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Each recovery code can be used only once."
-msgstr ""
+msgstr "Hər bir bərpa kodu yalnız bir dəfə istifadə edilə bilər."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Enter the six-digit code from your authenticator app."
-msgstr ""
+msgstr "Doğrulayıcı tətbiqinizdən altı rəqəmli kodu daxil edin."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
 msgid "Verify and continue"
-msgstr ""
+msgstr "Doğrulayın və davam edin"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use authenticator app"
-msgstr ""
+msgstr "Autentifikator tətbiqindən istifadə edin"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use a recovery code"
-msgstr ""
+msgstr "Bərpa kodundan istifadə edin"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:4
 msgid "Two-factor authentication is active"
-msgstr ""
+msgstr "İki faktorlu autentifikasiya aktivdir"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:5
 #, python-format
 msgid ""
 "You are signed in as <strong>%(username)s</strong>. This session has passed "
 "verification."
-msgstr ""
+msgstr "Siz <strong>%(username)s</strong> kimi daxil olmusunuz. Bu sessiya yoxlamadan keçdi."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:6
 msgid "Continue to learning"
-msgstr ""
+msgstr "Öyrənməyə davam edin"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Generate or view recovery codes"
-msgstr ""
+msgstr "Bərpa kodları yaradın və ya baxın"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Save them somewhere safe in case you lose your phone."
-msgstr ""
+msgstr "Telefonunuzu itirdiyiniz halda onları təhlükəsiz yerdə saxlayın."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:8
 msgid ""
 "To test again, sign out and sign back in. You will be asked for a fresh code."
-msgstr ""
+msgstr "Yenidən sınaqdan keçirmək üçün hesabdan çıxın və yenidən daxil olun. Sizdən yeni kod tələb olunacaq."
 
 #: two_factor/forms.py
 msgid "Token"

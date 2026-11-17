@@ -16,19 +16,19 @@ msgstr ""
 
 #: templates/two_factor/core/phone_register.html:5
 msgid "Add Backup Phone"
-msgstr ""
+msgstr "Tambahkan Telepon Cadangan"
 
 #: templates/two_factor/core/phone_register.html:8
 msgid ""
 "You'll be adding a backup phone number to your account. This number will be "
 "used if your primary method of registration is not available."
-msgstr ""
+msgstr "Anda akan menambahkan nomor telepon cadangan ke akun Anda. Nomor ini akan digunakan jika metode pendaftaran utama Anda tidak tersedia."
 
 #: templates/two_factor/core/phone_register.html:12
 msgid ""
 "We've sent a token to your phone number. Please enter the token you've "
 "received."
-msgstr ""
+msgstr "Kami telah mengirimkan token ke nomor telepon Anda. Silakan masukkan token yang Anda terima."
 
 #: templates/two_factor/_wizard_actions.html:5
 msgid "Cancel"
@@ -37,76 +37,76 @@ msgstr "Batalkan"
 #: templates/two_factor/_wizard_actions.html:10
 #: templates/two_factor/_wizard_actions.html:12
 msgid "Back"
-msgstr ""
+msgstr "Kembali"
 
 #: templates/two_factor/_wizard_actions.html:14
 msgid "Next"
-msgstr ""
+msgstr "Selanjutnya"
 
 #: templates/two_factor/twilio/sms_message.html:2
 #, python-format
 msgid "Your OTP token is %(token)s"
-msgstr ""
+msgstr "Token OTP Anda adalah %(token)s"
 
 #: templates/two_factor/core/login.html:10
 msgid "Login"
-msgstr ""
+msgstr "Masuk"
 
 #: templates/two_factor/core/login.html:13
 msgid "Enter your credentials."
-msgstr ""
+msgstr "Masukkan kredensial Anda."
 
 #: templates/two_factor/core/login.html:17
 msgid ""
 "Use this form for entering backup tokens for logging in. These tokens have "
 "been generated for you to print and keep safe. Please enter one of these "
 "backup tokens to login to your account."
-msgstr ""
+msgstr "Gunakan formulir ini untuk memasukkan token cadangan untuk masuk. Token ini telah dibuat untuk Anda cetak dan simpan dengan aman. Silakan masukkan salah satu token cadangan ini untuk login ke akun Anda."
 
 #: templates/two_factor/core/login.html:29
 msgid "Or, alternatively, use one of your other authentication methods:"
-msgstr ""
+msgstr "Atau, sebagai alternatif, gunakan salah satu metode autentikasi Anda yang lain:"
 
 #: templates/two_factor/core/login.html:48
 msgid "As a last resort, you can use a backup token:"
-msgstr ""
+msgstr "Sebagai upaya terakhir, Anda dapat menggunakan token cadangan:"
 
 #: templates/two_factor/core/login.html:51
 msgid "Use Backup Token"
-msgstr ""
+msgstr "Gunakan Token Cadangan"
 
 #: templates/two_factor/core/backup_tokens.html:25
 #: templates/two_factor/core/setup_complete.html:12
 #: templates/two_factor/core/setup_complete.html:19
 msgid "Back to Account Security"
-msgstr ""
+msgstr "Kembali ke Keamanan Akun"
 
 #: templates/two_factor/core/otp_required.html:18
 #: templates/two_factor/core/setup.html:9
 #: templates/two_factor/core/setup_complete.html:5
 #: templates/two_factor/profile/profile.html:55
 msgid "Enable Two-Factor Authentication"
-msgstr ""
+msgstr "Aktifkan Otentikasi Dua Faktor"
 
 #: templates/two_factor/core/setup_complete.html:7
 msgid "Congratulations, you've successfully enabled two-factor authentication."
-msgstr ""
+msgstr "Selamat, Anda berhasil mengaktifkan autentikasi dua faktor."
 
 #: templates/two_factor/core/setup_complete.html:14
 msgid ""
 "However, it might happen that you don't have access to your primary token "
 "device. To enable account recovery, add a phone number."
-msgstr ""
+msgstr "Namun, mungkin saja Anda tidak memiliki akses ke perangkat token utama Anda. Untuk mengaktifkan pemulihan akun, tambahkan nomor telepon."
 
 #: templates/two_factor/core/setup_complete.html:21
 #: templates/two_factor/profile/profile.html:29
 msgid "Add Phone Number"
-msgstr ""
+msgstr "Tambahkan Nomor Telepon"
 
 #: templates/two_factor/core/backup_tokens.html:5
 #: templates/two_factor/profile/profile.html:32
 msgid "Backup Tokens"
-msgstr ""
+msgstr "Token Cadangan"
 
 #: templates/two_factor/core/backup_tokens.html:6
 msgid ""
@@ -114,69 +114,69 @@ msgid ""
 "available. The backup tokens below can be used for login verification. If "
 "you've used up all your backup tokens, you can generate a new set of backup "
 "tokens. Only the backup tokens shown below will be valid."
-msgstr ""
+msgstr "Token cadangan dapat digunakan ketika nomor telepon utama dan cadangan Anda tidak tersedia. Token cadangan di bawah ini dapat digunakan untuk verifikasi login. Jika Anda telah menggunakan semua token cadangan, Anda dapat membuat kumpulan token cadangan baru. Hanya token cadangan yang ditunjukkan di bawah ini yang valid."
 
 #: templates/two_factor/core/backup_tokens.html:18
 msgid "Print these tokens and keep them somewhere safe."
-msgstr ""
+msgstr "Cetak token ini dan simpan di tempat yang aman."
 
 #: templates/two_factor/core/backup_tokens.html:20
 msgid "You don't have any backup codes yet."
-msgstr ""
+msgstr "Anda belum memiliki kode cadangan apa pun."
 
 #: templates/two_factor/core/backup_tokens.html:26
 msgid "Generate Tokens"
-msgstr ""
+msgstr "Hasilkan Token"
 
 #: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
 msgid "We are calling your phone right now, please enter the digits you hear."
-msgstr ""
+msgstr "Kami sedang menelepon telepon Anda sekarang, silakan masukkan angka yang Anda dengar."
 
 #: templates/two_factor/core/setup.html:11
 msgid ""
 "You are about to take your account security to the next level. Follow the "
 "steps in this wizard to enable two-factor authentication."
-msgstr ""
+msgstr "Anda akan meningkatkan keamanan akun Anda ke tingkat berikutnya. Ikuti langkah-langkah dalam wizard ini untuk mengaktifkan autentikasi dua faktor."
 
 #: templates/two_factor/core/setup.html:15
 msgid "Please select which authentication method you would like to use."
-msgstr ""
+msgstr "Silakan pilih metode autentikasi mana yang ingin Anda gunakan."
 
 #: templates/two_factor/core/setup.html:18
 msgid ""
 "To start using a token generator, please use your smartphone to scan the QR "
 "code below. For example, use Google Authenticator."
-msgstr ""
+msgstr "Untuk mulai menggunakan generator token, silakan gunakan ponsel cerdas Anda untuk memindai kode QR di bawah. Misalnya, gunakan Google Authenticator."
 
 #: templates/two_factor/core/setup.html:22
 msgid ""
 "Alternatively you can use the following secret to setup TOTP in your "
 "authenticator or password manager manually."
-msgstr ""
+msgstr "Alternatifnya, Anda dapat menggunakan rahasia berikut untuk mengatur TOTP di autentikator atau pengelola kata sandi Anda secara manual."
 
 #: templates/two_factor/core/setup.html:24
 msgid "TOTP Secret:"
-msgstr ""
+msgstr "Rahasia TOTP:"
 
 #: templates/two_factor/core/setup.html:25
 msgid "Then, enter the token generated by the app."
-msgstr ""
+msgstr "Lalu, masukkan token yang dihasilkan oleh aplikasi."
 
 #: templates/two_factor/core/setup.html:28
 msgid ""
 "Please enter the phone number you wish to receive the text messages on. This "
 "number will be validated in the next step."
-msgstr ""
+msgstr "Silakan masukkan nomor telepon yang ingin Anda terima pesan teksnya. Nomor ini akan divalidasi pada langkah berikutnya."
 
 #: templates/two_factor/core/setup.html:32
 msgid ""
 "Please enter the phone number you wish to be called on. This number will be "
 "validated in the next step."
-msgstr ""
+msgstr "Silakan masukkan nomor telepon yang ingin Anda hubungi. Nomor ini akan divalidasi pada langkah berikutnya."
 
 #: templates/two_factor/core/setup.html:40
 msgid "We sent you a text message, please enter the tokens we sent."
-msgstr ""
+msgstr "Kami mengirimi Anda pesan teks, silakan masukkan token yang kami kirim."
 
 #: templates/two_factor/core/setup.html:44
 msgid ""
@@ -184,13 +184,13 @@ msgid ""
 "go back and verify that you entered your information correctly, try again, "
 "or use a different authentication method instead. If the issue persists, "
 "contact the site administrator."
-msgstr ""
+msgstr "Kami mengalami masalah dengan metode autentikasi yang dipilih. Silakan kembali dan verifikasi bahwa Anda memasukkan informasi dengan benar, coba lagi, atau gunakan metode autentikasi lain. Jika masalah terus berlanjut, hubungi administrator situs."
 
 #: templates/two_factor/core/setup.html:51
 msgid ""
 "To identify and verify your YubiKey, please insert a token in the field "
 "below. Your YubiKey will be linked to your account."
-msgstr ""
+msgstr "Untuk mengidentifikasi dan memverifikasi YubiKey Anda, silakan masukkan token pada kolom di bawah. YubiKey Anda akan ditautkan ke akun Anda."
 
 #: templates/two_factor/core/otp_required.html:5
 msgid "Permission Denied"
@@ -201,14 +201,14 @@ msgid ""
 "The page you requested, enforces users to verify using two-factor "
 "authentication for security reasons. You need to enable these security "
 "features in order to access this page."
-msgstr ""
+msgstr "Halaman yang Anda minta, memaksa pengguna untuk memverifikasi menggunakan otentikasi dua faktor untuk alasan keamanan. Anda perlu mengaktifkan fitur keamanan ini untuk mengakses halaman ini."
 
 #: templates/two_factor/core/otp_required.html:11
 #: templates/two_factor/profile/profile.html:51
 msgid ""
 "Two-factor authentication is not enabled for your account. Enable two-factor "
 "authentication for enhanced account security."
-msgstr ""
+msgstr "Otentikasi dua faktor tidak diaktifkan untuk akun Anda. Aktifkan autentikasi dua faktor untuk meningkatkan keamanan akun."
 
 #: templates/two_factor/core/otp_required.html:16
 msgid "Go back"
@@ -216,87 +216,87 @@ msgstr "Kembali"
 
 #: templates/two_factor/profile/profile.html:6
 msgid "Account Security"
-msgstr ""
+msgstr "Keamanan Akun"
 
 #: templates/two_factor/profile/profile.html:9
 #, python-format
 msgid "Primary method: %(primary)s"
-msgstr ""
+msgstr "Metode utama: %(primary)s"
 
 #: templates/two_factor/profile/profile.html:12
 msgid "Backup Phone Numbers"
-msgstr ""
+msgstr "Nomor Telepon Cadangan"
 
 #: templates/two_factor/profile/profile.html:13
 msgid ""
 "If your primary method is not available, we are able to send backup tokens "
 "to the phone numbers listed below."
-msgstr ""
+msgstr "Jika metode utama Anda tidak tersedia, kami dapat mengirimkan token cadangan ke nomor telepon yang tercantum di bawah."
 
 #: templates/two_factor/profile/profile.html:20
 msgid "Are you sure?"
-msgstr ""
+msgstr "Apakah kamu yakin?"
 
 #: templates/two_factor/profile/profile.html:23
 msgid "Unregister"
-msgstr ""
+msgstr "Batalkan pendaftaran"
 
 #: templates/two_factor/profile/profile.html:34
 msgid ""
 "If you don't have any device with you, you can access your account using "
 "backup tokens."
-msgstr ""
+msgstr "Jika Anda tidak membawa perangkat apa pun, Anda dapat mengakses akun Anda menggunakan token cadangan."
 
 #: templates/two_factor/profile/profile.html:36
 #, python-format
 msgid "You have only one backup token remaining."
 msgid_plural "You have %(counter)s backup tokens remaining."
-msgstr[0] ""
+msgstr[0] "Anda memiliki %(counter)s token cadangan tersisa."
 
 #: templates/two_factor/profile/profile.html:43
 msgid "Show Codes"
-msgstr ""
+msgstr "Tampilkan Kode"
 
 #: templates/two_factor/profile/profile.html:45
 #: templates/two_factor/profile/profile.html:49
 msgid "Disable Two-Factor Authentication"
-msgstr ""
+msgstr "Nonaktifkan Otentikasi Dua Faktor"
 
 #: templates/two_factor/profile/profile.html:46
 msgid ""
 "However we strongly discourage you to do so, you can also disable two-factor "
 "authentication for your account."
-msgstr ""
+msgstr "Namun kami sangat tidak menyarankan Anda melakukannya, Anda juga dapat menonaktifkan otentikasi dua faktor untuk akun Anda."
 
 #: templates/two_factor/profile/disable.html:5
 msgid "Disable Two-factor Authentication"
-msgstr ""
+msgstr "Nonaktifkan Otentikasi Dua Faktor"
 
 #: templates/two_factor/profile/disable.html:6
 msgid ""
 "You are about to disable two-factor authentication. This weakens your "
 "account security, are you sure?"
-msgstr ""
+msgstr "Anda akan menonaktifkan autentikasi dua faktor. Ini melemahkan keamanan akun Anda, apakah Anda yakin?"
 
 #: templates/two_factor/profile/disable.html:12
 msgid "Disable"
-msgstr ""
+msgstr "Nonaktifkan"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "Hai, ini %(site_name)s menelepon. Tekan tombol apa saja untuk melanjutkan."
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "Anda tidak menekan tombol apa pun. Selamat tinggal."
 
 msgid "Your token is:"
-msgstr ""
+msgstr "Token Anda adalah:"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "Ulangi:"
 
 msgid "Good bye."
-msgstr ""
+msgstr "Selamat tinggal."
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"
@@ -308,60 +308,60 @@ msgstr "Keamanan akun"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Enter a recovery code"
-msgstr ""
+msgstr "Masukkan kode pemulihan"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Verify your sign-in"
-msgstr ""
+msgstr "Verifikasi proses masuk Anda"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Each recovery code can be used only once."
-msgstr ""
+msgstr "Setiap kode pemulihan hanya dapat digunakan satu kali."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Enter the six-digit code from your authenticator app."
-msgstr ""
+msgstr "Masukkan kode enam digit dari aplikasi autentikator Anda."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
 msgid "Verify and continue"
-msgstr ""
+msgstr "Verifikasi dan lanjutkan"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use authenticator app"
-msgstr ""
+msgstr "Gunakan aplikasi autentikator"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use a recovery code"
-msgstr ""
+msgstr "Gunakan kode pemulihan"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:4
 msgid "Two-factor authentication is active"
-msgstr ""
+msgstr "Otentikasi dua faktor aktif"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:5
 #, python-format
 msgid ""
 "You are signed in as <strong>%(username)s</strong>. This session has passed "
 "verification."
-msgstr ""
+msgstr "Anda masuk sebagai <strong>%(username)s</strong>. Sesi ini telah lolos verifikasi."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:6
 msgid "Continue to learning"
-msgstr ""
+msgstr "Terus belajar"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Generate or view recovery codes"
-msgstr ""
+msgstr "Hasilkan atau lihat kode pemulihan"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Save them somewhere safe in case you lose your phone."
-msgstr ""
+msgstr "Simpan di tempat yang aman jika ponsel Anda hilang."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:8
 msgid ""
 "To test again, sign out and sign back in. You will be asked for a fresh code."
-msgstr ""
+msgstr "Untuk menguji lagi, keluar dan masuk kembali. Anda akan dimintai kode baru."
 
 #: two_factor/forms.py
 msgid "Token"
-msgstr ""
+msgstr "Tanda"

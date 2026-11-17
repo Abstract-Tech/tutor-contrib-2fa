@@ -347,19 +347,19 @@ msgstr "Désactiver"
 
 #, python-format
 msgid "Hi, this is %(site_name)s calling. Press any key to continue."
-msgstr ""
+msgstr "Bonjour, c'est %(site_name)s qui appelle. Appuyez sur n'importe quelle touche pour continuer."
 
 msgid "You didn’t press any keys. Good bye."
-msgstr ""
+msgstr "Vous n’avez appuyé sur aucune touche. Au revoir."
 
 msgid "Your token is:"
-msgstr ""
+msgstr "Votre jeton est :"
 
 msgid "Repeat:"
-msgstr ""
+msgstr "Répétez :"
 
 msgid "Good bye."
-msgstr ""
+msgstr "Au revoir."
 
 #: openedx_two_factor/templates/two_factor/_base.html:7
 msgid "Two-factor authentication"
@@ -371,59 +371,59 @@ msgstr "Sécurité du compte"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Enter a recovery code"
-msgstr ""
+msgstr "Entrez un code de récupération"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
 msgid "Verify your sign-in"
-msgstr ""
+msgstr "Vérifiez votre connexion"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Each recovery code can be used only once."
-msgstr ""
+msgstr "Chaque code de récupération ne peut être utilisé qu'une seule fois."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
 msgid "Enter the six-digit code from your authenticator app."
-msgstr ""
+msgstr "Saisissez le code à six chiffres de votre application d'authentification."
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
 msgid "Verify and continue"
-msgstr ""
+msgstr "Vérifier et continuer"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use authenticator app"
-msgstr ""
+msgstr "Utiliser l'application d'authentification"
 
 #: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
 msgid "Use a recovery code"
-msgstr ""
+msgstr "Utiliser un code de récupération"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:4
 msgid "Two-factor authentication is active"
-msgstr ""
+msgstr "L'authentification à deux facteurs est active"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:5
 #, python-format
 msgid ""
 "You are signed in as <strong>%(username)s</strong>. This session has passed "
 "verification."
-msgstr ""
+msgstr "Vous êtes connecté en tant que <strong>%(username)s</strong>. Cette session a réussi la vérification."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:6
 msgid "Continue to learning"
-msgstr ""
+msgstr "Continuer à apprendre"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Generate or view recovery codes"
-msgstr ""
+msgstr "Générer ou afficher les codes de récupération"
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:7
 msgid "Save them somewhere safe in case you lose your phone."
-msgstr ""
+msgstr "Conservez-les dans un endroit sûr au cas où vous perdriez votre téléphone."
 
 #: openedx_two_factor/templates/openedx_two_factor/home.html:8
 msgid ""
 "To test again, sign out and sign back in. You will be asked for a fresh code."
-msgstr ""
+msgstr "Pour tester à nouveau, déconnectez-vous et reconnectez-vous. Un nouveau code vous sera demandé."
 
 #: two_factor/forms.py
 msgid "Token"
