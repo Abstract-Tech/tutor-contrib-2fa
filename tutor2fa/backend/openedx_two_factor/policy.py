@@ -50,6 +50,8 @@ def requires_mfa(user):
     if not getattr(settings, "OPENEDX_2FA_ENABLED", False) or not user.is_authenticated:
         return False
     selected = required_roles()
+    if "all" in selected:
+        return True
     return bool(selected and selected.intersection(user_roles(user)))
 
 

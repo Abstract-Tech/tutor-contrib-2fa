@@ -18,6 +18,9 @@ body.two-factor-page {
   margin: 0;
   padding: 32px 16px;
   box-sizing: border-box;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   background: transparent;
   color: var(--two-factor-primary);
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -36,15 +39,16 @@ body.two-factor-page *::after {
 
 body.two-factor-page .two-factor-card {
   width: 100% !important;
-  max-width: 920px !important;
+  max-width: 640px !important;
   min-width: 0;
-  margin: 0 auto !important;
-  padding: clamp(24px, 5vw, 48px) !important;
+  margin: 0 !important;
+  padding: clamp(20px, 4vw, 32px) !important;
   overflow: hidden;
   background: #ffffff;
   border: 1px solid color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
-  border-radius: 0;
+  border-radius: 0.5rem;
   box-shadow: 0 4px 16px color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
+  text-align: center;
 }
 
 body.two-factor-page .two-factor-card,
@@ -66,11 +70,12 @@ body.two-factor-page .two-factor-card [class*="col-"] {
 }
 
 body.two-factor-page .two-factor-card > p:first-child {
-  margin: 0 0 40px;
+  margin: 0 0 20px;
   color: color-mix(in srgb, var(--two-factor-primary) 70%, transparent);
   font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: 0.04em;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -82,29 +87,30 @@ body.two-factor-page .two-factor-card h3 {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
   line-height: 1.2;
-  text-align: start !important;
+  text-align: center !important;
   overflow-wrap: anywhere;
 }
 
 body.two-factor-page .two-factor-card h1 {
-  margin-bottom: 24px;
-  font-size: clamp(2rem, 4vw, 2.75rem) !important;
+  margin-bottom: 12px;
+  font-size: clamp(1.625rem, 2.5vw, 2rem) !important;
 }
 
 body.two-factor-page .two-factor-card h2 {
-  margin-top: 32px;
+  margin-top: 24px;
   font-size: 1.5rem;
 }
 
 body.two-factor-page .two-factor-card h3 {
-  margin-top: 32px;
+  margin-top: 24px;
   font-size: 1.125rem;
 }
 
 body.two-factor-page .two-factor-card p {
-  margin: 0 0 20px;
-  font-size: 1rem;
-  line-height: 1.6;
+  margin: 0 0 12px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: center;
   overflow-wrap: anywhere;
 }
 
@@ -127,7 +133,7 @@ body.two-factor-page .two-factor-card img {
   width: 180px;
   max-width: 100%;
   height: auto;
-  margin: 28px 0 32px;
+  margin: 16px auto 20px;
   padding: 12px;
   background: #ffffff;
   border: 1px solid color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
@@ -136,7 +142,10 @@ body.two-factor-page .two-factor-card img {
 body.two-factor-page .two-factor-card form {
   width: 100%;
   max-width: 100%;
-  margin: 28px 0 0 !important;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0 0 !important;
+  text-align: center;
 }
 
 /* Hidden CSRF and wizard helper fields must never become visible controls. */
@@ -157,38 +166,54 @@ body.two-factor-page .two-factor-card form > input[type="submit"][aria-hidden="t
 }
 
 body.two-factor-page .two-factor-card form table {
+  display: block;
   width: 100%;
   max-width: 100%;
-  margin-bottom: 28px !important;
+  margin-bottom: 12px !important;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
+body.two-factor-page .two-factor-card form tbody,
+body.two-factor-page .two-factor-card form tr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
 body.two-factor-page .two-factor-card form th,
 body.two-factor-page .two-factor-card form td {
-  padding: 8px 0;
+  display: block;
+  padding: 2px 0;
   border: 0;
   text-align: start;
   vertical-align: middle;
 }
 
 body.two-factor-page .two-factor-card form th {
-  width: 120px !important;
+  flex: 0 0 auto;
+  width: auto !important;
   color: var(--two-factor-primary);
   font-weight: 600;
 }
 
 body.two-factor-page .two-factor-card label {
-  display: inline-block;
+  display: block;
   color: var(--two-factor-primary);
   font-style: normal;
   font-weight: 600;
 }
 
+body.two-factor-page .two-factor-card form td {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 body.two-factor-page .two-factor-card form input:not([type="hidden"]):not([type="submit"]),
 body.two-factor-page .two-factor-card form select,
 body.two-factor-page .two-factor-card form textarea {
-  width: 320px !important;
+  width: 100% !important;
   max-width: 100% !important;
   min-height: 44px;
   padding: 8px 12px;
@@ -197,6 +222,28 @@ body.two-factor-page .two-factor-card form textarea {
   background: #ffffff;
   color: var(--two-factor-primary);
   font: inherit;
+}
+
+/* The challenge form is rendered by Django's form.as_p(), not as a table. */
+body.two-factor-page .two-factor-card form > p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  text-align: start;
+}
+
+body.two-factor-page .two-factor-card form > p label {
+  flex: 0 0 auto;
+  margin: 0;
+  white-space: nowrap;
+}
+
+body.two-factor-page .two-factor-card form > p input:not([type="hidden"]):not([type="submit"]),
+body.two-factor-page .two-factor-card form > p select,
+body.two-factor-page .two-factor-card form > p textarea {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 body.two-factor-page .two-factor-card form input:not([type="hidden"]):not([type="submit"]):focus,
@@ -217,11 +264,11 @@ body.two-factor-page .two-factor-card form button.btn:not(.btn-link) {
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  width: auto !important;
+  width: 100% !important;
   max-width: 100%;
   min-height: 44px;
   margin-block: 4px;
-  margin-inline: 0 8px;
+  margin-inline: 0;
   padding: 10px 20px;
   border: 1px solid var(--two-factor-primary);
   border-radius: 0.3rem;
@@ -289,9 +336,25 @@ body.two-factor-page .two-factor-card form > button:disabled {
 }
 
 body.two-factor-page .two-factor-card form > a.float-right {
+  display: block;
   float: none !important;
-  margin-inline-end: 16px;
+  width: 100%;
+  margin: 12px 0 0;
   color: var(--two-factor-primary);
+  text-align: center;
+  order: 3;
+}
+
+body.two-factor-page .two-factor-card form > .btn-primary,
+body.two-factor-page .two-factor-card form > button.btn-primary,
+body.two-factor-page .two-factor-card form > button[type="submit"]:not(.btn-secondary),
+body.two-factor-page .two-factor-card form > input[type="submit"]:not([hidden]) {
+  order: 1;
+}
+
+body.two-factor-page .two-factor-card form > .btn.btn-secondary,
+body.two-factor-page .two-factor-card form > button.btn.btn-secondary {
+  order: 2;
 }
 
 body.two-factor-page .two-factor-card form + p {
@@ -402,11 +465,11 @@ body.two-factor-page .two-factor-card nav a {
   }
 
   body.two-factor-page .two-factor-card {
-    padding: 24px 20px !important;
+    padding: 20px 16px !important;
   }
 
   body.two-factor-page .two-factor-card h1 {
-    font-size: 2rem !important;
+    font-size: 1.625rem !important;
   }
 
   body.two-factor-page .two-factor-card form table,
@@ -429,17 +492,27 @@ body.two-factor-page .two-factor-card nav a {
     width: 100% !important;
   }
 
+  body.two-factor-page .two-factor-card form > p {
+    display: block;
+    text-align: center;
+  }
+
+  body.two-factor-page .two-factor-card form > p label {
+    margin-bottom: 8px;
+  }
+
   body.two-factor-page .two-factor-card form > .btn:not(.btn-link),
   body.two-factor-page .two-factor-card form > a.btn:not(.btn-link),
   body.two-factor-page .two-factor-card form > button:not(.btn-link),
   body.two-factor-page .two-factor-card form > input[type="submit"]:not([hidden]),
   body.two-factor-page .two-factor-card form button.btn:not(.btn-link) {
-    margin-inline-end: 4px;
+    margin-inline-end: 0;
     padding-inline: 14px;
   }
+}
 
-  body.two-factor-page .two-factor-card form > a.float-right {
-    display: inline-flex;
-    margin-inline-end: 4px;
+@media (max-height: 700px) {
+  body.two-factor-page {
+    align-items: flex-start;
   }
 }

@@ -110,6 +110,14 @@ def test_anonymous_never_requires_mfa(settings, monkeypatch):
     assert not policy.requires_mfa(AnonymousUser())
 
 
+def test_all_requires_mfa_for_every_authenticated_user(settings, monkeypatch):
+    user = SimpleNamespace(is_authenticated=True)
+    settings.OPENEDX_2FA_REQUIRED_ROLES = ["all"]
+    monkeypatch.setattr(policy, "user_roles", Mock(side_effect=AssertionError("Unexpected lookup")))
+    assert policy.requires_mfa(user)
+    assert policy.can_enroll(user)
+
+
 def test_unselected_user_keeps_normal_login_and_cannot_enroll(client, user, settings):
     settings.OPENEDX_2FA_REQUIRED_ROLES = ["admin"]
     response = sign_in(client)
