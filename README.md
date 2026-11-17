@@ -13,7 +13,7 @@ version 1.0.0. See the configuration section when upgrading from 0.1.0.
 Install in the same Python environment as Tutor:
 
 ```bash
-pip install tutor-contrib-2fa==1.0.0
+pip install tutor-contrib-2fa==1.0.1
 ```
 
 No separate integration package or manual settings plugin is needed.
@@ -219,8 +219,8 @@ ownership. Configure the publisher from the intended owning account.
 Push a version tag matching both package versions to trigger publishing:
 
 ```bash
-git tag -a v1.0.0 -m "Release 1.0.0"
-git push origin v1.0.0
+git tag -a v1.0.1 -m "Release 1.0.1"
+git push origin v1.0.1
 ```
 
 Create the tag only once. For later releases, update both package versions and use
@@ -239,7 +239,7 @@ To test installation manually in a fresh virtual environment:
 
 ```bash
 python -m pip install 'tutor>=22,<23' 'packaging>=23'
-python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.0
+python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.1
 python -m pip check
 tutor plugins list
 ```

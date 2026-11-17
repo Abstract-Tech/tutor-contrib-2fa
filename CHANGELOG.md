@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 — 2026-11-17
+
+- Add translations for the bundled two-factor-authentication templates and plugin pages.
+- Add a responsive shared two-factor UI, including RTL support and validation-error styling.
+- Add an inactive-policy page for users who are exempt from MFA enforcement.
+
 ## 0.1.0 — Initial package-index release (testing)
 
 - Prepare the existing plugin for its first TestPyPI release under Abstract-Tech.
