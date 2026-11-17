@@ -22,7 +22,7 @@ REDIRECT = "https://studio.example/complete/edx-oauth2/"
 @pytest.fixture
 def flow():
     cache.clear()
-    user = get_user_model().objects.create_user("oauth-user", password="password")
+    user = get_user_model().objects.create_user("oauth-user", password="password", is_staff=True)
     device = TOTPDevice.objects.create(user=user, name="default")
     application = Application.objects.create(
         name="Studio",
@@ -244,3 +244,105 @@ def test_studio_pipeline_keeps_existing_steps(settings):
         "custom",
         "openedx_two_factor.oauth.restore_studio_mfa",
     ]
+
+
+def exempt_flow(flow, settings):
+    """A user with no enrollment under the superuser-only policy."""
+    browser, user, device, application = flow
+    settings.OPENEDX_2FA_REQUIRED_ROLES = ["admin"]
+    device.delete()
+    session = browser.session
+    session.pop(DEVICE_ID_SESSION_KEY, None)
+    session.save()
+    return browser, user, application
+
+
+def test_exempt_user_can_complete_studio_sso_without_otp(flow, settings):
+    from types import SimpleNamespace
+
+    from openedx_two_factor.oauth import restore_studio_mfa
+
+    browser, user, _ = exempt_flow(flow, settings)
+    payload = exchange(code_for(browser)).json()
+    assert "access_token" in payload
+    backend = SimpleNamespace(name="edx-oauth2", setting=lambda name: "studio")
+    restore_studio_mfa(backend, user=user, response=payload)
+    assert not getattr(user, "otp_device", None)
+
+
+@pytest.mark.parametrize("change", ["promotion", "policy"])
+def test_non_mfa_code_cannot_bypass_new_requirement(flow, settings, change):
+    browser, user, _ = exempt_flow(flow, settings)
+    code = code_for(browser)
+    if change == "promotion":
+        user.is_superuser = True
+        user.save()
+    else:
+        settings.OPENEDX_2FA_REQUIRED_ROLES = ["staff"]
+    assert exchange(code).status_code == 403
+    assert not AccessToken.objects.exists()
+
+
+def test_policy_checked_again_at_studio_callback(flow, settings):
+    from types import SimpleNamespace
+
+    from django.core.exceptions import PermissionDenied
+    from openedx_two_factor.oauth import restore_studio_mfa
+
+    browser, user, _ = exempt_flow(flow, settings)
+    payload = exchange(code_for(browser)).json()
+    user.is_superuser = True
+    user.save()
+    backend = SimpleNamespace(name="edx-oauth2", setting=lambda name: "studio")
+    with pytest.raises(PermissionDenied):
+        restore_studio_mfa(backend, user=user, response=payload)
+
+
+def test_exempt_user_still_needs_valid_client_credentials(flow, settings):
+    browser, _, _ = exempt_flow(flow, settings)
+    assert exchange(code_for(browser), client_secret="wrong").status_code == 401
+    assert not AccessToken.objects.exists()
+
+
+@pytest.mark.parametrize("exempt", [False, True])
+def test_browser_session_cannot_bypass_grant_policy(flow, settings, exempt):
+    browser, user, _, application = flow
+    if exempt:
+        settings.OPENEDX_2FA_REQUIRED_ROLES = ["admin"]
+    Grant.objects.create(
+        user=user,
+        application=application,
+        code="unproven",
+        redirect_uri=REDIRECT,
+        scope="read",
+        expires=timezone.now() + timedelta(minutes=1),
+    )
+    response = browser.post(
+        "/oauth2/access_token",
+        {
+            "grant_type": "authorization_code",
+            "code": "unproven",
+            "client_id": "studio",
+            "client_secret": "secret",
+            "redirect_uri": REDIRECT,
+        },
+    )
+    assert response.status_code == 403
+    assert not AccessToken.objects.exists()
+
+
+def test_excluded_enrolled_user_can_complete_studio_sso(flow, settings):
+    from types import SimpleNamespace
+
+    from openedx_two_factor.oauth import restore_studio_mfa
+
+    browser, user, device, _ = flow
+    settings.OPENEDX_2FA_REQUIRED_ROLES = ["admin"]
+    code = code_for(browser)
+    assert cache.get(proof_key(code))[2] is None
+    device.delete()
+    payload = exchange(code).json()
+    assert "access_token" in payload
+    backend = SimpleNamespace(name="edx-oauth2", setting=lambda name: "studio")
+    restore_studio_mfa(backend, user=user, response=payload)
+    assert not getattr(user, "otp_device", None)

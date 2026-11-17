@@ -5,7 +5,8 @@ recovery codes, and access checks for LMS and Studio. The plugin installs
 [`django-two-factor-auth`](https://github.com/jazzband/django-two-factor-auth)
 and the bundled Open edX integration in the Open edX image.
 
-Targets Tutor 22 / Open edX Verawood. Version 0.1.0 is being prepared for TestPyPI; it is not published to production PyPI.
+Targets Tutor 22 / Open edX Verawood. The role configuration below describes the
+current source version; it is not included in the published 0.1.0 release.
 
 ## Installation
 
@@ -53,10 +54,11 @@ Full production deployment has not yet been validated.
 
 ### Test the login
 
-1. Sign in, scan the QR code with an authenticator app, and enter its current code.
+1. Sign in as a user in a required role (admin or staff by default), scan the QR code with an authenticator app, and enter its current code.
 2. Save the recovery codes, sign out, and sign in again; an OTP should be required.
 3. Check that a wrong OTP is rejected and a recovery code works only once.
-4. Check Studio/admin access and your SSO/API workflows on staging.
+4. Sign in as an ordinary user without a required role; login should not ask for 2FA.
+5. Check Studio/admin access and your SSO/API workflows on staging.
 
 Keep phone and server clocks synchronized. Keep QR secrets and recovery codes private.
 
@@ -66,34 +68,78 @@ For an automated check on local or staging:
 tutor dev exec lms ./manage.py lms two_factor_check --live
 ```
 
-Use `tutor local exec` on staging. The command creates a temporary learner,
-checks login/enrollment/recovery, and deletes that learner even if a check fails.
+Use `tutor local exec` on staging. The command creates a temporary **platform staff account**,
+checks login/enrollment/recovery, and deletes it even if a check fails.
+This automated check requires `staff` in the required roles list.
 The configured LMS URL must be reachable from the command's container.
 
 ## Configuration
 
-Set these values with `tutor config save --set NAME=value`:
+Use these two settings in Tutor's `config.yml`:
 
-| Setting | Default | Description |
-| --- | --- | --- |
-| `TWO_FACTOR_AUTH_ENABLED` | `true` | Require 2FA for all browser users, including learners and administrators. |
-| `TWO_FACTOR_AUTH_VERSION` | `1.18.1` | Version of `django-two-factor-auth` installed when building the Open edX image. |
+```yaml
+ENABLE_2FA: true
+TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES:
+  - admin
+  - staff
+```
 
-To disable enforcement while keeping enrolled devices and recovery codes:
+These are the defaults. Add `instructor` and/or `student` to require 2FA for them too.
+
+| Role | Who matches |
+| --- | --- |
+| `admin` | Superusers (`is_superuser`). |
+| `staff` | Platform staff (`is_staff`). |
+| `instructor` | Users with course or organization `instructor` or `staff` access. |
+| `student` | Users with at least one active course enrollment. |
+| Custom name | An existing course/organization role or Django group with that exact name. |
+
+A match on **any** role requires setup and 2FA at sign-in. These roles apply across
+the account, not just while visiting a particular course. A newly registered user
+without an active enrollment does not yet match `student`.
+
+No match means normal login, even if the user previously enrolled an authenticator.
+Existing devices and recovery codes are kept, but new enrollment is unavailable
+for exempt users. An empty list (`[]`) requires 2FA for nobody. Role changes are
+checked on subsequent browser requests and during the Studio SSO handoff.
+
+Use the lowercase names shown above for built-in roles. Custom names are case-sensitive
+and must already exist as
+roles or groups; adding a name does not create permissions. Built-in names keep
+the definitions above, even if a Django group has the same name. A typo in a custom
+name matches nobody, so test the intended account after changing the list.
+
+After editing the policy:
 
 ```bash
-tutor config save --set TWO_FACTOR_AUTH_ENABLED=false
+tutor config save
 tutor local restart lms cms lms-worker cms-worker
 ```
 
-For development, use `tutor dev restart lms cms`. Set the value to `true` and
-restart the same services to enable enforcement again. No image rebuild is needed
-for this setting. Disabling the Tutor plugin also removes enforcement after saving
-configuration and restarting services.
+For development, use `tutor dev restart lms cms`. Policy changes do not need an
+image rebuild after this plugin version is installed in the image.
 
-When upgrading from the initial review version, replace `TWO_FACTOR_ENABLED` in
-Tutor's `config.yml` with `TWO_FACTOR_AUTH_ENABLED`, preserving its value. The old
-name is no longer read; without the new setting, enforcement defaults to `true`.
+To disable enforcement for everyone:
+
+```bash
+tutor config save --set ENABLE_2FA=false
+tutor local restart lms cms lms-worker cms-worker
+```
+
+Set it back to `true` to enforce the configured roles again.
+
+**Upgrading:** rename `TWO_FACTOR_AUTH_ENABLED` (or the older `TWO_FACTOR_ENABLED`)
+to `ENABLE_2FA` in `config.yml`, preserving its value, and remove the old key.
+The plugin rejects obsolete enable keys to prevent a previously disabled setup
+from silently becoming enabled. The former all-user policy is replaced by the
+admin/staff default; set the required role list explicitly for your installation.
+The proposed `ONLY_*` and `OPTIONAL_FOR_USERS` flags are not used.
+
+The dependency version remains a separate build setting:
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| `TWO_FACTOR_AUTH_VERSION` | `1.18.1` | Version of `django-two-factor-auth` installed in the image. |
 
 To upgrade the authenticator library without changing the plugin code:
 
@@ -108,10 +154,11 @@ environment. Test the selected version on staging before production use.
 
 ### Scope
 
-- Browser-session TOTP only; FIDO2/passkeys, role-specific enforcement and invitation codes are not included.
-- Studio SSO supports authorization codes issued after LMS MFA. OAuth Toolkit still
+- Browser-session TOTP only; FIDO2/passkeys, optional enrollment and invitation codes are not included.
+- Studio SSO supports authorization codes issued after the LMS role check and,
+  for required roles, MFA. OAuth Toolkit still
   validates client credentials, redirect URIs, PKCE and code expiry/replay. Studio
-  receives the verified device through a short-lived server-side proof and records
+  receives the policy result and verified device through a short-lived server-side proof and records
   it in its own session; browser cookies are not forwarded to the token endpoint.
 - LMS workers and Studio must use the same shared default Django cache (Tutor's
   Redis default cache). Authorization proof expires with the code; Studio's session

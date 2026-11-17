@@ -13,6 +13,8 @@ from django_otp.oath import totp
 from django_otp.plugins.otp_static.models import StaticDevice
 from django_otp.plugins.otp_totp.models import TOTPDevice
 
+from .policy import requires_mfa
+
 
 class VerificationError(Exception):
     """A login check failed; messages never include credentials or response bodies."""
@@ -33,7 +35,9 @@ def create_profile(user):
 def temporary_account():
     username = "two_factor_check_" + secrets.token_hex(6)
     password = secrets.token_urlsafe(24)
-    user = get_user_model().objects.create_user(username, username + "@example.invalid", password)
+    user = get_user_model().objects.create_user(
+        username, username + "@example.invalid", password, is_staff=True
+    )
     try:
         create_profile(user)
         yield user, password
@@ -61,7 +65,7 @@ class LoginVerification:
             headers={"X-CSRFToken": self.session.cookies.get_dict().get("csrftoken", "")},
         )
 
-    def login(self):
+    def login(self, required=True):
         require(self.get("/csrf/api/v1/token").status_code == 200, "CSRF endpoint failed.")
         response = self.post(
             "/api/user/v2/account/login_session/",
@@ -69,8 +73,8 @@ class LoginVerification:
         )
         require(response.status_code == 200, "Password login failed.")
         require(
-            response.json().get("redirect_url") == self.base_url + "/2fa/",
-            "Password login did not require 2FA.",
+            (response.json().get("redirect_url") == self.base_url + "/2fa/") == required,
+            "Password login did not follow the role policy.",
         )
 
     def enroll(self):
@@ -145,14 +149,37 @@ class LoginVerification:
         )
         require(self.get("/admin/").status_code == 302, "Reused recovery code granted access.")
 
+    def check_role_policy(self):
+        """An existing device must not override exemption; promotion gates again."""
+        self.user.is_staff = False
+        self.user.save(update_fields=["is_staff"])
+        self.get("/logout")
+        self.login(required=False)
+        account_path = "/api/user/v1/accounts/" + self.user.username
+        require(self.get(account_path).status_code == 200, "Exempt user's account API was gated.")
+        require(
+            bool(self.session.cookies.get_dict().get("edx-jwt-cookie-header-payload")),
+            "Exempt login did not issue Open edX cookies.",
+        )
+        require(
+            TOTPDevice.objects.filter(user=self.user, confirmed=True).exists(),
+            "Role change removed the enrolled device.",
+        )
+        self.user.is_staff = True
+        self.user.save(update_fields=["is_staff"])
+        require(self.get(account_path).status_code == 403, "Promoted staff bypassed 2FA.")
+
 
 def verify_login(base_url, report):
-    """Create, verify and remove a temporary learner; never use an existing account."""
+    """Create, verify and remove a temporary staff account; never use an existing account."""
     with temporary_account() as (user, password), requests.Session() as session:
+        require(requires_mfa(user), "The live check requires staff in the required roles list.")
         session.trust_env = False
         verification = LoginVerification(session, base_url, user, password)
         verification.enroll()
         report("PASS: HTTP password login, CSRF, QR enrollment, favicon and OTP verification")
         verification.check_recovery()
         report("PASS: incorrect OTP rejected; recovery code works once and reuse is rejected")
+        verification.check_role_policy()
+        report("PASS: exempt enrolled user signs in normally; staff promotion requires 2FA again")
     report("PASS: temporary test account removed")

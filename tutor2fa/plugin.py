@@ -13,7 +13,8 @@ from .__about__ import __version__
 hooks.Filters.CONFIG_DEFAULTS.add_items(
     [
         ("TWO_FACTOR_VERSION", __version__),
-        ("TWO_FACTOR_AUTH_ENABLED", True),
+        ("ENABLE_2FA", True),
+        ("TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES", ["admin", "staff"]),
         ("TWO_FACTOR_AUTH_VERSION", "1.18.1"),
     ]
 )
@@ -21,8 +22,21 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
 
 @hooks.Actions.CONFIG_LOADED.add()
 def validate_config(config):
-    if not isinstance(config.get("TWO_FACTOR_AUTH_ENABLED", True), bool):
-        raise TutorError("TWO_FACTOR_AUTH_ENABLED must be true or false.")
+    for old_name in ("TWO_FACTOR_AUTH_ENABLED", "TWO_FACTOR_ENABLED"):
+        if old_name in config:
+            raise TutorError(
+                f"Replace {old_name} with ENABLE_2FA in config.yml, preserving its value."
+            )
+    if not isinstance(config.get("ENABLE_2FA", True), bool):
+        raise TutorError("ENABLE_2FA must be true or false.")
+    roles = config.get("TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES", ["admin", "staff"])
+    if not isinstance(roles, list) or any(
+        not isinstance(role, str) or not role.strip() or role != role.strip() for role in roles
+    ):
+        raise TutorError(
+            "TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES must be a list of non-empty, "
+            "role names without surrounding whitespace."
+        )
 
     try:
         Version(str(config.get("TWO_FACTOR_AUTH_VERSION", "1.18.1")))
@@ -57,7 +71,7 @@ hooks.Filters.ENV_PATCHES.add_item(patch("openedx-lms-production-settings"))
 hooks.Filters.ENV_PATCHES.add_item(patch("openedx-cms-production-settings"))
 
 MIGRATE = """
-{% if TWO_FACTOR_AUTH_ENABLED %}
+{% if ENABLE_2FA %}
 set -e
 ./manage.py lms migrate otp_totp --noinput
 ./manage.py lms migrate otp_static --noinput

@@ -18,6 +18,7 @@ from two_factor.utils import default_device
 
 from .continuation import SESSION_KEY, remember_destination
 from .oauth import AUTHORIZE_PATHS, remember_authorization, remember_token, verified_code_exchange
+from .policy import requires_mfa
 
 LOGIN_PATHS = {
     "/login_ajax",
@@ -69,8 +70,19 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
         if path in LOGIN_PATHS and request.method == "POST":
             request.session.pop(DEVICE_ID_SESSION_KEY, None)
             request.session.pop(SESSION_KEY, None)
+        # Token subjects may differ from the browser's session user. Validate
+        # the grant's policy before considering browser session exemptions.
+        token_request = path.startswith(("/oauth2/access_token", "/oauth2/exchange_access_token"))
+        if token_request:
+            return None if verified_code_exchange(request) else mfa_required()
         # A completed browser login follows Open edX's ordinary routing, JWT
         # refresh and authorization flow. Visiting another app is not a login.
+        if request.user.is_authenticated and not requires_mfa(request.user):
+            request.session.pop("openedx_2fa_started", None)
+            request.session.pop(SESSION_KEY, None)
+            if path.startswith("/2fa/") and path not in {"/2fa/", "/2fa/challenge/"}:
+                return JsonResponse({"error": "mfa_enrollment_not_available"}, status=403)
+            return None
         if verified(request):
             return None
         if path == "/login_refresh":
@@ -79,17 +91,14 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
             from openedx.core.djangoapps.user_authn.cookies import delete_logged_in_cookies
 
             return delete_logged_in_cookies(mfa_required(status=401))
-        if verified_code_exchange(request):
-            return None
         # DRF authenticates bearer/JWT clients after middleware. Fail closed here.
-        token_request = path.startswith(("/oauth2/access_token", "/oauth2/exchange_access_token"))
         has_credentials = bool(request.META.get("HTTP_AUTHORIZATION"))
         jwt_cookies = any(
             name.startswith("edx-jwt-cookie") and value for name, value in request.COOKIES.items()
         )
         jwt_api = jwt_cookies and path.startswith(("/api/", "/user_api/"))
         if (
-            (token_request or has_credentials or jwt_api)
+            (has_credentials or jwt_api)
             and path not in LOGIN_PATHS
             and not path.startswith(("/2fa/", "/logout"))
         ):
@@ -131,7 +140,7 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
         remember_token(request, response)
         if not hasattr(request, "user") or not request.user.is_authenticated:
             return response
-        if verified(request):
+        if verified(request) or not requires_mfa(request.user):
             remember_authorization(request, response)
             return response
         # Password login/registration may have issued Open edX JWT cookies: withhold

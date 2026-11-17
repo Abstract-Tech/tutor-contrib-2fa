@@ -17,6 +17,8 @@ from django.utils import timezone
 from django_otp import DEVICE_ID_SESSION_KEY
 from django_otp.models import Device
 
+from .policy import requires_mfa
+
 AUTHORIZE_PATHS = {"/oauth2/authorize", "/oauth2/authorize/"}
 TOKEN_PATHS = {"/oauth2/access_token", "/oauth2/access_token/"}
 
@@ -26,7 +28,7 @@ def proof_key(code):
 
 
 def remember_authorization(request, response):
-    """Record only an actual grant returned to an already MFA-verified browser."""
+    """Record a browser grant and its MFA proof when the current policy requires it."""
     if request.path not in AUTHORIZE_PATHS or response.status_code != 302:
         return
     from oauth2_provider.models import get_grant_model
@@ -37,15 +39,16 @@ def remember_authorization(request, response):
     grant = get_grant_model().objects.filter(code=codes[0], user=request.user).first()
     if grant is None or grant.is_expired():
         return
+    device_id = request.session.get(DEVICE_ID_SESSION_KEY) if requires_mfa(request.user) else None
     cache.set(
         proof_key(grant.code),
-        (grant.pk, grant.user_id, request.session[DEVICE_ID_SESSION_KEY]),
+        (grant.pk, grant.user_id, device_id),
         timeout=math.ceil((grant.expires - timezone.now()).total_seconds()),
     )
 
 
 def verified_code_exchange(request):
-    """Permit only a live code bound to an MFA-verified user and existing device."""
+    """Permit a live browser code, rechecking the current user policy."""
     if request.path not in TOKEN_PATHS or request.method != "POST":
         return False
     if request.POST.get("grant_type") != "authorization_code":
@@ -61,15 +64,18 @@ def verified_code_exchange(request):
     grant_id, user_id, device_id = proof
     grant = (
         get_grant_model()
-        .objects.select_related("application")
+        .objects.select_related("application", "user")
         .filter(pk=grant_id, code=code, user_id=user_id)
         .first()
     )
     if grant is None or grant.is_expired():
         return False
-    device = Device.from_persistent_id(device_id)
-    if not (device and device.confirmed and device.user_id == user_id):
-        return False
+    if requires_mfa(grant.user):
+        device = Device.from_persistent_id(device_id) if device_id else None
+        if not (device and device.confirmed and device.user_id == user_id):
+            return False
+    else:
+        device_id = None
     request._openedx_2fa_grant = (user_id, device_id, grant.application.client_id)
     return True
 
@@ -99,14 +105,13 @@ def restore_studio_mfa(backend, user=None, response=None, **kwargs):
     if proof is None or user is None:
         raise PermissionDenied("Restart Studio sign-in to verify two-factor authentication.")
     user_id, device_id, client_id = proof
-    device = Device.from_persistent_id(device_id)
-    if not (
-        user.pk == user_id
-        and client_id == backend.setting("KEY")
-        and device
-        and device.confirmed
-        and device.user_id == user_id
-    ):
+    if user.pk != user_id or client_id != backend.setting("KEY"):
+        raise PermissionDenied("Studio sign-in has no valid two-factor verification.")
+    if not requires_mfa(user):
+        cache.delete(token_proof_key(token))
+        return
+    device = Device.from_persistent_id(device_id) if device_id else None
+    if not (device and device.confirmed and device.user_id == user_id):
         raise PermissionDenied("Studio sign-in has no valid two-factor verification.")
     # django-otp's user_logged_in receiver persists this after Django login, even
     # when login replaces an existing session. Never trust client-supplied claims.

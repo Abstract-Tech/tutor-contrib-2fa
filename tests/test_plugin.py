@@ -76,7 +76,7 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
             ]
         ]
 
-    tutor(tmp_path, "config", "save", "--set", "TWO_FACTOR_AUTH_ENABLED=false")
+    tutor(tmp_path, "config", "save", "--set", "ENABLE_2FA=false")
     source = (env / "apps/openedx/settings/lms/production.py").read_text()
     result = tutor(tmp_path, "local", "do", "init", "-l", "2fa", capture_tasks=True)
     tasks = [
@@ -100,11 +100,9 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
 
 def test_invalid_enable_setting_rejected(tmp_path):
     tutor(tmp_path, "plugins", "enable", "2fa")
-    result = tutor(
-        tmp_path, "config", "save", "--set", "TWO_FACTOR_AUTH_ENABLED=not-a-bool", check=False
-    )
+    result = tutor(tmp_path, "config", "save", "--set", "ENABLE_2FA=not-a-bool", check=False)
     assert result.returncode != 0
-    assert "TWO_FACTOR_AUTH_ENABLED must be true or false" in result.stdout + result.stderr
+    assert "ENABLE_2FA must be true or false" in result.stdout + result.stderr
 
 
 def test_settings_use_public_or_development_lms_url():
@@ -114,7 +112,13 @@ def test_settings_use_public_or_development_lms_url():
     ]:
         for service in ("lms", "cms"):
             _, patch = plugin.patch(f"openedx-{service}-{mode}-settings")
-            source = Environment().from_string(patch).render(TWO_FACTOR_AUTH_ENABLED=True)
+            source = (
+                Environment()
+                .from_string(patch)
+                .render(
+                    ENABLE_2FA=True, TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES=["admin", "staff"]
+                )
+            )
             settings = {
                 "LMS_ROOT_URL": url,
                 "INSTALLED_APPS": [],
@@ -128,8 +132,10 @@ def test_settings_use_public_or_development_lms_url():
 
 def test_migration_job_is_guarded_and_contains_both_apps():
     source = Environment().from_string(plugin.MIGRATE)
-    assert source.render(TWO_FACTOR_AUTH_ENABLED=False).strip() == ""
-    enabled = source.render(TWO_FACTOR_AUTH_ENABLED=True)
+    assert source.render(ENABLE_2FA=False).strip() == ""
+    enabled = source.render(
+        ENABLE_2FA=True, TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES=["admin", "staff"]
+    )
     assert "migrate otp_totp --noinput" in enabled
     assert "migrate otp_static --noinput" in enabled
 
@@ -172,3 +178,40 @@ def test_invalid_library_version_rejected(tmp_path):
     assert (
         "TWO_FACTOR_AUTH_VERSION must be a valid package version" in result.stdout + result.stderr
     )
+
+
+def test_required_roles_default_and_validation():
+    import pytest
+    from tutor.exceptions import TutorError
+
+    plugin.validate_config({})
+    for roles in ([], ["admin", "staff"], ["Reviewer"], ["staff", "staff"]):
+        plugin.validate_config({"TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES": roles})
+    for roles in ("admin", None, True, [1], [""], [" "], [" staff"], [{}]):
+        with pytest.raises(TutorError, match="TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES"):
+            plugin.validate_config({"TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES": roles})
+
+
+def test_custom_roles_render_as_data_for_both_services(tmp_path):
+    tutor(tmp_path, "plugins", "enable", "2fa")
+    tutor(
+        tmp_path,
+        "config",
+        "save",
+        "--set",
+        'TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES=["instructor", "reviewer"]',
+    )
+    for service in ("lms", "cms"):
+        for mode in ("development", "production"):
+            source = (tmp_path / f"env/apps/openedx/settings/{service}/{mode}.py").read_text()
+            compile(source, "<settings>", "exec")
+            assert "OPENEDX_2FA_REQUIRED_ROLES = ['instructor', 'reviewer']" in source
+
+
+def test_old_enable_key_requires_explicit_migration():
+    import pytest
+    from tutor.exceptions import TutorError
+
+    for old in ("TWO_FACTOR_AUTH_ENABLED", "TWO_FACTOR_ENABLED"):
+        with pytest.raises(TutorError, match=f"Replace {old} with ENABLE_2FA"):
+            plugin.validate_config({old: False})

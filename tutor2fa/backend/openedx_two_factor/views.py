@@ -11,6 +11,7 @@ from two_factor.views import SetupView
 
 from .continuation import take_destination
 from .middleware import verified
+from .policy import can_enroll, requires_mfa
 
 
 def finish(request, response):
@@ -24,6 +25,8 @@ def finish(request, response):
 @login_required
 @never_cache
 def home(request):
+    if not requires_mfa(request.user):
+        return render(request, "openedx_two_factor/inactive.html")
     if not verified(request):
         return redirect(
             "openedx_2fa_challenge" if default_device(request.user) else "two_factor:setup"
@@ -39,11 +42,11 @@ def home(request):
 @csrf_protect
 @sensitive_post_parameters("otp_token")
 def challenge(request):
-    if verified(request):
+    if not requires_mfa(request.user) or verified(request):
         return redirect("openedx_2fa_home")
     device = default_device(request.user)
     if not device:
-        return redirect("two_factor:setup")
+        return redirect("two_factor:setup" if can_enroll(request.user) else "openedx_2fa_home")
     recovery = request.GET.get("recovery") == "1"
     if recovery:
         device = StaticDevice.objects.filter(user=request.user, name="backup").first()

@@ -8,4 +8,5 @@ def plugin_settings(settings):
     # Tutor development settings also inherit Open edX production settings.
     # At this hook, Studio has resolved its Derived template directory values.
     settings.OPENEDX_2FA_ENABLED = False
+    settings.OPENEDX_2FA_REQUIRED_ROLES = ["admin", "staff"]
     configure(vars(settings))

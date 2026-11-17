@@ -33,7 +33,7 @@ def cookies(monkeypatch):
 
 @pytest.fixture
 def user():
-    return get_user_model().objects.create_user("learner", password="test-password")
+    return get_user_model().objects.create_user("learner", password="test-password", is_staff=True)
 
 
 @pytest.fixture

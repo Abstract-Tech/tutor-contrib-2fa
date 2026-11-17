@@ -73,3 +73,11 @@ def test_command_runs_verifier_with_configured_url(monkeypatch, settings):
     call_command("two_factor_check", live=True, stdout=output)
     assert calls == [settings.OPENEDX_2FA_LMS_URL]
     assert "PASS: verified" in output.getvalue()
+
+
+def test_live_check_refuses_exempt_staff_and_cleans_up(monkeypatch, settings):
+    settings.OPENEDX_2FA_REQUIRED_ROLES = ["admin"]
+    monkeypatch.setattr(verification, "create_profile", lambda user: None)
+    with pytest.raises(verification.VerificationError, match="requires staff"):
+        verification.verify_login("https://learn.example.test", lambda message: None)
+    assert not get_user_model().objects.exists()

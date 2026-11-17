@@ -9,7 +9,7 @@ from openedx_two_factor.verification import VerificationError, verify_login
 
 
 class Command(BaseCommand):
-    help = "Test the running LMS using a temporary learner, then remove that account."
+    help = "Test the running LMS using a temporary staff account, then remove that account."
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -21,7 +21,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         if not options["live"]:
             raise CommandError(
-                "Pass --live to create a temporary learner and test the running LMS."
+                "Pass --live to create a temporary staff account and test the running LMS."
             )
         if not getattr(settings, "OPENEDX_2FA_ENABLED", False):
             raise CommandError("2FA must be enabled before running this check.")
