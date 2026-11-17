@@ -371,3 +371,6 @@ msgstr "Щоб перевірити ще раз, вийдіть і ввійді�
 #: two_factor/forms.py
 msgid "Token"
 msgstr "Токен"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "Відповідно до поточної політики двофакторна автентифікація не потрібна для вашого облікового запису."

@@ -365,3 +365,6 @@ msgstr "Untuk menguji lagi, keluar dan masuk kembali. Anda akan dimintai kode ba
 #: two_factor/forms.py
 msgid "Token"
 msgstr "Tanda"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "Otentikasi dua faktor tidak diperlukan untuk akun Anda berdasarkan kebijakan saat ini."

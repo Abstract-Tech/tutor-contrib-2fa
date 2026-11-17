@@ -366,3 +366,6 @@ msgstr "For at teste igen skal du logge ud og logge ind igen. Du vil blive bedt 
 #: two_factor/forms.py
 msgid "Token"
 msgstr "Kode"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "To-faktor-godkendelse er ikke påkrævet for din konto i henhold til den nuværende politik."

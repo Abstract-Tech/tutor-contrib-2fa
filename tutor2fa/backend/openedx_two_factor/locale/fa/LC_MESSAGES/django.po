@@ -375,3 +375,6 @@ msgstr "برای آزمایش مجدد، از سیستم خارج شوید و د
 #: two_factor/forms.py
 msgid "Token"
 msgstr "نشانه"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "بر اساس خط مشی فعلی، احراز هویت دو مرحله ای برای حساب شما لازم نیست."

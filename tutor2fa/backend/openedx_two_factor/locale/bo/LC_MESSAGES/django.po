@@ -365,3 +365,6 @@ msgstr "བསྐྱར་དུ་ཚོད་ལྟ་བྱེད་པར་
 #: two_factor/forms.py
 msgid "Token"
 msgstr "རྟགས་མཚན།"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "ད་ལྟའི་སྲིད་ཇུས་ལྟར་ཁྱེད་ཀྱི་ཁ་བྱང་ལ་རྒྱུ་རྐྱེན་གཉིས་ཀྱི་བདེན་དཔང་དགོས་མཁོ་མེད།"

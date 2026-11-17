@@ -419,3 +419,6 @@ msgstr "Um den Test erneut durchzuführen, melden Sie sich ab und wieder an. Sie
 #: two_factor/forms.py
 msgid "Token"
 msgstr "Token"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "Gemäß der aktuellen Richtlinie ist für Ihr Konto keine Zwei-Faktor-Authentifizierung erforderlich."

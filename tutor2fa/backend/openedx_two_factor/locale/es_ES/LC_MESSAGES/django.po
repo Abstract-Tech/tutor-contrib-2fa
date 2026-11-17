@@ -419,3 +419,6 @@ msgstr ""
 #: two_factor/forms.py
 msgid "Token"
 msgstr "Código"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "La autenticación de dos factores no es necesaria para su cuenta según la política actual."

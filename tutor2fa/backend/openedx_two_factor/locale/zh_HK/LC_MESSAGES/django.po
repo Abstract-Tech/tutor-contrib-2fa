@@ -365,3 +365,6 @@ msgstr "若要再次測試，請登出並重新登入。系統將要求您輸入
 #: two_factor/forms.py
 msgid "Token"
 msgstr "代幣"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "根據當前政策，您的帳戶不需要兩步驟身份驗證。"

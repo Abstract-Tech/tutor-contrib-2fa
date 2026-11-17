@@ -366,3 +366,6 @@ msgstr "För att testa igen, logga ut och logga in igen. Du kommer att bli ombed
 #: two_factor/forms.py
 msgid "Token"
 msgstr "Engångskod"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "Tvåfaktorsautentisering krävs inte för ditt konto enligt den nuvarande policyn."
