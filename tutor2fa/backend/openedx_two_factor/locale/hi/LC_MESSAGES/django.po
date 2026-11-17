@@ -1,0 +1,371 @@
+# Open edX two-factor authentication translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openedx-tutor-2fa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 18:32+0100\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Last-Translator: Open edX\n"
+"Language-Team: Open edX\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/two_factor/core/phone_register.html:5
+msgid "Add Backup Phone"
+msgstr "बैकअप फ़ोन जोड़ें"
+
+#: templates/two_factor/core/phone_register.html:8
+msgid ""
+"You'll be adding a backup phone number to your account. This number will be "
+"used if your primary method of registration is not available."
+msgstr "आप अपने खाते में एक बैकअप फ़ोन नंबर जोड़ेंगे। यदि आपके पंजीकरण की प्राथमिक विधि उपलब्ध नहीं है तो इस नंबर का उपयोग किया जाएगा।"
+
+#: templates/two_factor/core/phone_register.html:12
+msgid ""
+"We've sent a token to your phone number. Please enter the token you've "
+"received."
+msgstr "हमने आपके फ़ोन नंबर पर एक टोकन भेज दिया है. कृपया आपको प्राप्त टोकन दर्ज करें।"
+
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: templates/two_factor/_wizard_actions.html:10
+#: templates/two_factor/_wizard_actions.html:12
+msgid "Back"
+msgstr "पीछे"
+
+#: templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "अगला"
+
+#: templates/two_factor/twilio/sms_message.html:2
+#, python-format
+msgid "Your OTP token is %(token)s"
+msgstr "आपका ओटीपी टोकन %(token)s है"
+
+#: templates/two_factor/core/login.html:10
+msgid "Login"
+msgstr "लॉग इन करें"
+
+#: templates/two_factor/core/login.html:13
+msgid "Enter your credentials."
+msgstr "अपनी साख दर्ज करें."
+
+#: templates/two_factor/core/login.html:17
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr "लॉग इन करने के लिए बैकअप टोकन दर्ज करने के लिए इस फॉर्म का उपयोग करें। ये टोकन आपके प्रिंट करने और सुरक्षित रखने के लिए तैयार किए गए हैं। कृपया अपने खाते में लॉगिन करने के लिए इनमें से एक बैकअप टोकन दर्ज करें।"
+
+#: templates/two_factor/core/login.html:29
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr "या, वैकल्पिक रूप से, अपनी अन्य प्रमाणीकरण विधियों में से किसी एक का उपयोग करें:"
+
+#: templates/two_factor/core/login.html:48
+msgid "As a last resort, you can use a backup token:"
+msgstr "अंतिम उपाय के रूप में, आप बैकअप टोकन का उपयोग कर सकते हैं:"
+
+#: templates/two_factor/core/login.html:51
+msgid "Use Backup Token"
+msgstr "बैकअप टोकन का उपयोग करें"
+
+#: templates/two_factor/core/backup_tokens.html:25
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+msgid "Back to Account Security"
+msgstr "खाता सुरक्षा पर वापस जाएँ"
+
+#: templates/two_factor/core/otp_required.html:18
+#: templates/two_factor/core/setup.html:9
+#: templates/two_factor/core/setup_complete.html:5
+#: templates/two_factor/profile/profile.html:55
+msgid "Enable Two-Factor Authentication"
+msgstr "दो-कारक प्रमाणीकरण सक्षम करें"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid "Congratulations, you've successfully enabled two-factor authentication."
+msgstr "बधाई हो, आपने दो-कारक प्रमाणीकरण सफलतापूर्वक सक्षम कर लिया है।"
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to your primary token "
+"device. To enable account recovery, add a phone number."
+msgstr "हालाँकि, ऐसा हो सकता है कि आपके पास अपने प्राथमिक टोकन डिवाइस तक पहुंच न हो। खाता पुनर्प्राप्ति सक्षम करने के लिए, एक फ़ोन नंबर जोड़ें।"
+
+#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/profile/profile.html:29
+msgid "Add Phone Number"
+msgstr "फोन नंबर डालें"
+
+#: templates/two_factor/core/backup_tokens.html:5
+#: templates/two_factor/profile/profile.html:32
+msgid "Backup Tokens"
+msgstr "बैकअप टोकन"
+
+#: templates/two_factor/core/backup_tokens.html:6
+msgid ""
+"Backup tokens can be used when your primary and backup phone numbers aren't "
+"available. The backup tokens below can be used for login verification. If "
+"you've used up all your backup tokens, you can generate a new set of backup "
+"tokens. Only the backup tokens shown below will be valid."
+msgstr "बैकअप टोकन का उपयोग तब किया जा सकता है जब आपके प्राथमिक और बैकअप फ़ोन नंबर उपलब्ध नहीं हों। नीचे दिए गए बैकअप टोकन का उपयोग लॉगिन सत्यापन के लिए किया जा सकता है। यदि आपने अपने सभी बैकअप टोकन का उपयोग कर लिया है, तो आप बैकअप टोकन का एक नया सेट तैयार कर सकते हैं। केवल नीचे दिखाए गए बैकअप टोकन ही मान्य होंगे।"
+
+#: templates/two_factor/core/backup_tokens.html:18
+msgid "Print these tokens and keep them somewhere safe."
+msgstr "इन टोकन को प्रिंट करें और कहीं सुरक्षित रखें।"
+
+#: templates/two_factor/core/backup_tokens.html:20
+msgid "You don't have any backup codes yet."
+msgstr "आपके पास अभी तक कोई बैकअप कोड नहीं है."
+
+#: templates/two_factor/core/backup_tokens.html:26
+msgid "Generate Tokens"
+msgstr "टोकन जनरेट करें"
+
+#: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
+msgid "We are calling your phone right now, please enter the digits you hear."
+msgstr "हम अभी आपके फ़ोन पर कॉल कर रहे हैं, कृपया जो अंक आप सुन रहे हैं उसे दर्ज करें।"
+
+#: templates/two_factor/core/setup.html:11
+msgid ""
+"You are about to take your account security to the next level. Follow the "
+"steps in this wizard to enable two-factor authentication."
+msgstr "आप अपने खाते की सुरक्षा को अगले स्तर पर ले जाने वाले हैं। दो-कारक प्रमाणीकरण सक्षम करने के लिए इस विज़ार्ड में दिए गए चरणों का पालन करें।"
+
+#: templates/two_factor/core/setup.html:15
+msgid "Please select which authentication method you would like to use."
+msgstr "कृपया चुनें कि आप किस प्रमाणीकरण विधि का उपयोग करना चाहते हैं।"
+
+#: templates/two_factor/core/setup.html:18
+msgid ""
+"To start using a token generator, please use your smartphone to scan the QR "
+"code below. For example, use Google Authenticator."
+msgstr "टोकन जनरेटर का उपयोग शुरू करने के लिए, कृपया नीचे दिए गए क्यूआर कोड को स्कैन करने के लिए अपने स्मार्टफोन का उपयोग करें। उदाहरण के लिए, Google प्रमाणक का उपयोग करें."
+
+#: templates/two_factor/core/setup.html:22
+msgid ""
+"Alternatively you can use the following secret to setup TOTP in your "
+"authenticator or password manager manually."
+msgstr "वैकल्पिक रूप से आप अपने प्रमाणक या पासवर्ड प्रबंधक में मैन्युअल रूप से टीओटीपी सेटअप करने के लिए निम्नलिखित रहस्य का उपयोग कर सकते हैं।"
+
+#: templates/two_factor/core/setup.html:24
+msgid "TOTP Secret:"
+msgstr "टीओटीपी रहस्य:"
+
+#: templates/two_factor/core/setup.html:25
+msgid "Then, enter the token generated by the app."
+msgstr "फिर, ऐप द्वारा जेनरेट किया गया टोकन दर्ज करें।"
+
+#: templates/two_factor/core/setup.html:28
+msgid ""
+"Please enter the phone number you wish to receive the text messages on. This "
+"number will be validated in the next step."
+msgstr "कृपया वह फ़ोन नंबर दर्ज करें जिस पर आप टेक्स्ट संदेश प्राप्त करना चाहते हैं। इस नंबर को अगले चरण में मान्य किया जाएगा."
+
+#: templates/two_factor/core/setup.html:32
+msgid ""
+"Please enter the phone number you wish to be called on. This number will be "
+"validated in the next step."
+msgstr "कृपया वह फ़ोन नंबर दर्ज करें जिस पर आप कॉल करना चाहते हैं। इस नंबर को अगले चरण में मान्य किया जाएगा."
+
+#: templates/two_factor/core/setup.html:40
+msgid "We sent you a text message, please enter the tokens we sent."
+msgstr "हमने आपको एक टेक्स्ट संदेश भेजा है, कृपया हमारे द्वारा भेजे गए टोकन दर्ज करें।"
+
+#: templates/two_factor/core/setup.html:44
+msgid ""
+"We've encountered an issue with the selected authentication method. Please "
+"go back and verify that you entered your information correctly, try again, "
+"or use a different authentication method instead. If the issue persists, "
+"contact the site administrator."
+msgstr "हमें चयनित प्रमाणीकरण विधि के साथ एक समस्या का सामना करना पड़ा है। कृपया वापस जाएं और सत्यापित करें कि आपने अपनी जानकारी सही ढंग से दर्ज की है, पुनः प्रयास करें, या इसके बजाय किसी भिन्न प्रमाणीकरण विधि का उपयोग करें। यदि समस्या बनी रहती है, तो साइट व्यवस्थापक से संपर्क करें।"
+
+#: templates/two_factor/core/setup.html:51
+msgid ""
+"To identify and verify your YubiKey, please insert a token in the field "
+"below. Your YubiKey will be linked to your account."
+msgstr "अपनी YubiKey को पहचानने और सत्यापित करने के लिए, कृपया नीचे दिए गए फ़ील्ड में एक टोकन डालें। आपकी YubiKey आपके खाते से लिंक हो जाएगी।"
+
+#: templates/two_factor/core/otp_required.html:5
+msgid "Permission Denied"
+msgstr "अनुमति नहीं मिली"
+
+#: templates/two_factor/core/otp_required.html:7
+msgid ""
+"The page you requested, enforces users to verify using two-factor "
+"authentication for security reasons. You need to enable these security "
+"features in order to access this page."
+msgstr "आपके द्वारा अनुरोधित पृष्ठ, सुरक्षा कारणों से उपयोगकर्ताओं को दो-कारक प्रमाणीकरण का उपयोग करके सत्यापित करने के लिए बाध्य करता है। इस पृष्ठ तक पहुँचने के लिए आपको इन सुरक्षा सुविधाओं को सक्षम करना होगा।"
+
+#: templates/two_factor/core/otp_required.html:11
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"Two-factor authentication is not enabled for your account. Enable two-factor "
+"authentication for enhanced account security."
+msgstr "आपके खाते के लिए दो-कारक प्रमाणीकरण सक्षम नहीं है। उन्नत खाता सुरक्षा के लिए दो-कारक प्रमाणीकरण सक्षम करें।"
+
+#: templates/two_factor/core/otp_required.html:16
+msgid "Go back"
+msgstr "वापिस जाएं"
+
+#: templates/two_factor/profile/profile.html:6
+msgid "Account Security"
+msgstr "खाता सुरक्षा"
+
+#: templates/two_factor/profile/profile.html:9
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr "प्राथमिक विधि: %(primary)s"
+
+#: templates/two_factor/profile/profile.html:12
+msgid "Backup Phone Numbers"
+msgstr "बैकअप फ़ोन नंबर"
+
+#: templates/two_factor/profile/profile.html:13
+msgid ""
+"If your primary method is not available, we are able to send backup tokens "
+"to the phone numbers listed below."
+msgstr "यदि आपकी प्राथमिक विधि उपलब्ध नहीं है, तो हम नीचे सूचीबद्ध फ़ोन नंबरों पर बैकअप टोकन भेजने में सक्षम हैं।"
+
+#: templates/two_factor/profile/profile.html:20
+msgid "Are you sure?"
+msgstr "क्या आपको यकीन है?"
+
+#: templates/two_factor/profile/profile.html:23
+msgid "Unregister"
+msgstr "अपंजीकृत"
+
+#: templates/two_factor/profile/profile.html:34
+msgid ""
+"If you don't have any device with you, you can access your account using "
+"backup tokens."
+msgstr "यदि आपके पास कोई उपकरण नहीं है, तो आप बैकअप टोकन का उपयोग करके अपने खाते तक पहुंच सकते हैं।"
+
+#: templates/two_factor/profile/profile.html:36
+#, python-format
+msgid "You have only one backup token remaining."
+msgid_plural "You have %(counter)s backup tokens remaining."
+msgstr[0] "आपके पास %(counter)s बैकअप टोकन शेष हैं।"
+msgstr[1] "आपके पास %(counter)s बैकअप टोकन शेष हैं।"
+
+#: templates/two_factor/profile/profile.html:43
+msgid "Show Codes"
+msgstr "कोड दिखाएँ"
+
+#: templates/two_factor/profile/profile.html:45
+#: templates/two_factor/profile/profile.html:49
+msgid "Disable Two-Factor Authentication"
+msgstr "दो-कारक प्रमाणीकरण अक्षम करें"
+
+#: templates/two_factor/profile/profile.html:46
+msgid ""
+"However we strongly discourage you to do so, you can also disable two-factor "
+"authentication for your account."
+msgstr "हालाँकि हम आपको ऐसा करने के लिए दृढ़ता से हतोत्साहित करते हैं, आप अपने खाते के लिए दो-कारक प्रमाणीकरण को अक्षम भी कर सकते हैं।"
+
+#: templates/two_factor/profile/disable.html:5
+msgid "Disable Two-factor Authentication"
+msgstr "दो-कारक प्रमाणीकरण अक्षम करें"
+
+#: templates/two_factor/profile/disable.html:6
+msgid ""
+"You are about to disable two-factor authentication. This weakens your "
+"account security, are you sure?"
+msgstr "आप दो-कारक प्रमाणीकरण अक्षम करने वाले हैं. इससे आपके खाते की सुरक्षा कमज़ोर हो जाती है, क्या आप निश्चित हैं?"
+
+#: templates/two_factor/profile/disable.html:12
+msgid "Disable"
+msgstr "अक्षम करना"
+
+#, python-format
+msgid "Hi, this is %(site_name)s calling. Press any key to continue."
+msgstr "नमस्ते, मैं %(site_name)s कॉलिंग कर रहा हूं। जारी रखने के लिए किसी भी कुंजी को दबाएं।"
+
+msgid "You didn’t press any keys. Good bye."
+msgstr "आपने कोई कुंजी नहीं दबाई. अलविदा।"
+
+msgid "Your token is:"
+msgstr "आपका टोकन है:"
+
+msgid "Repeat:"
+msgstr "दोहराना:"
+
+msgid "Good bye."
+msgstr "अलविदा।"
+
+#: openedx_two_factor/templates/two_factor/_base.html:7
+msgid "Two-factor authentication"
+msgstr "दो-कारक प्रमाणीकरण"
+
+#: openedx_two_factor/templates/two_factor/_base.html:13
+msgid "Account security"
+msgstr "खाता सुरक्षा"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Enter a recovery code"
+msgstr "एक पुनर्प्राप्ति कोड दर्ज करें"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Verify your sign-in"
+msgstr "अपना साइन-इन सत्यापित करें"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Each recovery code can be used only once."
+msgstr "प्रत्येक पुनर्प्राप्ति कोड का उपयोग केवल एक बार किया जा सकता है।"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Enter the six-digit code from your authenticator app."
+msgstr "अपने प्रमाणक ऐप से छह अंकों का कोड दर्ज करें।"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
+msgid "Verify and continue"
+msgstr "सत्यापित करें और जारी रखें"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use authenticator app"
+msgstr "प्रमाणक ऐप का उपयोग करें"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use a recovery code"
+msgstr "पुनर्प्राप्ति कोड का उपयोग करें"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:4
+msgid "Two-factor authentication is active"
+msgstr "दो-कारक प्रमाणीकरण सक्रिय है"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:5
+#, python-format
+msgid ""
+"You are signed in as <strong>%(username)s</strong>. This session has passed "
+"verification."
+msgstr "आप <strong>%(username)s</strong> के रूप में साइन इन हैं। इस सत्र ने सत्यापन पास कर लिया है."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:6
+msgid "Continue to learning"
+msgstr "सीखना जारी रखें"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Generate or view recovery codes"
+msgstr "पुनर्प्राप्ति कोड जनरेट करें या देखें"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Save them somewhere safe in case you lose your phone."
+msgstr "यदि आपका फ़ोन खो जाए तो उन्हें किसी सुरक्षित स्थान पर सहेजें।"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:8
+msgid ""
+"To test again, sign out and sign back in. You will be asked for a fresh code."
+msgstr "दोबारा परीक्षण करने के लिए, साइन आउट करें और वापस साइन इन करें। आपसे एक नया कोड मांगा जाएगा।"
+
+#: two_factor/forms.py
+msgid "Token"
+msgstr "टोकन"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "वर्तमान नीति के तहत आपके खाते के लिए दो-कारक प्रमाणीकरण की आवश्यकता नहीं है।"

@@ -1,0 +1,376 @@
+# Open edX two-factor authentication translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openedx-tutor-2fa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 18:32+0100\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Last-Translator: Open edX\n"
+"Language-Team: Open edX\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: templates/two_factor/core/phone_register.html:5
+msgid "Add Backup Phone"
+msgstr "أضف رقم هاتف إحتياطي"
+
+#: templates/two_factor/core/phone_register.html:8
+msgid ""
+"You'll be adding a backup phone number to your account. This number will be "
+"used if your primary method of registration is not available."
+msgstr "ستضيف رقم هاتف احتياطيًا إلى حسابك. سيتم استخدام هذا الرقم إذا كانت طريقة التسجيل الأساسية الخاصة بك غير متوفرة."
+
+#: templates/two_factor/core/phone_register.html:12
+msgid ""
+"We've sent a token to your phone number. Please enter the token you've "
+"received."
+msgstr "لقد أرسلنا رمزًا مميزًا إلى رقم هاتفك. الرجاء إدخال الرمز الذي تلقيته."
+
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: templates/two_factor/_wizard_actions.html:10
+#: templates/two_factor/_wizard_actions.html:12
+msgid "Back"
+msgstr "الرجوع"
+
+#: templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "التالي"
+
+#: templates/two_factor/twilio/sms_message.html:2
+#, python-format
+msgid "Your OTP token is %(token)s"
+msgstr "رمز OTP الخاص بك هو %(token)s"
+
+#: templates/two_factor/core/login.html:10
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: templates/two_factor/core/login.html:13
+msgid "Enter your credentials."
+msgstr "أدخل البيانات الخاصة بك"
+
+#: templates/two_factor/core/login.html:17
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr "استخدم هذا النموذج لإدخال الرموز المميزة الاحتياطية لتسجيل الدخول. لقد تم إنشاء هذه الرموز المميزة لتتمكن من طباعتها والحفاظ عليها آمنة. الرجاء إدخال أحد هذه الرموز الاحتياطية لتسجيل الدخول إلى حسابك."
+
+#: templates/two_factor/core/login.html:29
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr "أو، بدلاً من ذلك، استخدم إحدى طرق المصادقة الأخرى:"
+
+#: templates/two_factor/core/login.html:48
+msgid "As a last resort, you can use a backup token:"
+msgstr "كملاذ أخير، يمكنك استخدام رمز تفويض احتياطي:"
+
+#: templates/two_factor/core/login.html:51
+msgid "Use Backup Token"
+msgstr "استخدم رمز تفويض إحتياطي"
+
+#: templates/two_factor/core/backup_tokens.html:25
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+msgid "Back to Account Security"
+msgstr "الرجوع لصفحة أمان الحساب"
+
+#: templates/two_factor/core/otp_required.html:18
+#: templates/two_factor/core/setup.html:9
+#: templates/two_factor/core/setup_complete.html:5
+#: templates/two_factor/profile/profile.html:55
+msgid "Enable Two-Factor Authentication"
+msgstr "تفعيل خاصية التحقق من خطوتين"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid "Congratulations, you've successfully enabled two-factor authentication."
+msgstr "تهانينا، لقد نجحت في تمكين المصادقة الثنائية."
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to your primary token "
+"device. To enable account recovery, add a phone number."
+msgstr "ومع ذلك، قد يحدث أنه لا يمكنك الوصول إلى جهاز الرمز المميز الخاص بك. لتمكين استرداد الحساب، أضف رقم هاتف."
+
+#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/profile/profile.html:29
+msgid "Add Phone Number"
+msgstr "أضف رقم هاتف"
+
+#: templates/two_factor/core/backup_tokens.html:5
+#: templates/two_factor/profile/profile.html:32
+msgid "Backup Tokens"
+msgstr "رموز تفويض إحتياطية"
+
+#: templates/two_factor/core/backup_tokens.html:6
+msgid ""
+"Backup tokens can be used when your primary and backup phone numbers aren't "
+"available. The backup tokens below can be used for login verification. If "
+"you've used up all your backup tokens, you can generate a new set of backup "
+"tokens. Only the backup tokens shown below will be valid."
+msgstr "يمكن استخدام الرموز الاحتياطية عندما لا تكون أرقام هاتفك الأساسية والاحتياطية متاحة. يمكن استخدام الرموز الاحتياطية أدناه للتحقق من تسجيل الدخول. إذا استهلكت جميع الرموز المميزة للنسخ الاحتياطي، فيمكنك إنشاء مجموعة جديدة من الرموز المميزة للنسخ الاحتياطي. فقط الرموز الاحتياطية الموضحة أدناه ستكون صالحة."
+
+#: templates/two_factor/core/backup_tokens.html:18
+msgid "Print these tokens and keep them somewhere safe."
+msgstr "الرجاء طباعة رموز التفويض هذه و حفظها في مكان آمن."
+
+#: templates/two_factor/core/backup_tokens.html:20
+msgid "You don't have any backup codes yet."
+msgstr "لا يتوفر لديك أي رموز تفويض إحتياطية إلى الآن."
+
+#: templates/two_factor/core/backup_tokens.html:26
+msgid "Generate Tokens"
+msgstr "إنشاء رموز تفويض"
+
+#: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
+msgid "We are calling your phone right now, please enter the digits you hear."
+msgstr "جاري الإتصال بكم حاليا, الرجاء إدخال الأرقام التي سوف تسمعها."
+
+#: templates/two_factor/core/setup.html:11
+msgid ""
+"You are about to take your account security to the next level. Follow the "
+"steps in this wizard to enable two-factor authentication."
+msgstr "أنت على وشك الارتقاء بأمان حسابك إلى المستوى التالي. اتبع الخطوات الواردة في هذا المعالج لتمكين المصادقة الثنائية."
+
+#: templates/two_factor/core/setup.html:15
+msgid "Please select which authentication method you would like to use."
+msgstr "الرجاء تحديد طريقة المصادقة التي ترغب في استخدامها."
+
+#: templates/two_factor/core/setup.html:18
+msgid ""
+"To start using a token generator, please use your smartphone to scan the QR "
+"code below. For example, use Google Authenticator."
+msgstr "للبدء في استخدام منشئ الرموز المميزة، يرجى استخدام هاتفك الذكي لمسح رمز الاستجابة السريعة أدناه. على سبيل المثال، استخدم Google Authenticator."
+
+#: templates/two_factor/core/setup.html:22
+msgid ""
+"Alternatively you can use the following secret to setup TOTP in your "
+"authenticator or password manager manually."
+msgstr "وبدلاً من ذلك، يمكنك استخدام السر التالي لإعداد TOTP في أداة المصادقة أو مدير كلمات المرور يدويًا."
+
+#: templates/two_factor/core/setup.html:24
+msgid "TOTP Secret:"
+msgstr "سر TOTP:"
+
+#: templates/two_factor/core/setup.html:25
+msgid "Then, enter the token generated by the app."
+msgstr "ثم أدخل الرمز المميز الذي أنشأه التطبيق."
+
+#: templates/two_factor/core/setup.html:28
+msgid ""
+"Please enter the phone number you wish to receive the text messages on. This "
+"number will be validated in the next step."
+msgstr "الرجاء إدخال رقم الهاتف الذي ترغب في تلقي الرسائل النصية عليه. سيتم التحقق من صحة هذا الرقم في الخطوة التالية."
+
+#: templates/two_factor/core/setup.html:32
+msgid ""
+"Please enter the phone number you wish to be called on. This number will be "
+"validated in the next step."
+msgstr "الرجاء إدخال رقم الهاتف الذي ترغب في الاتصال به. سيتم التحقق من صحة هذا الرقم في الخطوة التالية."
+
+#: templates/two_factor/core/setup.html:40
+msgid "We sent you a text message, please enter the tokens we sent."
+msgstr "تم إرسال رسالة نصية لك, الرجاء أدخال رمز التفويض الذي تم إرساله."
+
+#: templates/two_factor/core/setup.html:44
+msgid ""
+"We've encountered an issue with the selected authentication method. Please "
+"go back and verify that you entered your information correctly, try again, "
+"or use a different authentication method instead. If the issue persists, "
+"contact the site administrator."
+msgstr "لقد واجهنا مشكلة في طريقة المصادقة المحددة. يرجى الرجوع والتحقق من أنك أدخلت معلوماتك بشكل صحيح، أو حاول مرة أخرى، أو استخدم طريقة مصادقة مختلفة بدلاً من ذلك. إذا استمرت المشكلة، اتصل بمسؤول الموقع."
+
+#: templates/two_factor/core/setup.html:51
+msgid ""
+"To identify and verify your YubiKey, please insert a token in the field "
+"below. Your YubiKey will be linked to your account."
+msgstr "لتحديد YubiKey والتحقق منه، يرجى إدخال رمز مميز في الحقل أدناه. سيتم ربط YubiKey الخاص بك بحسابك."
+
+#: templates/two_factor/core/otp_required.html:5
+msgid "Permission Denied"
+msgstr "الإذن مرفوض"
+
+#: templates/two_factor/core/otp_required.html:7
+msgid ""
+"The page you requested, enforces users to verify using two-factor "
+"authentication for security reasons. You need to enable these security "
+"features in order to access this page."
+msgstr "الصفحة التي طلبتها، تفرض على المستخدمين التحقق باستخدام المصادقة الثنائية لأسباب أمنية. تحتاج إلى تمكين ميزات الأمان هذه للوصول إلى هذه الصفحة."
+
+#: templates/two_factor/core/otp_required.html:11
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"Two-factor authentication is not enabled for your account. Enable two-factor "
+"authentication for enhanced account security."
+msgstr "لم يتم تمكين المصادقة الثنائية لحسابك. تمكين المصادقة الثنائية لتعزيز أمان الحساب."
+
+#: templates/two_factor/core/otp_required.html:16
+msgid "Go back"
+msgstr "الرجوع"
+
+#: templates/two_factor/profile/profile.html:6
+msgid "Account Security"
+msgstr "أمان الحساب"
+
+#: templates/two_factor/profile/profile.html:9
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr "الطريقة الأساسية: %(primary)s"
+
+#: templates/two_factor/profile/profile.html:12
+msgid "Backup Phone Numbers"
+msgstr "أرقام هواتف إحتياطية"
+
+#: templates/two_factor/profile/profile.html:13
+msgid ""
+"If your primary method is not available, we are able to send backup tokens "
+"to the phone numbers listed below."
+msgstr "إذا لم تكن طريقتك الأساسية متاحة، فيمكننا إرسال رموز احتياطية إلى أرقام الهواتف المدرجة أدناه."
+
+#: templates/two_factor/profile/profile.html:20
+msgid "Are you sure?"
+msgstr "هل أنت متأكد؟"
+
+#: templates/two_factor/profile/profile.html:23
+msgid "Unregister"
+msgstr "إلغاء"
+
+#: templates/two_factor/profile/profile.html:34
+msgid ""
+"If you don't have any device with you, you can access your account using "
+"backup tokens."
+msgstr "إذا لم يكن لديك أي جهاز معك، فيمكنك الوصول إلى حسابك باستخدام الرموز الاحتياطية."
+
+#: templates/two_factor/profile/profile.html:36
+#, python-format
+msgid "You have only one backup token remaining."
+msgid_plural "You have %(counter)s backup tokens remaining."
+msgstr[0] "لديك رمز احتياطي واحد فقط متبقي."
+msgstr[1] "لديك %(counter)s من الرموز الاحتياطية المتبقية."
+msgstr[2] "لديك %(counter)s من الرموز الاحتياطية المتبقية."
+msgstr[3] "لديك %(counter)s من الرموز الاحتياطية المتبقية."
+msgstr[4] "لديك %(counter)s من الرموز الاحتياطية المتبقية."
+msgstr[5] "لديك %(counter)s من الرموز الاحتياطية المتبقية."
+
+#: templates/two_factor/profile/profile.html:43
+msgid "Show Codes"
+msgstr "عرض رموز التفويض"
+
+#: templates/two_factor/profile/profile.html:45
+#: templates/two_factor/profile/profile.html:49
+msgid "Disable Two-Factor Authentication"
+msgstr "تعطيل خاصية التحقق من خطوتين"
+
+#: templates/two_factor/profile/profile.html:46
+msgid ""
+"However we strongly discourage you to do so, you can also disable two-factor "
+"authentication for your account."
+msgstr "ومع ذلك، فإننا لا نشجعك بشدة على القيام بذلك، يمكنك أيضًا تعطيل المصادقة الثنائية لحسابك."
+
+#: templates/two_factor/profile/disable.html:5
+msgid "Disable Two-factor Authentication"
+msgstr "تعطيل خاصية التحقق من خطوتين"
+
+#: templates/two_factor/profile/disable.html:6
+msgid ""
+"You are about to disable two-factor authentication. This weakens your "
+"account security, are you sure?"
+msgstr "أنت على وشك تعطيل المصادقة الثنائية. هذا يضعف أمان حسابك، هل أنت متأكد؟"
+
+#: templates/two_factor/profile/disable.html:12
+msgid "Disable"
+msgstr "تعطيل"
+
+#, python-format
+msgid "Hi, this is %(site_name)s calling. Press any key to continue."
+msgstr "مرحبًا، هذا اتصال %(site_name)s. اضغط على أي مفتاح للمتابعة."
+
+msgid "You didn’t press any keys. Good bye."
+msgstr "لم تضغط على أي مفاتيح. مع السلامة."
+
+msgid "Your token is:"
+msgstr "الرمز الخاص بك هو:"
+
+msgid "Repeat:"
+msgstr "كرر:"
+
+msgid "Good bye."
+msgstr "وداعا."
+
+#: openedx_two_factor/templates/two_factor/_base.html:7
+msgid "Two-factor authentication"
+msgstr "المصادقة الثنائية"
+
+#: openedx_two_factor/templates/two_factor/_base.html:13
+msgid "Account security"
+msgstr "أمان الحساب"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Enter a recovery code"
+msgstr "أدخل رمز الاسترداد"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Verify your sign-in"
+msgstr "تحقق من تسجيل دخولك"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Each recovery code can be used only once."
+msgstr "يمكن استخدام كل رمز استرداد مرة واحدة فقط."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Enter the six-digit code from your authenticator app."
+msgstr "أدخل الرمز المكون من ستة أرقام من تطبيق المصادقة الخاص بك."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
+msgid "Verify and continue"
+msgstr "التحقق والمتابعة"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use authenticator app"
+msgstr "استخدم تطبيق المصادقة"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use a recovery code"
+msgstr "استخدم رمز الاسترداد"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:4
+msgid "Two-factor authentication is active"
+msgstr "المصادقة الثنائية نشطة"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:5
+#, python-format
+msgid ""
+"You are signed in as <strong>%(username)s</strong>. This session has passed "
+"verification."
+msgstr "لقد قمت بتسجيل الدخول باسم <strong>%(username)s</strong>. لقد مرت هذه الجلسة التحقق."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:6
+msgid "Continue to learning"
+msgstr "الاستمرار في التعلم"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Generate or view recovery codes"
+msgstr "إنشاء أو عرض رموز الاسترداد"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Save them somewhere safe in case you lose your phone."
+msgstr "احفظها في مكان آمن في حالة فقدان هاتفك."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:8
+msgid ""
+"To test again, sign out and sign back in. You will be asked for a fresh code."
+msgstr "للاختبار مرة أخرى، قم بتسجيل الخروج ثم تسجيل الدخول مرة أخرى. سيُطلب منك رمزًا جديدًا."
+
+#: two_factor/forms.py
+msgid "Token"
+msgstr "رمز التفويض"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "المصادقة الثنائية غير مطلوبة لحسابك بموجب السياسة الحالية."

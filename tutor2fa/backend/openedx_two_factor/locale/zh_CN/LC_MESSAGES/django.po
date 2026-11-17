@@ -1,0 +1,370 @@
+# Open edX two-factor authentication translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openedx-tutor-2fa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 18:32+0100\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Last-Translator: Open edX\n"
+"Language-Team: Open edX\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: templates/two_factor/core/phone_register.html:5
+msgid "Add Backup Phone"
+msgstr "添加备用手机"
+
+#: templates/two_factor/core/phone_register.html:8
+msgid ""
+"You'll be adding a backup phone number to your account. This number will be "
+"used if your primary method of registration is not available."
+msgstr "您将向您的帐户添加备用电话号码。如果您的主要注册方法不可用，将使用此号码。"
+
+#: templates/two_factor/core/phone_register.html:12
+msgid ""
+"We've sent a token to your phone number. Please enter the token you've "
+"received."
+msgstr "我们已将令牌发送到您的电话号码。请输入您收到的令牌。"
+
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/two_factor/_wizard_actions.html:10
+#: templates/two_factor/_wizard_actions.html:12
+msgid "Back"
+msgstr "后退"
+
+#: templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "下一步"
+
+#: templates/two_factor/twilio/sms_message.html:2
+#, python-format
+msgid "Your OTP token is %(token)s"
+msgstr "您的 OTP 令牌是 %(token)s"
+
+#: templates/two_factor/core/login.html:10
+msgid "Login"
+msgstr "登录"
+
+#: templates/two_factor/core/login.html:13
+msgid "Enter your credentials."
+msgstr "输入您的认证信息。"
+
+#: templates/two_factor/core/login.html:17
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr "使用此表单输入用于登录的备份令牌。这些令牌已生成供您打印和安全保存。请输入这些备用令牌之一以登录您的帐户。"
+
+#: templates/two_factor/core/login.html:29
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr "或者，使用其他身份验证方法之一："
+
+#: templates/two_factor/core/login.html:48
+msgid "As a last resort, you can use a backup token:"
+msgstr "作为应急手段，您可以使用一个备用验证码："
+
+#: templates/two_factor/core/login.html:51
+msgid "Use Backup Token"
+msgstr "使用备用验证码"
+
+#: templates/two_factor/core/backup_tokens.html:25
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+msgid "Back to Account Security"
+msgstr "返回账户安全页面"
+
+#: templates/two_factor/core/otp_required.html:18
+#: templates/two_factor/core/setup.html:9
+#: templates/two_factor/core/setup_complete.html:5
+#: templates/two_factor/profile/profile.html:55
+msgid "Enable Two-Factor Authentication"
+msgstr "启用两步验证"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid "Congratulations, you've successfully enabled two-factor authentication."
+msgstr "恭喜您，您已成功启用双因素身份验证。"
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to your primary token "
+"device. To enable account recovery, add a phone number."
+msgstr "但是，您可能无权访问您的主令牌设备。要启用帐户恢复，请添加电话号码。"
+
+#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/profile/profile.html:29
+msgid "Add Phone Number"
+msgstr "添加电话号码"
+
+#: templates/two_factor/core/backup_tokens.html:5
+#: templates/two_factor/profile/profile.html:32
+msgid "Backup Tokens"
+msgstr "备用验证码"
+
+#: templates/two_factor/core/backup_tokens.html:6
+msgid ""
+"Backup tokens can be used when your primary and backup phone numbers aren't "
+"available. The backup tokens below can be used for login verification. If "
+"you've used up all your backup tokens, you can generate a new set of backup "
+"tokens. Only the backup tokens shown below will be valid."
+msgstr "当您的主要电话号码和备用电话号码不可用时，可以使用备用令牌。下面的备份令牌可用于登录验证。如果您已用完所有备份令牌，您可以生成一组新的备份令牌。只有下面显示的备份令牌才有效。"
+
+#: templates/two_factor/core/backup_tokens.html:18
+msgid "Print these tokens and keep them somewhere safe."
+msgstr "打印这些验证码并将它们保存在安全的地方。"
+
+#: templates/two_factor/core/backup_tokens.html:20
+msgid "You don't have any backup codes yet."
+msgstr "您还没有任何备用验证码。"
+
+#: templates/two_factor/core/backup_tokens.html:26
+msgid "Generate Tokens"
+msgstr "生成验证码"
+
+#: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
+msgid "We are calling your phone right now, please enter the digits you hear."
+msgstr "我们现在正在拨打您的电话，请输入您听到的数字。"
+
+#: templates/two_factor/core/setup.html:11
+msgid ""
+"You are about to take your account security to the next level. Follow the "
+"steps in this wizard to enable two-factor authentication."
+msgstr "您即将把您的帐户安全提升到一个新的水平。按照此向导中的步骤启用双因素身份验证。"
+
+#: templates/two_factor/core/setup.html:15
+msgid "Please select which authentication method you would like to use."
+msgstr "请选择您想要使用的身份验证方法。"
+
+#: templates/two_factor/core/setup.html:18
+msgid ""
+"To start using a token generator, please use your smartphone to scan the QR "
+"code below. For example, use Google Authenticator."
+msgstr "要开始使用令牌生成器，请使用您的智能手机扫描下面的二维码。例如，使用 Google 身份验证器。"
+
+#: templates/two_factor/core/setup.html:22
+msgid ""
+"Alternatively you can use the following secret to setup TOTP in your "
+"authenticator or password manager manually."
+msgstr "或者，您可以使用以下密钥在身份验证器或密码管理器中手动设置 TOTP。"
+
+#: templates/two_factor/core/setup.html:24
+msgid "TOTP Secret:"
+msgstr "托普秘密："
+
+#: templates/two_factor/core/setup.html:25
+msgid "Then, enter the token generated by the app."
+msgstr "然后，输入应用程序生成的令牌。"
+
+#: templates/two_factor/core/setup.html:28
+msgid ""
+"Please enter the phone number you wish to receive the text messages on. This "
+"number will be validated in the next step."
+msgstr "请输入您希望接收短信的电话号码。该数字将在下一步中进行验证。"
+
+#: templates/two_factor/core/setup.html:32
+msgid ""
+"Please enter the phone number you wish to be called on. This number will be "
+"validated in the next step."
+msgstr "请输入您希望拨打的电话号码。该数字将在下一步中进行验证。"
+
+#: templates/two_factor/core/setup.html:40
+msgid "We sent you a text message, please enter the tokens we sent."
+msgstr "我们向您发送了一条短信，请输入我们发送的令牌。"
+
+#: templates/two_factor/core/setup.html:44
+msgid ""
+"We've encountered an issue with the selected authentication method. Please "
+"go back and verify that you entered your information correctly, try again, "
+"or use a different authentication method instead. If the issue persists, "
+"contact the site administrator."
+msgstr "我们遇到了所选身份验证方法的问题。请返回并验证您输入的信息是否正确，然后重试，或使用其他身份验证方法。如果问题仍然存在，请联系站点管理员。"
+
+#: templates/two_factor/core/setup.html:51
+msgid ""
+"To identify and verify your YubiKey, please insert a token in the field "
+"below. Your YubiKey will be linked to your account."
+msgstr "要识别和验证您的 YubiKey，请在下面的字段中插入令牌。您的 YubiKey 将链接到您的帐户。"
+
+#: templates/two_factor/core/otp_required.html:5
+msgid "Permission Denied"
+msgstr "拒绝访问"
+
+#: templates/two_factor/core/otp_required.html:7
+msgid ""
+"The page you requested, enforces users to verify using two-factor "
+"authentication for security reasons. You need to enable these security "
+"features in order to access this page."
+msgstr "出于安全原因，您请求的页面强制用户使用双因素身份验证进行验证。您需要启用这些安全功能才能访问此页面。"
+
+#: templates/two_factor/core/otp_required.html:11
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"Two-factor authentication is not enabled for your account. Enable two-factor "
+"authentication for enhanced account security."
+msgstr "您的帐户未启用双因素身份验证。启用双因素身份验证以增强帐户安全性。"
+
+#: templates/two_factor/core/otp_required.html:16
+msgid "Go back"
+msgstr "返回"
+
+#: templates/two_factor/profile/profile.html:6
+msgid "Account Security"
+msgstr "账户安全"
+
+#: templates/two_factor/profile/profile.html:9
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr "主方法：%(primary)s"
+
+#: templates/two_factor/profile/profile.html:12
+msgid "Backup Phone Numbers"
+msgstr "备用电话号码"
+
+#: templates/two_factor/profile/profile.html:13
+msgid ""
+"If your primary method is not available, we are able to send backup tokens "
+"to the phone numbers listed below."
+msgstr "如果您的主要方法不可用，我们可以将备用令牌发送到下面列出的电话号码。"
+
+#: templates/two_factor/profile/profile.html:20
+msgid "Are you sure?"
+msgstr "你确定吗？"
+
+#: templates/two_factor/profile/profile.html:23
+msgid "Unregister"
+msgstr "未注册"
+
+#: templates/two_factor/profile/profile.html:34
+msgid ""
+"If you don't have any device with you, you can access your account using "
+"backup tokens."
+msgstr "如果您没有携带任何设备，您可以使用备份令牌访问您的帐户。"
+
+#: templates/two_factor/profile/profile.html:36
+#, python-format
+msgid "You have only one backup token remaining."
+msgid_plural "You have %(counter)s backup tokens remaining."
+msgstr[0] "您剩余 %(counter)s 个备用令牌。"
+
+#: templates/two_factor/profile/profile.html:43
+msgid "Show Codes"
+msgstr "显示验证码"
+
+#: templates/two_factor/profile/profile.html:45
+#: templates/two_factor/profile/profile.html:49
+msgid "Disable Two-Factor Authentication"
+msgstr "禁用两步验证"
+
+#: templates/two_factor/profile/profile.html:46
+msgid ""
+"However we strongly discourage you to do so, you can also disable two-factor "
+"authentication for your account."
+msgstr "不过，我们强烈建议您不要这样做，您也可以为您的帐户禁用双因素身份验证。"
+
+#: templates/two_factor/profile/disable.html:5
+msgid "Disable Two-factor Authentication"
+msgstr "禁用两步验证"
+
+#: templates/two_factor/profile/disable.html:6
+msgid ""
+"You are about to disable two-factor authentication. This weakens your "
+"account security, are you sure?"
+msgstr "您即将禁用双因素身份验证。这会削弱您的帐户安全，您确定吗？"
+
+#: templates/two_factor/profile/disable.html:12
+msgid "Disable"
+msgstr "禁用"
+
+#, python-format
+msgid "Hi, this is %(site_name)s calling. Press any key to continue."
+msgstr "您好，这是 %(site_name)s 的电话。按任意键继续。"
+
+msgid "You didn’t press any keys. Good bye."
+msgstr "你没有按任何键。再见。"
+
+msgid "Your token is:"
+msgstr "您的代币是："
+
+msgid "Repeat:"
+msgstr "重复："
+
+msgid "Good bye."
+msgstr "再见。"
+
+#: openedx_two_factor/templates/two_factor/_base.html:7
+msgid "Two-factor authentication"
+msgstr "双因素身份验证"
+
+#: openedx_two_factor/templates/two_factor/_base.html:13
+msgid "Account security"
+msgstr "帐户安全"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Enter a recovery code"
+msgstr "输入恢复代码"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Verify your sign-in"
+msgstr "验证您的登录"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Each recovery code can be used only once."
+msgstr "每个恢复代码只能使用一次。"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Enter the six-digit code from your authenticator app."
+msgstr "输入验证器应用程序中的六位数代码。"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
+msgid "Verify and continue"
+msgstr "验证并继续"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use authenticator app"
+msgstr "使用身份验证器应用程序"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use a recovery code"
+msgstr "使用恢复代码"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:4
+msgid "Two-factor authentication is active"
+msgstr "双因素身份验证已启用"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:5
+#, python-format
+msgid ""
+"You are signed in as <strong>%(username)s</strong>. This session has passed "
+"verification."
+msgstr "您已以 <strong>%(username)s</strong> 身份登录。本次会话已通过验证。"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:6
+msgid "Continue to learning"
+msgstr "继续学习"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Generate or view recovery codes"
+msgstr "生成或查看恢复代码"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Save them somewhere safe in case you lose your phone."
+msgstr "将它们保存在安全的地方，以防您丢失手机。"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:8
+msgid ""
+"To test again, sign out and sign back in. You will be asked for a fresh code."
+msgstr "要再次测试，请注销并重新登录。系统将要求您输入新代码。"
+
+#: two_factor/forms.py
+msgid "Token"
+msgstr "验证码"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "根据当前政策，您的帐户不需要两步身份验证。"

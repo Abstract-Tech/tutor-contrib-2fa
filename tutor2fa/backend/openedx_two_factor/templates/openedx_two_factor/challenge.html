@@ -1,7 +1,8 @@
 {% extends 'two_factor/_base.html' %}
+{% load i18n %}
 {% block content %}
-<h1>{% if recovery %}Enter a recovery code{% else %}Verify your sign-in{% endif %}</h1>
-<p>{% if recovery %}Each recovery code can be used only once.{% else %}Enter the six-digit code from your authenticator app.{% endif %}</p>
-<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">Verify and continue</button></form>
-<p>{% if recovery %}<a href="?">Use authenticator app</a>{% else %}<a href="?recovery=1">Use a recovery code</a>{% endif %}</p>
+<h1>{% if recovery %}{% trans "Enter a recovery code" %}{% else %}{% trans "Verify your sign-in" %}{% endif %}</h1>
+<p>{% if recovery %}{% trans "Each recovery code can be used only once." %}{% else %}{% trans "Enter the six-digit code from your authenticator app." %}{% endif %}</p>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button type="submit">{% trans "Verify and continue" %}</button></form>
+<p>{% if recovery %}<a href="?">{% trans "Use authenticator app" %}</a>{% else %}<a href="?recovery=1">{% trans "Use a recovery code" %}</a>{% endif %}</p>
 {% endblock %}

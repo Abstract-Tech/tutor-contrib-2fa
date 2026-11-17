@@ -1,0 +1,373 @@
+# Open edX two-factor authentication translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openedx-tutor-2fa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 18:32+0100\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Last-Translator: Open edX\n"
+"Language-Team: Open edX\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: templates/two_factor/core/phone_register.html:5
+msgid "Add Backup Phone"
+msgstr "Pievienojiet rezerves tālruni"
+
+#: templates/two_factor/core/phone_register.html:8
+msgid ""
+"You'll be adding a backup phone number to your account. This number will be "
+"used if your primary method of registration is not available."
+msgstr "Jūs savam kontam pievienosit rezerves tālruņa numuru. Šis numurs tiks izmantots, ja jūsu galvenā reģistrācijas metode nav pieejama."
+
+#: templates/two_factor/core/phone_register.html:12
+msgid ""
+"We've sent a token to your phone number. Please enter the token you've "
+"received."
+msgstr "Mēs nosūtījām marķieri uz jūsu tālruņa numuru. Lūdzu, ievadiet saņemto marķieri."
+
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr "Atcelt"
+
+#: templates/two_factor/_wizard_actions.html:10
+#: templates/two_factor/_wizard_actions.html:12
+msgid "Back"
+msgstr "Atpakaļ"
+
+#: templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "Tālāk"
+
+#: templates/two_factor/twilio/sms_message.html:2
+#, python-format
+msgid "Your OTP token is %(token)s"
+msgstr "Jūsu OTP marķieris ir %(token)s"
+
+#: templates/two_factor/core/login.html:10
+msgid "Login"
+msgstr "Pieteikties"
+
+#: templates/two_factor/core/login.html:13
+msgid "Enter your credentials."
+msgstr "Ievadiet savus akreditācijas datus."
+
+#: templates/two_factor/core/login.html:17
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr "Izmantojiet šo veidlapu, lai ievadītu rezerves pilnvaras, lai pieteiktos. Šie marķieri ir ģenerēti, lai jūs varētu drukāt un glabāt to drošībā. Lūdzu, ievadiet vienu no šiem rezerves marķieriem, lai pieteiktos savā kontā."
+
+#: templates/two_factor/core/login.html:29
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr "Vai arī izmantojiet kādu no citām autentifikācijas metodēm:"
+
+#: templates/two_factor/core/login.html:48
+msgid "As a last resort, you can use a backup token:"
+msgstr "Kā pēdējo līdzekli varat izmantot rezerves pilnvaru:"
+
+#: templates/two_factor/core/login.html:51
+msgid "Use Backup Token"
+msgstr "Izmantojiet rezerves marķieri"
+
+#: templates/two_factor/core/backup_tokens.html:25
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+msgid "Back to Account Security"
+msgstr "Atgriezties uz konta drošību"
+
+#: templates/two_factor/core/otp_required.html:18
+#: templates/two_factor/core/setup.html:9
+#: templates/two_factor/core/setup_complete.html:5
+#: templates/two_factor/profile/profile.html:55
+msgid "Enable Two-Factor Authentication"
+msgstr "Iespējot divu faktoru autentifikāciju"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid "Congratulations, you've successfully enabled two-factor authentication."
+msgstr "Apsveicam! Jūs esat veiksmīgi iespējojis divu faktoru autentifikāciju."
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to your primary token "
+"device. To enable account recovery, add a phone number."
+msgstr "Tomēr var gadīties, ka jums nav piekļuves savai primārajai marķiera ierīcei. Lai iespējotu konta atkopšanu, pievienojiet tālruņa numuru."
+
+#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/profile/profile.html:29
+msgid "Add Phone Number"
+msgstr "Pievienojiet tālruņa numuru"
+
+#: templates/two_factor/core/backup_tokens.html:5
+#: templates/two_factor/profile/profile.html:32
+msgid "Backup Tokens"
+msgstr "Rezerves marķieri"
+
+#: templates/two_factor/core/backup_tokens.html:6
+msgid ""
+"Backup tokens can be used when your primary and backup phone numbers aren't "
+"available. The backup tokens below can be used for login verification. If "
+"you've used up all your backup tokens, you can generate a new set of backup "
+"tokens. Only the backup tokens shown below will be valid."
+msgstr "Rezerves marķierus var izmantot, ja jūsu galvenais un rezerves tālruņa numurs nav pieejams. Tālāk norādītos rezerves marķierus var izmantot pieteikšanās pārbaudei. Ja esat iztērējis visus rezerves marķierus, varat ģenerēt jaunu rezerves marķieru kopu. Derīgi būs tikai tālāk norādītie rezerves marķieri."
+
+#: templates/two_factor/core/backup_tokens.html:18
+msgid "Print these tokens and keep them somewhere safe."
+msgstr "Izdrukājiet šos žetonus un glabājiet tos drošā vietā."
+
+#: templates/two_factor/core/backup_tokens.html:20
+msgid "You don't have any backup codes yet."
+msgstr "Jums vēl nav rezerves kodu."
+
+#: templates/two_factor/core/backup_tokens.html:26
+msgid "Generate Tokens"
+msgstr "Ģenerēt marķierus"
+
+#: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
+msgid "We are calling your phone right now, please enter the digits you hear."
+msgstr "Mēs šobrīd zvanām uz jūsu tālruni. Lūdzu, ievadiet dzirdamos ciparus."
+
+#: templates/two_factor/core/setup.html:11
+msgid ""
+"You are about to take your account security to the next level. Follow the "
+"steps in this wizard to enable two-factor authentication."
+msgstr "Jūs gatavojaties paaugstināt sava konta drošību uz nākamo līmeni. Veiciet šajā vednī norādītās darbības, lai iespējotu divu faktoru autentifikāciju."
+
+#: templates/two_factor/core/setup.html:15
+msgid "Please select which authentication method you would like to use."
+msgstr "Lūdzu, atlasiet, kuru autentifikācijas metodi vēlaties izmantot."
+
+#: templates/two_factor/core/setup.html:18
+msgid ""
+"To start using a token generator, please use your smartphone to scan the QR "
+"code below. For example, use Google Authenticator."
+msgstr "Lai sāktu lietot marķieru ģeneratoru, lūdzu, izmantojiet viedtālruni, lai skenētu tālāk redzamo QR kodu. Piemēram, izmantojiet Google autentifikatoru."
+
+#: templates/two_factor/core/setup.html:22
+msgid ""
+"Alternatively you can use the following secret to setup TOTP in your "
+"authenticator or password manager manually."
+msgstr "Varat arī izmantot šo noslēpumu, lai manuāli iestatītu TOTP savā autentifikatorā vai paroļu pārvaldniekā."
+
+#: templates/two_factor/core/setup.html:24
+msgid "TOTP Secret:"
+msgstr "TOTP noslēpums:"
+
+#: templates/two_factor/core/setup.html:25
+msgid "Then, enter the token generated by the app."
+msgstr "Pēc tam ievadiet lietotnes ģenerēto marķieri."
+
+#: templates/two_factor/core/setup.html:28
+msgid ""
+"Please enter the phone number you wish to receive the text messages on. This "
+"number will be validated in the next step."
+msgstr "Lūdzu, ievadiet tālruņa numuru, uz kuru vēlaties saņemt īsziņas. Šis numurs tiks apstiprināts nākamajā darbībā."
+
+#: templates/two_factor/core/setup.html:32
+msgid ""
+"Please enter the phone number you wish to be called on. This number will be "
+"validated in the next step."
+msgstr "Lūdzu, ievadiet tālruņa numuru, uz kuru vēlaties zvanīt. Šis numurs tiks apstiprināts nākamajā darbībā."
+
+#: templates/two_factor/core/setup.html:40
+msgid "We sent you a text message, please enter the tokens we sent."
+msgstr "Mēs nosūtījām jums īsziņu, lūdzu, ievadiet mūsu nosūtītos žetonus."
+
+#: templates/two_factor/core/setup.html:44
+msgid ""
+"We've encountered an issue with the selected authentication method. Please "
+"go back and verify that you entered your information correctly, try again, "
+"or use a different authentication method instead. If the issue persists, "
+"contact the site administrator."
+msgstr "Mums radās problēma ar atlasīto autentifikācijas metodi. Lūdzu, atgriezieties un pārbaudiet, vai esat ievadījis informāciju pareizi, mēģiniet vēlreiz vai izmantojiet citu autentifikācijas metodi. Ja problēma joprojām pastāv, sazinieties ar vietnes administratoru."
+
+#: templates/two_factor/core/setup.html:51
+msgid ""
+"To identify and verify your YubiKey, please insert a token in the field "
+"below. Your YubiKey will be linked to your account."
+msgstr "Lai identificētu un pārbaudītu savu YubiKey, lūdzu, ievietojiet tokenu tālāk esošajā laukā. Jūsu YubiKey tiks saistīts ar jūsu kontu."
+
+#: templates/two_factor/core/otp_required.html:5
+msgid "Permission Denied"
+msgstr "Atļauja liegta"
+
+#: templates/two_factor/core/otp_required.html:7
+msgid ""
+"The page you requested, enforces users to verify using two-factor "
+"authentication for security reasons. You need to enable these security "
+"features in order to access this page."
+msgstr "Jūsu pieprasītā lapa drošības apsvērumu dēļ liek lietotājiem veikt pārbaudi, izmantojot divu faktoru autentifikāciju. Lai piekļūtu šai lapai, jums ir jāiespējo šie drošības līdzekļi."
+
+#: templates/two_factor/core/otp_required.html:11
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"Two-factor authentication is not enabled for your account. Enable two-factor "
+"authentication for enhanced account security."
+msgstr "Jūsu kontam nav iespējota divu faktoru autentifikācija. Iespējojiet divu faktoru autentifikāciju, lai uzlabotu konta drošību."
+
+#: templates/two_factor/core/otp_required.html:16
+msgid "Go back"
+msgstr "Atgriezties"
+
+#: templates/two_factor/profile/profile.html:6
+msgid "Account Security"
+msgstr "Konta drošība"
+
+#: templates/two_factor/profile/profile.html:9
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr "Primārā metode: %(primary)s"
+
+#: templates/two_factor/profile/profile.html:12
+msgid "Backup Phone Numbers"
+msgstr "Rezerves tālruņu numuri"
+
+#: templates/two_factor/profile/profile.html:13
+msgid ""
+"If your primary method is not available, we are able to send backup tokens "
+"to the phone numbers listed below."
+msgstr "Ja jūsu galvenā metode nav pieejama, mēs varam nosūtīt rezerves marķierus uz tālāk norādītajiem tālruņu numuriem."
+
+#: templates/two_factor/profile/profile.html:20
+msgid "Are you sure?"
+msgstr "Vai esat pārliecināts?"
+
+#: templates/two_factor/profile/profile.html:23
+msgid "Unregister"
+msgstr "Atcelt reģistrāciju"
+
+#: templates/two_factor/profile/profile.html:34
+msgid ""
+"If you don't have any device with you, you can access your account using "
+"backup tokens."
+msgstr "Ja jums nav līdzi nevienas ierīces, varat piekļūt savam kontam, izmantojot rezerves pilnvaras."
+
+#: templates/two_factor/profile/profile.html:36
+#, python-format
+msgid "You have only one backup token remaining."
+msgid_plural "You have %(counter)s backup tokens remaining."
+msgstr[0] "Jums ir atlikuši %(counter)s rezerves marķieri."
+msgstr[1] "Jums ir atlikuši %(counter)s rezerves marķieri."
+msgstr[2] "Jums ir atlikuši %(counter)s rezerves marķieri."
+
+#: templates/two_factor/profile/profile.html:43
+msgid "Show Codes"
+msgstr "Rādīt kodus"
+
+#: templates/two_factor/profile/profile.html:45
+#: templates/two_factor/profile/profile.html:49
+msgid "Disable Two-Factor Authentication"
+msgstr "Atspējot divu faktoru autentifikāciju"
+
+#: templates/two_factor/profile/profile.html:46
+msgid ""
+"However we strongly discourage you to do so, you can also disable two-factor "
+"authentication for your account."
+msgstr "Tomēr mēs stingri neiesakām to darīt, varat arī atspējot sava konta divu faktoru autentifikāciju."
+
+#: templates/two_factor/profile/disable.html:5
+msgid "Disable Two-factor Authentication"
+msgstr "Atspējot divu faktoru autentifikāciju"
+
+#: templates/two_factor/profile/disable.html:6
+msgid ""
+"You are about to disable two-factor authentication. This weakens your "
+"account security, are you sure?"
+msgstr "Jūs gatavojaties atspējot divu faktoru autentifikāciju. Tas vājina jūsu konta drošību, vai esat pārliecināts?"
+
+#: templates/two_factor/profile/disable.html:12
+msgid "Disable"
+msgstr "Atspējot"
+
+#, python-format
+msgid "Hi, this is %(site_name)s calling. Press any key to continue."
+msgstr "Sveiki, zvana %(site_name)s. Lai turpinātu, nospiediet jebkuru taustiņu."
+
+msgid "You didn’t press any keys. Good bye."
+msgstr "Jūs nenospiedāt nevienu taustiņu. Ardievu."
+
+msgid "Your token is:"
+msgstr "Jūsu marķieris ir:"
+
+msgid "Repeat:"
+msgstr "Atkārtojiet:"
+
+msgid "Good bye."
+msgstr "Ardievu."
+
+#: openedx_two_factor/templates/two_factor/_base.html:7
+msgid "Two-factor authentication"
+msgstr "Divu faktoru autentifikācija"
+
+#: openedx_two_factor/templates/two_factor/_base.html:13
+msgid "Account security"
+msgstr "Konta drošība"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Enter a recovery code"
+msgstr "Ievadiet atkopšanas kodu"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Verify your sign-in"
+msgstr "Pārbaudiet savu pierakstīšanos"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Each recovery code can be used only once."
+msgstr "Katru atkopšanas kodu var izmantot tikai vienu reizi."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Enter the six-digit code from your authenticator app."
+msgstr "Ievadiet sešciparu kodu no savas autentifikācijas lietotnes."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
+msgid "Verify and continue"
+msgstr "Pārbaudiet un turpiniet"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use authenticator app"
+msgstr "Izmantojiet autentifikatora lietotni"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use a recovery code"
+msgstr "Izmantojiet atkopšanas kodu"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:4
+msgid "Two-factor authentication is active"
+msgstr "Divu faktoru autentifikācija ir aktīva"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:5
+#, python-format
+msgid ""
+"You are signed in as <strong>%(username)s</strong>. This session has passed "
+"verification."
+msgstr "Jūs esat pierakstījies kā <strong>%(username)s</strong>. Šī sesija ir izturējusi verifikāciju."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:6
+msgid "Continue to learning"
+msgstr "Turpiniet mācīties"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Generate or view recovery codes"
+msgstr "Ģenerējiet vai skatiet atkopšanas kodus"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Save them somewhere safe in case you lose your phone."
+msgstr "Saglabājiet tos drošā vietā, ja pazaudējat tālruni."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:8
+msgid ""
+"To test again, sign out and sign back in. You will be asked for a fresh code."
+msgstr "Lai pārbaudītu vēlreiz, izrakstieties un pierakstieties vēlreiz. Jums tiks prasīts jauns kods."
+
+#: two_factor/forms.py
+msgid "Token"
+msgstr "Token"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "Saskaņā ar pašreizējo politiku jūsu kontam nav nepieciešama divu faktoru autentifikācija."

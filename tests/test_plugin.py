@@ -51,9 +51,19 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
     )
     backend = env / "build/openedx/two-factor"
     assert (backend / "pyproject.toml").is_file()
-    template = (backend / "openedx_two_factor/templates/openedx_two_factor/home.html").read_text()
-    assert "{{ request.user.username }}" in template  # Not rendered by Tutor.
-    assert "{% url 'two_factor:backup_tokens' %}" in template
+    home_template = (
+        backend / "openedx_two_factor/templates/openedx_two_factor/home.html"
+    ).read_text()
+    assert "{% blocktrans with username=request.user.username %}" in home_template
+    assert "{% url 'two_factor:backup_tokens' %}" in home_template
+    inactive_template = (
+        backend / "openedx_two_factor/templates/openedx_two_factor/inactive.html"
+    ).read_text()
+    assert "{% load i18n %}" in inactive_template
+    assert (
+        '{% trans "Two-factor authentication is not required for your account under the current '
+        'policy." %}' in inactive_template
+    )
     for service in ("lms", "cms"):
         for mode in ("development", "production"):
             source = (env / f"apps/openedx/settings/{service}/{mode}.py").read_text()

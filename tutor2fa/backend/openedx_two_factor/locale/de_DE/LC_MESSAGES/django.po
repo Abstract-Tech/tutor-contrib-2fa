@@ -1,0 +1,424 @@
+# Open edX two-factor authentication translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openedx-tutor-2fa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 18:32+0100\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Last-Translator: Open edX\n"
+"Language-Team: Open edX\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/two_factor/core/phone_register.html:5
+msgid "Add Backup Phone"
+msgstr "Ersatz-Telefonnummer hinzufügen"
+
+#: templates/two_factor/core/phone_register.html:8
+msgid ""
+"You'll be adding a backup phone number to your account. This number will be "
+"used if your primary method of registration is not available."
+msgstr ""
+"Sie fügen eine Backup-Telefonnummer zu ihrem Account hinzu. Diese Nummer "
+"wird verwenden, sollte ihre andere Authentizierungsmethode nicht verfügbar "
+"sein. "
+
+#: templates/two_factor/core/phone_register.html:12
+msgid ""
+"We've sent a token to your phone number. Please enter the token you've "
+"received."
+msgstr ""
+"Wir haben Ihnen einen Token auf Ihr Telefon gesendet. Bitte geben Sie den "
+"Token ein. "
+
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: templates/two_factor/_wizard_actions.html:10
+#: templates/two_factor/_wizard_actions.html:12
+msgid "Back"
+msgstr "Zurück"
+
+#: templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "Weiter"
+
+#: templates/two_factor/twilio/sms_message.html:2
+#, python-format
+msgid "Your OTP token is %(token)s"
+msgstr "Ihr Einmal-Token ist %(token)s"
+
+#: templates/two_factor/core/login.html:10
+msgid "Login"
+msgstr "Anmelden"
+
+#: templates/two_factor/core/login.html:13
+msgid "Enter your credentials."
+msgstr "Bitte Zugangsdaten eingeben."
+
+#: templates/two_factor/core/login.html:17
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr ""
+"Benutzen Sie dieses Formular um ihre Ersatz-Tokens einzugeben und sich "
+"einzuloggen. "
+
+#: templates/two_factor/core/login.html:29
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr ""
+"Oder nutzen Sie alternativ eine ihrer anderen Authentifikationsmethoden."
+
+#: templates/two_factor/core/login.html:48
+msgid "As a last resort, you can use a backup token:"
+msgstr "Als letztes Mittel kann ein Ersatz-Code verwendet werden:"
+
+#: templates/two_factor/core/login.html:51
+msgid "Use Backup Token"
+msgstr "Ersatz-Code benutzen"
+
+#: templates/two_factor/core/backup_tokens.html:25
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+msgid "Back to Account Security"
+msgstr "Zurück zur Kontosicherheit"
+
+#: templates/two_factor/core/otp_required.html:18
+#: templates/two_factor/core/setup.html:9
+#: templates/two_factor/core/setup_complete.html:5
+#: templates/two_factor/profile/profile.html:55
+msgid "Enable Two-Factor Authentication"
+msgstr "Zwei-Faktor-Authentifizierung aktivieren"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid "Congratulations, you've successfully enabled two-factor authentication."
+msgstr ""
+"Herzlichen Glückwunsch, Sie haben erfolgreich die Zweifaktoren-"
+"Authentifizierung aktiviert."
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to your primary token "
+"device. To enable account recovery, add a phone number."
+msgstr ""
+"Es kann passieren, dass Sie keinen Zugriff auf ihren primären Token haben. "
+"Um die Wiederherstellung ihres Accounts sicherzustellen, geben Sie bitte "
+"eine Telefonnummer an. "
+
+#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/profile/profile.html:29
+msgid "Add Phone Number"
+msgstr "Telefonnummer hinzufügen"
+
+#: templates/two_factor/core/backup_tokens.html:5
+#: templates/two_factor/profile/profile.html:32
+msgid "Backup Tokens"
+msgstr "Ersatz-Codes"
+
+#: templates/two_factor/core/backup_tokens.html:6
+msgid ""
+"Backup tokens can be used when your primary and backup phone numbers aren't "
+"available. The backup tokens below can be used for login verification. If "
+"you've used up all your backup tokens, you can generate a new set of backup "
+"tokens. Only the backup tokens shown below will be valid."
+msgstr ""
+"Ersatz-Tokens können verwendet werden, sollte ihre andere "
+"Authentifizierungsmethode nicht zur Hand sein. Die Ersatz-Tokens unten "
+"können verwendet werden um sich später einzuloggen. Wenn alle Ersatz-Tokens "
+"verbraucht sind, können Sie neue generieren. Nur die Ersatz-Tokens werden "
+"unten gezeigt. "
+
+#: templates/two_factor/core/backup_tokens.html:18
+msgid "Print these tokens and keep them somewhere safe."
+msgstr ""
+"Diese Codes sollten ausgedruckt und an einem sicheren Ort aufbewahrt werden."
+
+#: templates/two_factor/core/backup_tokens.html:20
+msgid "You don't have any backup codes yet."
+msgstr "Keine Ersatz-Codes verfügbar."
+
+#: templates/two_factor/core/backup_tokens.html:26
+msgid "Generate Tokens"
+msgstr "Codes generieren"
+
+#: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
+msgid "We are calling your phone right now, please enter the digits you hear."
+msgstr ""
+"Wir rufen Sie gerade an, bitte geben Sie die Zahlen ein, die Sie hören. "
+
+#: templates/two_factor/core/setup.html:11
+msgid ""
+"You are about to take your account security to the next level. Follow the "
+"steps in this wizard to enable two-factor authentication."
+msgstr ""
+"Two-Factor Authentifizierung verbessert die Sicherheit ihres Accounts "
+"erheblich. Bitte folgen Sie der Schritt-für-Schritt Anleitung."
+
+#: templates/two_factor/core/setup.html:15
+msgid "Please select which authentication method you would like to use."
+msgstr "Bitte wählen Sie ihre Authentifizierungsmethode."
+
+#: templates/two_factor/core/setup.html:18
+msgid ""
+"To start using a token generator, please use your smartphone to scan the QR "
+"code below. For example, use Google Authenticator."
+msgstr ""
+"Um einen Token-Generator zu nutzen, scannen Sie bitte mit Ihrem Smartphone "
+"den QR-Code unten. Verwenden Sie hierfür eine Authenticator App, "
+"beispielsweise Google Authenticator."
+
+#: templates/two_factor/core/setup.html:22
+msgid ""
+"Alternatively you can use the following secret to setup TOTP in your "
+"authenticator or password manager manually."
+msgstr ""
+"Alternativ können Sie den folgenden Geheimschlüssel verwenden, um TOTP in "
+"Ihrem Authenticator oder Passwort-Manager manuell einzurichten."
+
+#: templates/two_factor/core/setup.html:24
+msgid "TOTP Secret:"
+msgstr "TOTP-Schlüssel"
+
+#: templates/two_factor/core/setup.html:25
+msgid "Then, enter the token generated by the app."
+msgstr "Geben Sie danach den Code ein, der von ihrer App erzeugt wurde."
+
+#: templates/two_factor/core/setup.html:28
+msgid ""
+"Please enter the phone number you wish to receive the text messages on. This "
+"number will be validated in the next step."
+msgstr ""
+"Bitte geben Sie die Telefonnummer ein, an die wir die SMS senden sollen. "
+"Diese Nummer wird im nächsten Schritt validiert. "
+
+#: templates/two_factor/core/setup.html:32
+msgid ""
+"Please enter the phone number you wish to be called on. This number will be "
+"validated in the next step."
+msgstr ""
+"Bitte geben Sie die Rufnummer an, unter der wir Sie anrufen sollen. Diese "
+"Nummer wird im nächsten Schritt überprüft. "
+
+#: templates/two_factor/core/setup.html:40
+msgid "We sent you a text message, please enter the tokens we sent."
+msgstr "Wir haben Ihnen eine SMS gesendet. Bitte geben Sie den Code ein."
+
+#: templates/two_factor/core/setup.html:44
+msgid ""
+"We've encountered an issue with the selected authentication method. Please "
+"go back and verify that you entered your information correctly, try again, "
+"or use a different authentication method instead. If the issue persists, "
+"contact the site administrator."
+msgstr ""
+"Wir haben ein Problem mit der ausgewählten Authentifizierungsmethode "
+"entdeckt. Bitte gehen sie zurück, kontrollieren sie die Angaben und "
+"probieren Sie es erneut. Alternativ können Sie eine andere "
+"Authentifizierungsmethode verwenden. Wenn das Problem weiterhin besteht, "
+"kontaktieren Sie bitte den Administrator. "
+
+#: templates/two_factor/core/setup.html:51
+msgid ""
+"To identify and verify your YubiKey, please insert a token in the field "
+"below. Your YubiKey will be linked to your account."
+msgstr ""
+"Bitte geben Sie den Token im unteren Feld an, um ihren Yubikey zu "
+"identifizieren und zu verifizieren. Ihr YubiKey wird mit dem Account "
+"verbunden. "
+
+#: templates/two_factor/core/otp_required.html:5
+msgid "Permission Denied"
+msgstr "Zugriff verweigert"
+
+#: templates/two_factor/core/otp_required.html:7
+msgid ""
+"The page you requested, enforces users to verify using two-factor "
+"authentication for security reasons. You need to enable these security "
+"features in order to access this page."
+msgstr ""
+"Die angeforderte Seite erwartet eine Verifizierung mit Two-Factor "
+"Authentifizierung. Sie müssen diese Sicherheitsfunktion aktivieren, um "
+"Zugriff zu erhalten. "
+
+#: templates/two_factor/core/otp_required.html:11
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"Two-factor authentication is not enabled for your account. Enable two-factor "
+"authentication for enhanced account security."
+msgstr ""
+"Two-Factor Authentifizierung ist nicht aktiviert für Ihren Account. "
+"Aktivieren Sie jetzt Two-Factor Authentifizierung um die Sicherheit Ihres "
+"Accounts zu erhöhen. "
+
+#: templates/two_factor/core/otp_required.html:16
+msgid "Go back"
+msgstr "Zurück"
+
+#: templates/two_factor/profile/profile.html:6
+msgid "Account Security"
+msgstr "Kontosicherheit"
+
+#: templates/two_factor/profile/profile.html:9
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr "Primäre Methode: %(primary)s"
+
+#: templates/two_factor/profile/profile.html:12
+msgid "Backup Phone Numbers"
+msgstr "Ersatz-Telefonnummern"
+
+#: templates/two_factor/profile/profile.html:13
+msgid ""
+"If your primary method is not available, we are able to send backup tokens "
+"to the phone numbers listed below."
+msgstr ""
+"Wenn ihre primäre Authentifizierungsmethode nicht zur Verfügung steht, "
+"können wir ihnen Ersatz-Tokens an die Telefonnummern unten senden. "
+
+#: templates/two_factor/profile/profile.html:20
+msgid "Are you sure?"
+msgstr "Sind Sie sicher?"
+
+#: templates/two_factor/profile/profile.html:23
+msgid "Unregister"
+msgstr "Löschen"
+
+#: templates/two_factor/profile/profile.html:34
+msgid ""
+"If you don't have any device with you, you can access your account using "
+"backup tokens."
+msgstr ""
+"Wenn Sie kein Gerät bei sich haben sollten, dann können Sie einen Backup "
+"Token zum Login verwenden. "
+
+#: templates/two_factor/profile/profile.html:36
+#, python-format
+msgid "You have only one backup token remaining."
+msgid_plural "You have %(counter)s backup tokens remaining."
+msgstr[0] "Sie haben noch einen verbleibenden Backup-Token."
+msgstr[1] "Sie haben noch %(counter)s verbleibende Backup-Token."
+
+#: templates/two_factor/profile/profile.html:43
+msgid "Show Codes"
+msgstr "Codes anzeigen"
+
+#: templates/two_factor/profile/profile.html:45
+#: templates/two_factor/profile/profile.html:49
+msgid "Disable Two-Factor Authentication"
+msgstr "Zwei-Faktor-Authentifizierung deaktivieren"
+
+#: templates/two_factor/profile/profile.html:46
+msgid ""
+"However we strongly discourage you to do so, you can also disable two-factor "
+"authentication for your account."
+msgstr ""
+"Wir raten Ihnen davon ab die Two-Factor Authentifizierung zu deaktivieren, "
+"aber Sie können sie jederzeit deaktivieren. "
+
+#: templates/two_factor/profile/disable.html:5
+msgid "Disable Two-factor Authentication"
+msgstr "Zwei-Faktor-Authentifizierung deaktivieren"
+
+#: templates/two_factor/profile/disable.html:6
+msgid ""
+"You are about to disable two-factor authentication. This weakens your "
+"account security, are you sure?"
+msgstr ""
+"Sie sind dabei die Zweifaktoren Authentifizierung zu deaktivieren. Dies "
+"schwächt die Sicherheit ihres Accounts. Sind Sie sicher?"
+
+#: templates/two_factor/profile/disable.html:12
+msgid "Disable"
+msgstr "Deaktivieren"
+
+#, python-format
+msgid "Hi, this is %(site_name)s calling. Press any key to continue."
+msgstr "Hallo, hier ruft %(site_name)s an. Drücken Sie eine beliebige Taste, um fortzufahren."
+
+msgid "You didn’t press any keys. Good bye."
+msgstr "Sie haben keine Tasten gedrückt. Auf Wiedersehen."
+
+msgid "Your token is:"
+msgstr "Ihr Token ist:"
+
+msgid "Repeat:"
+msgstr "Wiederholen:"
+
+msgid "Good bye."
+msgstr "Auf Wiedersehen."
+
+#: openedx_two_factor/templates/two_factor/_base.html:7
+msgid "Two-factor authentication"
+msgstr "Zwei-Faktor-Authentifizierung"
+
+#: openedx_two_factor/templates/two_factor/_base.html:13
+msgid "Account security"
+msgstr "Kontosicherheit"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Enter a recovery code"
+msgstr "Geben Sie einen Wiederherstellungscode ein"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Verify your sign-in"
+msgstr "Überprüfen Sie Ihre Anmeldung"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Each recovery code can be used only once."
+msgstr "Jeder Wiederherstellungscode kann nur einmal verwendet werden."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Enter the six-digit code from your authenticator app."
+msgstr "Geben Sie den sechsstelligen Code aus Ihrer Authentifizierungs-App ein."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
+msgid "Verify and continue"
+msgstr "Überprüfen und fortfahren"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use authenticator app"
+msgstr "Verwenden Sie die Authentifizierungs-App"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use a recovery code"
+msgstr "Verwenden Sie einen Wiederherstellungscode"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:4
+msgid "Two-factor authentication is active"
+msgstr "Die Zwei-Faktor-Authentifizierung ist aktiv"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:5
+#, python-format
+msgid ""
+"You are signed in as <strong>%(username)s</strong>. This session has passed "
+"verification."
+msgstr "Sie sind angemeldet als <strong>%(username)s</strong>. Diese Sitzung hat die Überprüfung bestanden."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:6
+msgid "Continue to learning"
+msgstr "Lernen Sie weiter"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Generate or view recovery codes"
+msgstr "Wiederherstellungscodes generieren oder anzeigen"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Save them somewhere safe in case you lose your phone."
+msgstr "Bewahren Sie sie an einem sicheren Ort auf, für den Fall, dass Sie Ihr Telefon verlieren."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:8
+msgid ""
+"To test again, sign out and sign back in. You will be asked for a fresh code."
+msgstr "Um den Test erneut durchzuführen, melden Sie sich ab und wieder an. Sie werden nach einem neuen Code gefragt."
+
+#: two_factor/forms.py
+msgid "Token"
+msgstr "Token"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "Gemäß der aktuellen Richtlinie ist für Ihr Konto keine Zwei-Faktor-Authentifizierung erforderlich."

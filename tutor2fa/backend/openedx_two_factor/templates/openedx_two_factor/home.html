@@ -1,8 +1,9 @@
 {% extends 'two_factor/_base.html' %}
+{% load i18n %}
 {% block content %}
-<h1>Two-factor authentication is active</h1>
-<p>You are signed in as <strong>{{ request.user.username }}</strong>. This session has passed verification.</p>
-<p><a class="btn" href="/dashboard">Continue to learning</a></p>
-<p><a href="{% url 'two_factor:backup_tokens' %}">Generate or view recovery codes</a>. Save them somewhere safe in case you lose your phone.</p>
-<p>To test again, sign out and sign back in. You will be asked for a fresh code.</p>
+<h1>{% trans "Two-factor authentication is active" %}</h1>
+<p>{% blocktrans with username=request.user.username %}You are signed in as <strong>{{ username }}</strong>. This session has passed verification.{% endblocktrans %}</p>
+<p><a class="btn" href="/dashboard">{% trans "Continue to learning" %}</a></p>
+<p><a href="{% url 'two_factor:backup_tokens' %}">{% trans "Generate or view recovery codes" %}</a>. {% trans "Save them somewhere safe in case you lose your phone." %}</p>
+<p>{% trans "To test again, sign out and sign back in. You will be asked for a fresh code." %}</p>
 {% endblock %}

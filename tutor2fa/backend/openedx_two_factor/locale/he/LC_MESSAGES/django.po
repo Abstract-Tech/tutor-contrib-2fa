@@ -1,0 +1,373 @@
+# Open edX two-factor authentication translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openedx-tutor-2fa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 18:32+0100\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Last-Translator: Open edX\n"
+"Language-Team: Open edX\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
+"1 == 0) ? 1: 2;\n"
+
+#: templates/two_factor/core/phone_register.html:5
+msgid "Add Backup Phone"
+msgstr "הוסף טלפון גיבוי"
+
+#: templates/two_factor/core/phone_register.html:8
+msgid ""
+"You'll be adding a backup phone number to your account. This number will be "
+"used if your primary method of registration is not available."
+msgstr "אתה תוסיף מספר טלפון לגיבוי לחשבון שלך. מספר זה ישמש אם שיטת הרישום העיקרית שלך אינה זמינה."
+
+#: templates/two_factor/core/phone_register.html:12
+msgid ""
+"We've sent a token to your phone number. Please enter the token you've "
+"received."
+msgstr "שלחנו אסימון למספר הטלפון שלך. אנא הזן את האסימון שקיבלת."
+
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr "ביטול"
+
+#: templates/two_factor/_wizard_actions.html:10
+#: templates/two_factor/_wizard_actions.html:12
+msgid "Back"
+msgstr "חזרה"
+
+#: templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "הבא"
+
+#: templates/two_factor/twilio/sms_message.html:2
+#, python-format
+msgid "Your OTP token is %(token)s"
+msgstr "אסימון ה-OTP שלך הוא %(token)s"
+
+#: templates/two_factor/core/login.html:10
+msgid "Login"
+msgstr "כניסה"
+
+#: templates/two_factor/core/login.html:13
+msgid "Enter your credentials."
+msgstr "הכנס את האישורים שלך."
+
+#: templates/two_factor/core/login.html:17
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr "השתמש בטופס זה להזנת אסימוני גיבוי לצורך התחברות. אסימונים אלה נוצרו כדי שתוכל להדפיס ולשמור על בטיחותך. אנא הזן אחד מאותם אסימוני גיבוי כדי להתחבר לחשבון שלך."
+
+#: templates/two_factor/core/login.html:29
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr "לחלופין, השתמש באחת משיטות האימות האחרות שלך:"
+
+#: templates/two_factor/core/login.html:48
+msgid "As a last resort, you can use a backup token:"
+msgstr "כברירה האחרונה, קיימת אפשרות להשתמש בטוקן גיבוי:"
+
+#: templates/two_factor/core/login.html:51
+msgid "Use Backup Token"
+msgstr "להשתמש בטוקני גיבוי"
+
+#: templates/two_factor/core/backup_tokens.html:25
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+msgid "Back to Account Security"
+msgstr "חזור לאבטחת חשבון"
+
+#: templates/two_factor/core/otp_required.html:18
+#: templates/two_factor/core/setup.html:9
+#: templates/two_factor/core/setup_complete.html:5
+#: templates/two_factor/profile/profile.html:55
+msgid "Enable Two-Factor Authentication"
+msgstr "אפשר אותנטיקציה דו-שלבית"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid "Congratulations, you've successfully enabled two-factor authentication."
+msgstr "מזל טוב, הפעלת בהצלחה אימות דו-גורמי."
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to your primary token "
+"device. To enable account recovery, add a phone number."
+msgstr "עם זאת, ייתכן שאין לך גישה למכשיר האסימון הראשי שלך. כדי לאפשר שחזור חשבון, הוסף מספר טלפון."
+
+#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/profile/profile.html:29
+msgid "Add Phone Number"
+msgstr "להוסיף מספר טלפון"
+
+#: templates/two_factor/core/backup_tokens.html:5
+#: templates/two_factor/profile/profile.html:32
+msgid "Backup Tokens"
+msgstr "טוקנז גיבוי"
+
+#: templates/two_factor/core/backup_tokens.html:6
+msgid ""
+"Backup tokens can be used when your primary and backup phone numbers aren't "
+"available. The backup tokens below can be used for login verification. If "
+"you've used up all your backup tokens, you can generate a new set of backup "
+"tokens. Only the backup tokens shown below will be valid."
+msgstr "ניתן להשתמש באסימוני גיבוי כאשר מספרי הטלפון הראשיים והגיבוי אינם זמינים. ניתן להשתמש באסימוני הגיבוי שלהלן לאימות כניסה. אם השתמשת בכל אסימוני הגיבוי שלך, תוכל ליצור קבוצה חדשה של אסימוני גיבוי. רק אסימוני הגיבוי המוצגים להלן יהיו תקפים."
+
+#: templates/two_factor/core/backup_tokens.html:18
+msgid "Print these tokens and keep them somewhere safe."
+msgstr "הדפס טוקנז אלה ושמור אותם במקום בטוח."
+
+#: templates/two_factor/core/backup_tokens.html:20
+msgid "You don't have any backup codes yet."
+msgstr "עדיין אין לך קודי גיבוי."
+
+#: templates/two_factor/core/backup_tokens.html:26
+msgid "Generate Tokens"
+msgstr "ייצר טוקנז"
+
+#: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
+msgid "We are calling your phone right now, please enter the digits you hear."
+msgstr "אנחנו מתקשרים לטלפון שלך עכשיו, בבקשה הקלד את הספרות שאתה שומע."
+
+#: templates/two_factor/core/setup.html:11
+msgid ""
+"You are about to take your account security to the next level. Follow the "
+"steps in this wizard to enable two-factor authentication."
+msgstr "אתה עומד לקחת את אבטחת החשבון שלך לשלב הבא. בצע את השלבים באשף זה כדי לאפשר אימות דו-גורמי."
+
+#: templates/two_factor/core/setup.html:15
+msgid "Please select which authentication method you would like to use."
+msgstr "אנא בחר באיזו שיטת אימות תרצה להשתמש."
+
+#: templates/two_factor/core/setup.html:18
+msgid ""
+"To start using a token generator, please use your smartphone to scan the QR "
+"code below. For example, use Google Authenticator."
+msgstr "כדי להתחיל להשתמש במחולל אסימונים, השתמש בסמארטפון שלך כדי לסרוק את קוד ה-QR למטה. לדוגמה, השתמש ב-Google Authenticator."
+
+#: templates/two_factor/core/setup.html:22
+msgid ""
+"Alternatively you can use the following secret to setup TOTP in your "
+"authenticator or password manager manually."
+msgstr "לחלופין, תוכל להשתמש בסוד הבא כדי להגדיר TOTP במאמת או במנהל הסיסמאות שלך באופן ידני."
+
+#: templates/two_factor/core/setup.html:24
+msgid "TOTP Secret:"
+msgstr "סוד TOTP:"
+
+#: templates/two_factor/core/setup.html:25
+msgid "Then, enter the token generated by the app."
+msgstr "לאחר מכן, הזן את האסימון שנוצר על ידי האפליקציה."
+
+#: templates/two_factor/core/setup.html:28
+msgid ""
+"Please enter the phone number you wish to receive the text messages on. This "
+"number will be validated in the next step."
+msgstr "נא להזין את מספר הטלפון שבו ברצונך לקבל את הודעות הטקסט. מספר זה יאושר בשלב הבא."
+
+#: templates/two_factor/core/setup.html:32
+msgid ""
+"Please enter the phone number you wish to be called on. This number will be "
+"validated in the next step."
+msgstr "נא להזין את מספר הטלפון שאליו ברצונך להתקשר. מספר זה יאושר בשלב הבא."
+
+#: templates/two_factor/core/setup.html:40
+msgid "We sent you a text message, please enter the tokens we sent."
+msgstr "שלחנו אליך הודעת טקסט, אנא הקלד את הטוקנז שנשלחו."
+
+#: templates/two_factor/core/setup.html:44
+msgid ""
+"We've encountered an issue with the selected authentication method. Please "
+"go back and verify that you entered your information correctly, try again, "
+"or use a different authentication method instead. If the issue persists, "
+"contact the site administrator."
+msgstr "נתקלנו בבעיה בשיטת האימות שנבחרה. אנא חזור לאחור וודא שהזנת את המידע שלך כהלכה, נסה שוב, או השתמש בשיטת אימות אחרת במקום זאת. אם הבעיה נמשכת, פנה למנהל האתר."
+
+#: templates/two_factor/core/setup.html:51
+msgid ""
+"To identify and verify your YubiKey, please insert a token in the field "
+"below. Your YubiKey will be linked to your account."
+msgstr "כדי לזהות ולאמת את YubiKey שלך, אנא הכנס אסימון בשדה למטה. YubiKey שלך יקושר לחשבון שלך."
+
+#: templates/two_factor/core/otp_required.html:5
+msgid "Permission Denied"
+msgstr "הרשאה נדחתה"
+
+#: templates/two_factor/core/otp_required.html:7
+msgid ""
+"The page you requested, enforces users to verify using two-factor "
+"authentication for security reasons. You need to enable these security "
+"features in order to access this page."
+msgstr "הדף שביקשת, אוכף משתמשים לאמת באמצעות אימות דו-גורמי מטעמי אבטחה. עליך להפעיל את תכונות האבטחה הללו כדי לגשת לדף זה."
+
+#: templates/two_factor/core/otp_required.html:11
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"Two-factor authentication is not enabled for your account. Enable two-factor "
+"authentication for enhanced account security."
+msgstr "אימות דו-שלבי אינו מופעל עבור חשבונך. אפשר אימות דו-גורמי לאבטחת חשבון משופרת."
+
+#: templates/two_factor/core/otp_required.html:16
+msgid "Go back"
+msgstr "חזרה"
+
+#: templates/two_factor/profile/profile.html:6
+msgid "Account Security"
+msgstr "אבטחת חשבון"
+
+#: templates/two_factor/profile/profile.html:9
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr "השיטה העיקרית: %(primary)s"
+
+#: templates/two_factor/profile/profile.html:12
+msgid "Backup Phone Numbers"
+msgstr "מספרי טלפון גיבוי"
+
+#: templates/two_factor/profile/profile.html:13
+msgid ""
+"If your primary method is not available, we are able to send backup tokens "
+"to the phone numbers listed below."
+msgstr "אם השיטה הראשית שלך אינה זמינה, אנו יכולים לשלוח אסימוני גיבוי למספרי הטלפון המפורטים להלן."
+
+#: templates/two_factor/profile/profile.html:20
+msgid "Are you sure?"
+msgstr "אתה בטוח?"
+
+#: templates/two_factor/profile/profile.html:23
+msgid "Unregister"
+msgstr "בטל את הרישום"
+
+#: templates/two_factor/profile/profile.html:34
+msgid ""
+"If you don't have any device with you, you can access your account using "
+"backup tokens."
+msgstr "אם אין לך מכשיר כלשהו איתך, תוכל לגשת לחשבון שלך באמצעות אסימוני גיבוי."
+
+#: templates/two_factor/profile/profile.html:36
+#, python-format
+msgid "You have only one backup token remaining."
+msgid_plural "You have %(counter)s backup tokens remaining."
+msgstr[0] "נשאר לך רק אסימון גיבוי אחד."
+msgstr[1] "נותרו לך %(counter)s אסימוני גיבוי."
+msgstr[2] "נותרו לך %(counter)s אסימוני גיבוי."
+
+#: templates/two_factor/profile/profile.html:43
+msgid "Show Codes"
+msgstr "הצג את הקודים"
+
+#: templates/two_factor/profile/profile.html:45
+#: templates/two_factor/profile/profile.html:49
+msgid "Disable Two-Factor Authentication"
+msgstr "בטל אותנטיקציה דו-שלבית"
+
+#: templates/two_factor/profile/profile.html:46
+msgid ""
+"However we strongly discourage you to do so, you can also disable two-factor "
+"authentication for your account."
+msgstr "עם זאת, אנו ממליצים מאוד לעשות זאת, תוכל גם להשבית אימות דו-גורמי עבור חשבונך."
+
+#: templates/two_factor/profile/disable.html:5
+msgid "Disable Two-factor Authentication"
+msgstr "בטל אותנטיקציה דו-שלבית"
+
+#: templates/two_factor/profile/disable.html:6
+msgid ""
+"You are about to disable two-factor authentication. This weakens your "
+"account security, are you sure?"
+msgstr "אתה עומד להשבית אימות דו-גורמי. זה מחליש את אבטחת החשבון שלך, אתה בטוח?"
+
+#: templates/two_factor/profile/disable.html:12
+msgid "Disable"
+msgstr "בטל"
+
+#, python-format
+msgid "Hi, this is %(site_name)s calling. Press any key to continue."
+msgstr "היי, זה %(site_name)s מתקשר. לחץ על מקש כלשהו כדי להמשיך."
+
+msgid "You didn’t press any keys. Good bye."
+msgstr "לא לחצת על אף מקש. להתראות."
+
+msgid "Your token is:"
+msgstr "האסימון שלך הוא:"
+
+msgid "Repeat:"
+msgstr "חזור:"
+
+msgid "Good bye."
+msgstr "להתראות."
+
+#: openedx_two_factor/templates/two_factor/_base.html:7
+msgid "Two-factor authentication"
+msgstr "אימות דו-שלבי"
+
+#: openedx_two_factor/templates/two_factor/_base.html:13
+msgid "Account security"
+msgstr "אבטחת חשבון"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Enter a recovery code"
+msgstr "הזן קוד שחזור"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Verify your sign-in"
+msgstr "אמת את הכניסה שלך"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Each recovery code can be used only once."
+msgstr "ניתן להשתמש בכל קוד שחזור פעם אחת בלבד."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Enter the six-digit code from your authenticator app."
+msgstr "הזן את הקוד בן שש הספרות מאפליקציית המאמת שלך."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
+msgid "Verify and continue"
+msgstr "אמת והמשך"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use authenticator app"
+msgstr "השתמש באפליקציית המאמת"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use a recovery code"
+msgstr "השתמש בקוד שחזור"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:4
+msgid "Two-factor authentication is active"
+msgstr "אימות דו-שלבי פעיל"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:5
+#, python-format
+msgid ""
+"You are signed in as <strong>%(username)s</strong>. This session has passed "
+"verification."
+msgstr "אתה מחובר בתור <strong>%(username)s</strong>. הפגישה הזו עברה את האימות."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:6
+msgid "Continue to learning"
+msgstr "המשך ללמוד"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Generate or view recovery codes"
+msgstr "צור או הצג קודי שחזור"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Save them somewhere safe in case you lose your phone."
+msgstr "שמור אותם במקום בטוח למקרה שתאבד את הטלפון שלך."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:8
+msgid ""
+"To test again, sign out and sign back in. You will be asked for a fresh code."
+msgstr "כדי לבדוק שוב, צא והיכנס שוב. תתבקש להזין קוד חדש."
+
+#: two_factor/forms.py
+msgid "Token"
+msgstr "טוקן"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "אימות דו-שלבי אינו נדרש עבור חשבונך במסגרת המדיניות הנוכחית."

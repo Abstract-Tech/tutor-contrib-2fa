@@ -1,0 +1,445 @@
+/*
+ * Self-contained styles for every page that extends two_factor/_base.html.
+ *
+ * Projects can customize the appearance without depending on Indigo by
+ * overriding --two-factor-primary on body.two-factor-page or by replacing
+ * this stylesheet in their own theme.
+ */
+body.two-factor-page {
+  --two-factor-primary: #000000;
+  --two-factor-error: #b42318;
+  --two-factor-error-background: #fef3f2;
+  --two-factor-warning: #b54708;
+  --two-factor-warning-background: #fffaeb;
+  --two-factor-success: #027a48;
+  --two-factor-success-background: #ecfdf3;
+
+  min-height: 100vh;
+  margin: 0;
+  padding: 32px 16px;
+  box-sizing: border-box;
+  background: transparent;
+  color: var(--two-factor-primary);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body.two-factor-page,
+body.two-factor-page *,
+body.two-factor-page *::before,
+body.two-factor-page *::after {
+  box-sizing: border-box;
+}
+
+body.two-factor-page .two-factor-card {
+  width: 100% !important;
+  max-width: 920px !important;
+  min-width: 0;
+  margin: 0 auto !important;
+  padding: clamp(24px, 5vw, 48px) !important;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
+  border-radius: 0;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
+}
+
+body.two-factor-page .two-factor-card,
+body.two-factor-page .two-factor-card > * {
+  min-width: 0;
+}
+
+/* django-two-factor-auth adds Bootstrap wrappers around some wizard pages. */
+body.two-factor-page .two-factor-card .container,
+body.two-factor-page .two-factor-card .row,
+body.two-factor-page .two-factor-card [class*="col-"] {
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  flex: none !important;
+}
+
+body.two-factor-page .two-factor-card > p:first-child {
+  margin: 0 0 40px;
+  color: color-mix(in srgb, var(--two-factor-primary) 70%, transparent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+body.two-factor-page .two-factor-card h1,
+body.two-factor-page .two-factor-card h2,
+body.two-factor-page .two-factor-card h3 {
+  margin-top: 0;
+  color: var(--two-factor-primary);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: start !important;
+  overflow-wrap: anywhere;
+}
+
+body.two-factor-page .two-factor-card h1 {
+  margin-bottom: 24px;
+  font-size: clamp(2rem, 4vw, 2.75rem) !important;
+}
+
+body.two-factor-page .two-factor-card h2 {
+  margin-top: 32px;
+  font-size: 1.5rem;
+}
+
+body.two-factor-page .two-factor-card h3 {
+  margin-top: 32px;
+  font-size: 1.125rem;
+}
+
+body.two-factor-page .two-factor-card p {
+  margin: 0 0 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+body.two-factor-page .two-factor-card a {
+  max-width: 100%;
+  color: var(--two-factor-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+body.two-factor-page .two-factor-card a:hover,
+body.two-factor-page .two-factor-card a:focus {
+  color: color-mix(in srgb, var(--two-factor-primary) 82%, white);
+}
+
+body.two-factor-page .two-factor-card img {
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  margin: 28px 0 32px;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
+}
+
+body.two-factor-page .two-factor-card form {
+  width: 100%;
+  max-width: 100%;
+  margin: 28px 0 0 !important;
+}
+
+/* Hidden CSRF and wizard helper fields must never become visible controls. */
+body.two-factor-page .two-factor-card form input[type="hidden"],
+body.two-factor-page .two-factor-card form input[hidden],
+body.two-factor-page .two-factor-card form input[type="submit"][hidden],
+body.two-factor-page .two-factor-card form > input[type="submit"][value=""],
+body.two-factor-page .two-factor-card form > input[type="submit"][value="hidden"],
+body.two-factor-page .two-factor-card form > input[type="submit"][aria-hidden="true"] {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  visibility: hidden !important;
+}
+
+body.two-factor-page .two-factor-card form table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 28px !important;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+body.two-factor-page .two-factor-card form th,
+body.two-factor-page .two-factor-card form td {
+  padding: 8px 0;
+  border: 0;
+  text-align: start;
+  vertical-align: middle;
+}
+
+body.two-factor-page .two-factor-card form th {
+  width: 120px !important;
+  color: var(--two-factor-primary);
+  font-weight: 600;
+}
+
+body.two-factor-page .two-factor-card label {
+  display: inline-block;
+  color: var(--two-factor-primary);
+  font-style: normal;
+  font-weight: 600;
+}
+
+body.two-factor-page .two-factor-card form input:not([type="hidden"]):not([type="submit"]),
+body.two-factor-page .two-factor-card form select,
+body.two-factor-page .two-factor-card form textarea {
+  width: 320px !important;
+  max-width: 100% !important;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--two-factor-primary) 40%, transparent);
+  border-radius: 0.3rem;
+  background: #ffffff;
+  color: var(--two-factor-primary);
+  font: inherit;
+}
+
+body.two-factor-page .two-factor-card form input:not([type="hidden"]):not([type="submit"]):focus,
+body.two-factor-page .two-factor-card form select:focus,
+body.two-factor-page .two-factor-card form textarea:focus {
+  border-color: var(--two-factor-primary);
+  outline: 2px solid color-mix(in srgb, var(--two-factor-primary) 25%, transparent);
+  outline-offset: 2px;
+}
+
+/* Keep action controls compact and consistent across upstream templates. */
+body.two-factor-page .two-factor-card form > .btn:not(.btn-link),
+body.two-factor-page .two-factor-card form > a.btn:not(.btn-link),
+body.two-factor-page .two-factor-card form > button:not(.btn-link),
+body.two-factor-page .two-factor-card form > input[type="submit"]:not([hidden]),
+body.two-factor-page .two-factor-card form button.btn:not(.btn-link) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  width: auto !important;
+  max-width: 100%;
+  min-height: 44px;
+  margin-block: 4px;
+  margin-inline: 0 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--two-factor-primary);
+  border-radius: 0.3rem;
+  background: var(--two-factor-primary);
+  box-shadow: none;
+  color: #ffffff;
+  font: 600 0.95rem/1.2 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+body.two-factor-page .two-factor-card form > .btn:not(.btn-link):not(.btn-secondary):hover,
+body.two-factor-page .two-factor-card form > .btn:not(.btn-link):not(.btn-secondary):focus,
+body.two-factor-page .two-factor-card form > a.btn:not(.btn-link):not(.btn-secondary):hover,
+body.two-factor-page .two-factor-card form > a.btn:not(.btn-link):not(.btn-secondary):focus,
+body.two-factor-page .two-factor-card form > button:not(.btn-link):not(.btn-secondary):hover,
+body.two-factor-page .two-factor-card form > button:not(.btn-link):not(.btn-secondary):focus,
+body.two-factor-page .two-factor-card form > input[type="submit"]:not([hidden]):hover,
+body.two-factor-page .two-factor-card form > input[type="submit"]:not([hidden]):focus,
+body.two-factor-page .two-factor-card form button.btn:not(.btn-link):not(.btn-secondary):hover,
+body.two-factor-page .two-factor-card form button.btn:not(.btn-link):not(.btn-secondary):focus {
+  border-color: color-mix(in srgb, var(--two-factor-primary) 82%, white);
+  background: color-mix(in srgb, var(--two-factor-primary) 82%, white);
+  color: #ffffff;
+}
+
+body.two-factor-page .two-factor-card form > .btn-primary,
+body.two-factor-page .two-factor-card form > button.btn-primary,
+body.two-factor-page .two-factor-card form > button[type="submit"]:not(.btn-secondary):not(.btn-link) {
+  background: var(--two-factor-primary);
+  color: #ffffff;
+}
+
+body.two-factor-page .two-factor-card form > .btn.btn-secondary,
+body.two-factor-page .two-factor-card form > button.btn.btn-secondary {
+  background: transparent;
+  color: var(--two-factor-primary);
+}
+
+body.two-factor-page .two-factor-card form > .btn.btn-secondary:hover,
+body.two-factor-page .two-factor-card form > .btn.btn-secondary:focus,
+body.two-factor-page .two-factor-card form > button.btn.btn-secondary:hover,
+body.two-factor-page .two-factor-card form > button.btn.btn-secondary:focus {
+  border-color: var(--two-factor-primary);
+  background: color-mix(in srgb, var(--two-factor-primary) 8%, transparent);
+  color: var(--two-factor-primary);
+}
+
+body.two-factor-page .two-factor-card form > .btn-link,
+body.two-factor-page .two-factor-card form > button.btn-link {
+  border-color: transparent;
+  background: transparent;
+  color: var(--two-factor-primary);
+  text-decoration: underline;
+}
+
+/* The wizard renders an empty disabled Back button on the first step. */
+body.two-factor-page .two-factor-card form > button:disabled {
+  display: none !important;
+  border-color: color-mix(in srgb, var(--two-factor-primary) 22%, transparent);
+  background: transparent;
+  color: color-mix(in srgb, var(--two-factor-primary) 45%, transparent);
+  cursor: not-allowed;
+}
+
+body.two-factor-page .two-factor-card form > a.float-right {
+  float: none !important;
+  margin-inline-end: 16px;
+  color: var(--two-factor-primary);
+}
+
+body.two-factor-page .two-factor-card form + p {
+  margin-top: 20px;
+}
+
+body.two-factor-page .two-factor-card .alert,
+body.two-factor-page .two-factor-card .errorlist {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border: 1px solid color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
+  border-radius: 0;
+  background: #ffffff;
+  color: var(--two-factor-primary);
+}
+
+body.two-factor-page .two-factor-card .alert-danger,
+body.two-factor-page .two-factor-card .alert-error,
+body.two-factor-page .two-factor-card .errorlist {
+  border-color: var(--two-factor-error);
+  background: var(--two-factor-error-background);
+  color: var(--two-factor-error);
+}
+
+/* Django renders both field and non-field validation errors as <ul>s. */
+body.two-factor-page .two-factor-card .errorlist {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 12px;
+  padding: 12px 16px;
+  border-width: 0;
+  border-inline-start: 4px solid var(--two-factor-error);
+  border-radius: 0.3rem;
+  list-style: none;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+body.two-factor-page .two-factor-card .errorlist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+}
+
+body.two-factor-page .two-factor-card .errorlist li::before {
+  content: "!";
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--two-factor-error);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+body.two-factor-page .two-factor-card form .errorlist + p {
+  margin-top: 0;
+}
+
+body.two-factor-page .two-factor-card form .errorlist + p input:not([type="hidden"]):not([type="submit"]),
+body.two-factor-page .two-factor-card form .errorlist + p select,
+body.two-factor-page .two-factor-card form .errorlist + p textarea {
+  border-color: var(--two-factor-error);
+}
+
+body.two-factor-page .two-factor-card .alert-warning {
+  border-color: var(--two-factor-warning);
+  background: var(--two-factor-warning-background);
+  color: var(--two-factor-warning);
+}
+
+body.two-factor-page .two-factor-card .alert-success {
+  border-color: var(--two-factor-success);
+  background: var(--two-factor-success-background);
+  color: var(--two-factor-success);
+}
+
+body.two-factor-page .two-factor-card ul {
+  padding-inline-start: 24px;
+}
+
+body.two-factor-page .two-factor-card .helptext {
+  display: block;
+  font-size: 0.875rem;
+}
+
+body.two-factor-page .two-factor-card nav {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid color-mix(in srgb, var(--two-factor-primary) 12%, transparent);
+}
+
+body.two-factor-page .two-factor-card nav a {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  body.two-factor-page {
+    padding: 16px 8px;
+  }
+
+  body.two-factor-page .two-factor-card {
+    padding: 24px 20px !important;
+  }
+
+  body.two-factor-page .two-factor-card h1 {
+    font-size: 2rem !important;
+  }
+
+  body.two-factor-page .two-factor-card form table,
+  body.two-factor-page .two-factor-card form tbody,
+  body.two-factor-page .two-factor-card form tr {
+    display: block;
+    width: 100%;
+  }
+
+  body.two-factor-page .two-factor-card form th,
+  body.two-factor-page .two-factor-card form td {
+    display: block;
+    width: 100% !important;
+    padding: 4px 0;
+  }
+
+  body.two-factor-page .two-factor-card form input:not([type="hidden"]):not([type="submit"]),
+  body.two-factor-page .two-factor-card form select,
+  body.two-factor-page .two-factor-card form textarea {
+    width: 100% !important;
+  }
+
+  body.two-factor-page .two-factor-card form > .btn:not(.btn-link),
+  body.two-factor-page .two-factor-card form > a.btn:not(.btn-link),
+  body.two-factor-page .two-factor-card form > button:not(.btn-link),
+  body.two-factor-page .two-factor-card form > input[type="submit"]:not([hidden]),
+  body.two-factor-page .two-factor-card form button.btn:not(.btn-link) {
+    margin-inline-end: 4px;
+    padding-inline: 14px;
+  }
+
+  body.two-factor-page .two-factor-card form > a.float-right {
+    display: inline-flex;
+    margin-inline-end: 4px;
+  }
+}

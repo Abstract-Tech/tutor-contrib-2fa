@@ -1,0 +1,371 @@
+# Open edX two-factor authentication translations.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openedx-tutor-2fa\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-01-18 18:32+0100\n"
+"PO-Revision-Date: 2026-11-17 00:00+0000\n"
+"Last-Translator: Open edX\n"
+"Language-Team: Open edX\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/two_factor/core/phone_register.html:5
+msgid "Add Backup Phone"
+msgstr "Másodlagos telefonszám megadása"
+
+#: templates/two_factor/core/phone_register.html:8
+msgid ""
+"You'll be adding a backup phone number to your account. This number will be "
+"used if your primary method of registration is not available."
+msgstr "Hozzá kell adni egy tartalék telefonszámot a fiókjához. Ezt a számot használjuk, ha az Ön elsődleges regisztrációs módja nem elérhető."
+
+#: templates/two_factor/core/phone_register.html:12
+msgid ""
+"We've sent a token to your phone number. Please enter the token you've "
+"received."
+msgstr "Küldtünk egy tokent a telefonszámára. Kérjük, adja meg a kapott tokent."
+
+#: templates/two_factor/_wizard_actions.html:5
+msgid "Cancel"
+msgstr "Mégsem"
+
+#: templates/two_factor/_wizard_actions.html:10
+#: templates/two_factor/_wizard_actions.html:12
+msgid "Back"
+msgstr "Vissza"
+
+#: templates/two_factor/_wizard_actions.html:14
+msgid "Next"
+msgstr "Tovább"
+
+#: templates/two_factor/twilio/sms_message.html:2
+#, python-format
+msgid "Your OTP token is %(token)s"
+msgstr "Az Ön OTP-tokenje: %(token)s"
+
+#: templates/two_factor/core/login.html:10
+msgid "Login"
+msgstr "Bejelentkezés"
+
+#: templates/two_factor/core/login.html:13
+msgid "Enter your credentials."
+msgstr "Adja meg azonosító adatait."
+
+#: templates/two_factor/core/login.html:17
+msgid ""
+"Use this form for entering backup tokens for logging in. These tokens have "
+"been generated for you to print and keep safe. Please enter one of these "
+"backup tokens to login to your account."
+msgstr "Használja ezt az űrlapot a bejelentkezéshez szükséges biztonsági mentési tokenek megadásához. Ezeket a tokeneket azért hoztuk létre, hogy kinyomtassa és biztonságban tartsa. Kérjük, adja meg a biztonsági tokenek egyikét a fiókjába való bejelentkezéshez."
+
+#: templates/two_factor/core/login.html:29
+msgid "Or, alternatively, use one of your other authentication methods:"
+msgstr "Vagy használja a másik hitelesítési módszer egyikét:"
+
+#: templates/two_factor/core/login.html:48
+msgid "As a last resort, you can use a backup token:"
+msgstr "Végső megoldásként használjon fel egy tartalék tokent:"
+
+#: templates/two_factor/core/login.html:51
+msgid "Use Backup Token"
+msgstr "Tartalék Token használata"
+
+#: templates/two_factor/core/backup_tokens.html:25
+#: templates/two_factor/core/setup_complete.html:12
+#: templates/two_factor/core/setup_complete.html:19
+msgid "Back to Account Security"
+msgstr "Vissza a Biztonsági Beállításokhoz"
+
+#: templates/two_factor/core/otp_required.html:18
+#: templates/two_factor/core/setup.html:9
+#: templates/two_factor/core/setup_complete.html:5
+#: templates/two_factor/profile/profile.html:55
+msgid "Enable Two-Factor Authentication"
+msgstr "Kétlépéses Azonosítás engedélyezése"
+
+#: templates/two_factor/core/setup_complete.html:7
+msgid "Congratulations, you've successfully enabled two-factor authentication."
+msgstr "Gratulálunk, sikeresen engedélyezte a kéttényezős hitelesítést."
+
+#: templates/two_factor/core/setup_complete.html:14
+msgid ""
+"However, it might happen that you don't have access to your primary token "
+"device. To enable account recovery, add a phone number."
+msgstr "Előfordulhat azonban, hogy nem fér hozzá az elsődleges token eszközhöz. A fiók-helyreállítás engedélyezéséhez adjon hozzá egy telefonszámot."
+
+#: templates/two_factor/core/setup_complete.html:21
+#: templates/two_factor/profile/profile.html:29
+msgid "Add Phone Number"
+msgstr "Telefonszám hozzáadása"
+
+#: templates/two_factor/core/backup_tokens.html:5
+#: templates/two_factor/profile/profile.html:32
+msgid "Backup Tokens"
+msgstr "Tartalék Tokenek"
+
+#: templates/two_factor/core/backup_tokens.html:6
+msgid ""
+"Backup tokens can be used when your primary and backup phone numbers aren't "
+"available. The backup tokens below can be used for login verification. If "
+"you've used up all your backup tokens, you can generate a new set of backup "
+"tokens. Only the backup tokens shown below will be valid."
+msgstr "A biztonsági tokenek akkor használhatók, ha az elsődleges és a tartalék telefonszám nem elérhető. Az alábbi biztonsági tokenek a bejelentkezés ellenőrzésére használhatók. Ha az összes biztonsági tokenjét felhasználta, létrehozhat új biztonsági tokenkészletet. Csak az alább látható biztonsági tokenek lesznek érvényesek."
+
+#: templates/two_factor/core/backup_tokens.html:18
+msgid "Print these tokens and keep them somewhere safe."
+msgstr "Nyomtassa ki a tokeneket, és tárolja biztonságos helyen."
+
+#: templates/two_factor/core/backup_tokens.html:20
+msgid "You don't have any backup codes yet."
+msgstr "Még nincsenek tartalék tokenjei."
+
+#: templates/two_factor/core/backup_tokens.html:26
+msgid "Generate Tokens"
+msgstr "Tokenek készítése"
+
+#: plugins/phonenumber/method.py:40 templates/two_factor/core/setup.html:37
+msgid "We are calling your phone right now, please enter the digits you hear."
+msgstr "Jelenleg hívjuk a telefonját, kérjük, írja be a hallott számjegyeket."
+
+#: templates/two_factor/core/setup.html:11
+msgid ""
+"You are about to take your account security to the next level. Follow the "
+"steps in this wizard to enable two-factor authentication."
+msgstr "Arra készül, hogy fiókja biztonságát a következő szintre emelje. Kövesse a varázsló lépéseit a kéttényezős hitelesítés engedélyezéséhez."
+
+#: templates/two_factor/core/setup.html:15
+msgid "Please select which authentication method you would like to use."
+msgstr "Kérjük, válassza ki, melyik hitelesítési módot szeretné használni."
+
+#: templates/two_factor/core/setup.html:18
+msgid ""
+"To start using a token generator, please use your smartphone to scan the QR "
+"code below. For example, use Google Authenticator."
+msgstr "A tokengenerátor használatának megkezdéséhez használja okostelefonját az alábbi QR-kód beolvasásához. Például használja a Google Hitelesítőt."
+
+#: templates/two_factor/core/setup.html:22
+msgid ""
+"Alternatively you can use the following secret to setup TOTP in your "
+"authenticator or password manager manually."
+msgstr "Alternatív megoldásként használhatja a következő titkot a TOTP manuális beállításához a hitelesítőben vagy a jelszókezelőben."
+
+#: templates/two_factor/core/setup.html:24
+msgid "TOTP Secret:"
+msgstr "TOTP titkos:"
+
+#: templates/two_factor/core/setup.html:25
+msgid "Then, enter the token generated by the app."
+msgstr "Ezután írja be az alkalmazás által generált tokent."
+
+#: templates/two_factor/core/setup.html:28
+msgid ""
+"Please enter the phone number you wish to receive the text messages on. This "
+"number will be validated in the next step."
+msgstr "Kérjük, adja meg azt a telefonszámot, amelyre a szöveges üzeneteket szeretné fogadni. Ezt a számot a következő lépésben érvényesítjük."
+
+#: templates/two_factor/core/setup.html:32
+msgid ""
+"Please enter the phone number you wish to be called on. This number will be "
+"validated in the next step."
+msgstr "Kérjük, adja meg azt a telefonszámot, amelyen hívni szeretne. Ezt a számot a következő lépésben érvényesítjük."
+
+#: templates/two_factor/core/setup.html:40
+msgid "We sent you a text message, please enter the tokens we sent."
+msgstr "Küldtünk Önnek szöveges üzenetet, kérjük, adja meg az általunk küldött tokeneket."
+
+#: templates/two_factor/core/setup.html:44
+msgid ""
+"We've encountered an issue with the selected authentication method. Please "
+"go back and verify that you entered your information correctly, try again, "
+"or use a different authentication method instead. If the issue persists, "
+"contact the site administrator."
+msgstr "Problémát észleltünk a kiválasztott hitelesítési móddal kapcsolatban. Kérjük, térjen vissza, és ellenőrizze, hogy helyesen adta-e meg adatait, próbálkozzon újra, vagy használjon másik hitelesítési módszert. Ha a probléma továbbra is fennáll, forduljon a webhely rendszergazdájához."
+
+#: templates/two_factor/core/setup.html:51
+msgid ""
+"To identify and verify your YubiKey, please insert a token in the field "
+"below. Your YubiKey will be linked to your account."
+msgstr "A YubiKey azonosításához és ellenőrzéséhez illesszen be egy tokent az alábbi mezőbe. A YubiKey-je össze lesz kapcsolva fiókjával."
+
+#: templates/two_factor/core/otp_required.html:5
+msgid "Permission Denied"
+msgstr "Hozzáférés megtagadva"
+
+#: templates/two_factor/core/otp_required.html:7
+msgid ""
+"The page you requested, enforces users to verify using two-factor "
+"authentication for security reasons. You need to enable these security "
+"features in order to access this page."
+msgstr "Az Ön által kért oldal biztonsági okokból kétfaktoros hitelesítéssel kényszeríti a felhasználókat az ellenőrzésre. Az oldal eléréséhez engedélyeznie kell ezeket a biztonsági funkciókat."
+
+#: templates/two_factor/core/otp_required.html:11
+#: templates/two_factor/profile/profile.html:51
+msgid ""
+"Two-factor authentication is not enabled for your account. Enable two-factor "
+"authentication for enhanced account security."
+msgstr "A kéttényezős hitelesítés nincs engedélyezve fiókjában. Engedélyezze a kéttényezős hitelesítést a fokozott fiókbiztonság érdekében."
+
+#: templates/two_factor/core/otp_required.html:16
+msgid "Go back"
+msgstr "Vissza"
+
+#: templates/two_factor/profile/profile.html:6
+msgid "Account Security"
+msgstr "Biztonsági Beállítások"
+
+#: templates/two_factor/profile/profile.html:9
+#, python-format
+msgid "Primary method: %(primary)s"
+msgstr "Elsődleges metódus: %(primary)s"
+
+#: templates/two_factor/profile/profile.html:12
+msgid "Backup Phone Numbers"
+msgstr "Tartalék Telefonszámok"
+
+#: templates/two_factor/profile/profile.html:13
+msgid ""
+"If your primary method is not available, we are able to send backup tokens "
+"to the phone numbers listed below."
+msgstr "Ha az elsődleges módszer nem érhető el, akkor tudunk tartalék tokeneket küldeni az alább felsorolt telefonszámokra."
+
+#: templates/two_factor/profile/profile.html:20
+msgid "Are you sure?"
+msgstr "Biztos vagy benne?"
+
+#: templates/two_factor/profile/profile.html:23
+msgid "Unregister"
+msgstr "Fiók törlése"
+
+#: templates/two_factor/profile/profile.html:34
+msgid ""
+"If you don't have any device with you, you can access your account using "
+"backup tokens."
+msgstr "Ha nincs magánál semmilyen eszköz, akkor biztonsági mentési tokenekkel érheti el fiókját."
+
+#: templates/two_factor/profile/profile.html:36
+#, python-format
+msgid "You have only one backup token remaining."
+msgid_plural "You have %(counter)s backup tokens remaining."
+msgstr[0] "Már csak egy biztonsági tokenje van."
+msgstr[1] "Még %(counter)s biztonsági tokenje van."
+
+#: templates/two_factor/profile/profile.html:43
+msgid "Show Codes"
+msgstr "Kódok Megjelenítése"
+
+#: templates/two_factor/profile/profile.html:45
+#: templates/two_factor/profile/profile.html:49
+msgid "Disable Two-Factor Authentication"
+msgstr "Kétlépéses Azonosítás letiltása"
+
+#: templates/two_factor/profile/profile.html:46
+msgid ""
+"However we strongly discourage you to do so, you can also disable two-factor "
+"authentication for your account."
+msgstr "Azonban határozottan nem javasoljuk, hogy ezt megtegye, fiókja kéttényezős hitelesítését is letilthatja."
+
+#: templates/two_factor/profile/disable.html:5
+msgid "Disable Two-factor Authentication"
+msgstr "Kétlépéses azonosítás letiltása"
+
+#: templates/two_factor/profile/disable.html:6
+msgid ""
+"You are about to disable two-factor authentication. This weakens your "
+"account security, are you sure?"
+msgstr "A kéttényezős hitelesítés letiltására készül. Ez gyengíti fiókja biztonságát, biztos benne?"
+
+#: templates/two_factor/profile/disable.html:12
+msgid "Disable"
+msgstr "Letiltás"
+
+#, python-format
+msgid "Hi, this is %(site_name)s calling. Press any key to continue."
+msgstr "Szia, %(site_name)s hívás. Nyomja meg bármelyik gombot a folytatáshoz."
+
+msgid "You didn’t press any keys. Good bye."
+msgstr "Nem nyomtál le egyetlen gombot sem. viszlát."
+
+msgid "Your token is:"
+msgstr "A tokenje:"
+
+msgid "Repeat:"
+msgstr "Ismételje meg:"
+
+msgid "Good bye."
+msgstr "viszlát."
+
+#: openedx_two_factor/templates/two_factor/_base.html:7
+msgid "Two-factor authentication"
+msgstr "Kétfaktoros hitelesítés"
+
+#: openedx_two_factor/templates/two_factor/_base.html:13
+msgid "Account security"
+msgstr "Fiókbiztonság"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Enter a recovery code"
+msgstr "Adjon meg egy helyreállítási kódot"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:4
+msgid "Verify your sign-in"
+msgstr "Ellenőrizze a bejelentkezését"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Each recovery code can be used only once."
+msgstr "Minden helyreállítási kód csak egyszer használható fel."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:5
+msgid "Enter the six-digit code from your authenticator app."
+msgstr "Írja be a hatjegyű kódot a hitelesítő alkalmazásból."
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:6
+msgid "Verify and continue"
+msgstr "Ellenőrizze és folytassa"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use authenticator app"
+msgstr "Használja a hitelesítő alkalmazást"
+
+#: openedx_two_factor/templates/openedx_two_factor/challenge.html:7
+msgid "Use a recovery code"
+msgstr "Használjon helyreállítási kódot"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:4
+msgid "Two-factor authentication is active"
+msgstr "A kéttényezős hitelesítés aktív"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:5
+#, python-format
+msgid ""
+"You are signed in as <strong>%(username)s</strong>. This session has passed "
+"verification."
+msgstr "A következő néven vagy bejelentkezve: <strong>%(username)s</strong>. Ez a munkamenet átment az ellenőrzésen."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:6
+msgid "Continue to learning"
+msgstr "Folytassa a tanulást"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Generate or view recovery codes"
+msgstr "Helyreállítási kódok létrehozása vagy megtekintése"
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:7
+msgid "Save them somewhere safe in case you lose your phone."
+msgstr "Mentse el őket egy biztonságos helyre, arra az esetre, ha elveszítené a telefonját."
+
+#: openedx_two_factor/templates/openedx_two_factor/home.html:8
+msgid ""
+"To test again, sign out and sign back in. You will be asked for a fresh code."
+msgstr "Az újbóli teszteléshez jelentkezzen ki, majd jelentkezzen be újra. A rendszer új kódot kér."
+
+#: two_factor/forms.py
+msgid "Token"
+msgstr "Token"
+#: openedx_two_factor/templates/openedx_two_factor/inactive.html:5
+msgid "Two-factor authentication is not required for your account under the current policy."
+msgstr "A jelenlegi szabályzat értelmében nem szükséges kétlépcsős hitelesítés a fiókjához."
