@@ -5,15 +5,15 @@ recovery codes, and access checks for LMS and Studio. The plugin installs
 [`django-two-factor-auth`](https://github.com/jazzband/django-two-factor-auth)
 and the bundled Open edX integration in the Open edX image.
 
-Targets Tutor 22 / Open edX Verawood. The role configuration below describes the
-current source version; it is not included in the published 0.1.0 release.
+Targets Tutor 22 / Open edX Verawood. Role-based enforcement is available from
+version 1.0.0. See the configuration section when upgrading from 0.1.0.
 
 ## Installation
 
 Install in the same Python environment as Tutor:
 
 ```bash
-pip install git+https://github.com/Abstract-Tech/tutor-contrib-2fa
+pip install tutor-contrib-2fa==1.0.0
 ```
 
 No separate integration package or manual settings plugin is needed.
@@ -199,8 +199,8 @@ at commit `5d664b0f3436f375e22be789a4aaef445c3532d2`.
 
 ## Publishing
 
-The first package-index version is `0.1.0`. The earlier `v1.0.0` Git tag remains
-unchanged; it was not a PyPI release.
+Version 0.1.0 was the first PyPI release. For 1.0.0, the old pre-PyPI
+`v1.0.0` Git tag was replaced to point to the role-based enforcement release.
 
 Using the TestPyPI account that should own this package, add a pending publisher
 at <https://test.pypi.org/manage/account/publishing/>:
@@ -219,8 +219,8 @@ ownership. Configure the publisher from the intended owning account.
 Push a version tag matching both package versions to trigger publishing:
 
 ```bash
-git tag -a v0.1.0 -m "Release 0.1.0"
-git push origin v0.1.0
+git tag -a v1.0.0 -m "Release 1.0.0"
+git push origin v1.0.0
 ```
 
 Create the tag only once. For later releases, update both package versions and use
@@ -235,19 +235,11 @@ repository and workflow values above, but set the environment to `pypi`.
 
 Existing tags retain their original workflow. Do not move an existing release tag.
 
-To publish the already-tested `0.1.0` release, select **Publish Python package** in
-GitHub Actions, click **Run workflow**, and choose `main`. This manual path downloads
-the original distributions from successful run `43866826685`, verifies their SHA-256
-hashes against TestPyPI, and publishes those exact files to production PyPI. It does
-not rebuild or re-upload to TestPyPI. Run it once; PyPI versions cannot be overwritten.
-The original GitHub artifact must still be available (it expires under the repository's
-artifact retention policy). Future releases use the normal version-tag flow.
-
 To test installation manually in a fresh virtual environment:
 
 ```bash
 python -m pip install 'tutor>=22,<23' 'packaging>=23'
-python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==0.1.0
+python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.0
 python -m pip check
 tutor plugins list
 ```
