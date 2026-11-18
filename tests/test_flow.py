@@ -166,7 +166,7 @@ def test_deleted_device_invalidates_session(client, user, device):
     assert client.get("/dashboard").url == "/2fa/"
 
 
-def test_complete_enrollment_and_generate_recovery_codes(client, user):
+def test_complete_enrollment_and_generate_recovery_codes(client, user, monkeypatch):
     import base64
 
     sign_in(client)
@@ -179,12 +179,27 @@ def test_complete_enrollment_and_generate_recovery_codes(client, user):
         url, {"two_factor_setup_view-current_step": "generator", "generator-token": value}
     )
     assert response.status_code == 302
+    assert response.url == "/2fa/account/two_factor/backup/tokens/"
+    assert client.get(response.url).status_code == 200
+    assert not StaticToken.objects.filter(device__user=user).exists()
+    assert client.session[SESSION_KEY]["url"] == "/dashboard"
     assert TOTPDevice.objects.filter(user=user, confirmed=True).count() == 1
-    assert client.get("/dashboard").status_code == 200
-    response = client.post("/2fa/account/two_factor/backup/tokens/")
-    assert response.status_code == 302
+    assert client.get("/dashboard").status_code == 302
+    response = manage_recovery(client, TOTPDevice.objects.get(user=user), monkeypatch)
+    assert response.status_code == 200
+    assert len(response.context["codes"]) == 10
     assert StaticToken.objects.filter(device__user=user).count() == 10
     assert client.get("/2fa/account/two_factor/backup/tokens/").status_code == 200
+
+    assert client.get("/2fa/account/two_factor/").url == RECOVERY_URL
+    assert client.post(
+        RECOVERY_URL, {"action": "acknowledge", "receipt": response.context["receipt"]}
+    ).json()["saved"]
+    # The page's Continue link resumes the original login flow.
+    response = client.get("/2fa/account/two_factor/")
+    assert response.status_code == 302
+    assert response.url == "/dashboard"
+    assert SESSION_KEY not in client.session
 
 
 def test_bad_token_throttles(client, user, device):
@@ -354,3 +369,198 @@ def test_protected_browser_page_resumes_after_mfa(client, user, device):
     assert client.get("/dashboard?tab=courses").url == "/2fa/"
     client.post("/2fa/challenge/", {"otp_token": token(device)})
     assert client.get("/2fa/").url == "/dashboard?tab=courses"
+
+
+RECOVERY_URL = "/2fa/account/two_factor/backup/tokens/"
+
+
+def manage_recovery(client, device, monkeypatch, action="generate", confirm=True):
+    return client.post(RECOVERY_URL, {"action": action, "confirm": confirm})
+
+
+def test_recovery_view_and_replace(client, user, device, monkeypatch):
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert client.get(RECOVERY_URL).context["issued"] is False
+    generated = manage_recovery(client, device, monkeypatch)
+    codes = generated.context["codes"]
+    assert len(codes) == 10
+    assert "no-store" in generated["Cache-Control"]
+    assert client.get(RECOVERY_URL).context["codes"] == codes
+    viewed = client.get(RECOVERY_URL)
+    assert viewed.context["codes"] == codes
+    assert b"copy-recovery-codes" in viewed.content
+    replaced = manage_recovery(client, device, monkeypatch)
+    assert replaced.status_code == 200
+    new_codes = replaced.context["codes"]
+    assert len(new_codes) == 10 and not set(new_codes) & set(codes)
+    assert not StaticToken.objects.filter(device__user=user, token__in=codes).exists()
+    backup = StaticDevice.objects.get(user=user, name="backup")
+    assert backup.verify_token(new_codes[0])
+    assert not backup.token_set.filter(token=new_codes[0]).exists()
+    assert new_codes[0] not in client.get(RECOVERY_URL).context["codes"]
+
+
+def test_recovery_requires_verified_session_and_replacement_confirmation(
+    client, user, device, monkeypatch
+):
+    sign_in(client)
+    assert client.post(RECOVERY_URL, {"action": "generate"}).status_code == 403
+    assert not StaticToken.objects.filter(device__user=user).exists()
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert b'name="otp_token"' not in client.get(RECOVERY_URL).content
+    codes = manage_recovery(client, device, monkeypatch).context["codes"]
+    assert manage_recovery(client, device, monkeypatch, confirm=False).status_code == 400
+    assert client.post(RECOVERY_URL, {"action": "invalid"}).status_code == 400
+    assert set(
+        StaticToken.objects.filter(device__user=user).values_list("token", flat=True)
+    ) == set(codes)
+    assert client.get(RECOVERY_URL).context["codes"] == codes
+
+
+@pytest.mark.parametrize("with_codes", [False, True])
+def test_legacy_and_exhausted_recovery_codes_can_be_replaced(
+    client, user, device, monkeypatch, with_codes
+):
+    backup = StaticDevice.objects.create(user=user, name="backup")
+    duplicate = StaticDevice.objects.create(user=user, name="backup")
+    if with_codes:
+        StaticToken.objects.create(device=backup, token="legacy-code")
+        StaticToken.objects.create(device=duplicate, token="duplicate-code")
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert client.get(RECOVERY_URL).status_code == 200
+    assert manage_recovery(client, device, monkeypatch).status_code == 200
+    assert StaticToken.objects.filter(device__user=user).count() == 10
+    assert not StaticToken.objects.filter(token__in=["legacy-code", "duplicate-code"]).exists()
+
+
+def test_recovery_generation_requires_csrf(user, device):
+    client = Client(enforce_csrf_checks=True)
+    client.force_login(user)
+    session = client.session
+    session[DEVICE_ID_SESSION_KEY] = device.persistent_id
+    session.save()
+    assert client.post(RECOVERY_URL).status_code == 403
+    assert not StaticDevice.objects.filter(user=user).exists()
+
+
+def test_recovery_render_failure_preserves_old_codes(client, user, device, monkeypatch):
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    codes = manage_recovery(client, device, monkeypatch).context["codes"]
+
+    def fail(*args, **kwargs):
+        raise RuntimeError("render failed")
+
+    monkeypatch.setattr("openedx_two_factor.recovery.render", fail)
+    with pytest.raises(RuntimeError, match="render failed"):
+        manage_recovery(client, device, monkeypatch)
+    assert set(
+        StaticToken.objects.filter(device__user=user).values_list("token", flat=True)
+    ) == set(codes)
+
+
+def test_incomplete_recovery_resumes_after_new_login(client, user, device, monkeypatch):
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert b"Skip for now" not in client.get(RECOVERY_URL).content
+    assert client.get("/2fa/account/two_factor/").status_code == 302
+    client.logout()
+    sign_in(client)
+    now = time.time() + 31
+    monkeypatch.setattr("time.time", lambda: now)
+    monkeypatch.setattr("django_otp.oath.time", lambda: now)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert manage_recovery(client, device, monkeypatch).status_code == 200
+
+
+@pytest.mark.parametrize(
+    "origin, expected",
+    [("http://testserver", 200), ("null", 403), ("https://untrusted.example", 403)],
+)
+def test_recovery_form_origin_protection(user, device, origin, expected):
+    client = Client(enforce_csrf_checks=True)
+    client.force_login(user)
+    session = client.session
+    session[DEVICE_ID_SESSION_KEY] = device.persistent_id
+    session.save()
+    page = client.get(RECOVERY_URL)
+    assert page["Referrer-Policy"] == "same-origin"
+    response = client.post(
+        RECOVERY_URL,
+        {
+            "action": "generate",
+            "csrfmiddlewaretoken": client.cookies["csrftoken"].value,
+        },
+        HTTP_ORIGIN=origin,
+    )
+    assert response.status_code == expected
+    assert StaticToken.objects.filter(device__user=user).count() == (10 if expected == 200 else 0)
+
+
+def test_copy_acknowledgement_gates_access_and_survives_sessions(client, user, device):
+    from openedx_two_factor.models import RecoverySetup
+
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    generated = client.post(RECOVERY_URL, {"action": "generate"})
+    receipt = generated.context["receipt"]
+    codes = generated.context["codes"]
+    assert b'id="recovery-continue" type="submit" disabled' in generated.content
+    assert b"print-recovery-codes" not in generated.content
+    assert client.get("/2fa/").url == RECOVERY_URL
+    assert client.get("/dashboard").status_code == 302
+    assert client.get("/api/protected/").status_code == 403
+    assert client.post("/login_refresh").status_code == 401
+    assert (
+        "edx-jwt-cookie-header-payload" not in client.cookies
+        or not client.cookies["edx-jwt-cookie-header-payload"].value
+    )
+    client.logout()
+    client.force_login(user)
+    session = client.session
+    session[DEVICE_ID_SESSION_KEY] = device.persistent_id
+    session.save()
+    assert client.get("/2fa/").url == RECOVERY_URL
+    assert client.get(RECOVERY_URL).context["codes"] == codes
+    assert client.post(RECOVERY_URL, {"action": "acknowledge", "receipt": receipt}).json() == {
+        "saved": True
+    }
+    assert RecoverySetup.objects.get(user=user).saved_at is not None
+    assert client.get("/dashboard").status_code == 200
+    assert client.get("/api/protected/").status_code == 200
+    assert client.get(RECOVERY_URL).context["saved"]
+
+
+def test_recovery_acknowledgement_rejects_missing_foreign_stale_receipts(client, user, device):
+    from django.core import signing
+    from openedx_two_factor.models import RecoverySetup
+
+    sign_in(client)
+    client.post("/2fa/challenge/", {"otp_token": token(device)})
+    assert (
+        client.post(RECOVERY_URL, {"action": "acknowledge", "receipt": "forged"}).status_code == 400
+    )
+    generated = client.post(RECOVERY_URL, {"action": "generate"})
+    receipt = generated.context["receipt"]
+    payload = signing.loads(receipt, salt="2fa-recovery-save")
+    payload["user"] += 1
+    foreign = signing.dumps(payload, salt="2fa-recovery-save")
+    assert (
+        client.post(RECOVERY_URL, {"action": "acknowledge", "receipt": foreign}).status_code == 409
+    )
+    replaced = client.post(RECOVERY_URL, {"action": "generate", "confirm": True})
+    assert (
+        client.post(RECOVERY_URL, {"action": "acknowledge", "receipt": receipt}).status_code == 409
+    )
+    assert RecoverySetup.objects.get(user=user).saved_at is None
+    assert (
+        client.post(
+            RECOVERY_URL, {"action": "acknowledge", "receipt": replaced.context["receipt"]}
+        ).status_code
+        == 200
+    )
+    client.post(RECOVERY_URL, {"action": "generate", "confirm": True})
+    assert RecoverySetup.objects.get(user=user).saved_at is None
+    assert client.get("/2fa/").url == RECOVERY_URL

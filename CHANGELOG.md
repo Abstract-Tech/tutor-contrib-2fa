@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.2 — 2026-11-18
+
+- Require recovery-code generation and successful copying after initial 2FA setup.
+- Preserve incomplete recovery setup across sessions and protect access until completion.
+- Allow verified users to manage and replace recovery codes, invalidating the previous set.
+- Improve recovery-page controls, clipboard feedback and accessibility.
+- Add the recovery-state migration and include it in Tutor initialization.
+- Remove the completed one-off 1.0.1 publishing workflow.
+
 ## 1.0.1 — 2026-11-17
 
 - Add translations for the bundled two-factor-authentication templates and plugin pages.

@@ -13,7 +13,7 @@ version 1.0.0. See the configuration section when upgrading from 0.1.0.
 Install in the same Python environment as Tutor:
 
 ```bash
-pip install tutor-contrib-2fa==1.0.1
+pip install tutor-contrib-2fa==1.0.2
 ```
 
 No separate integration package or manual settings plugin is needed.
@@ -55,7 +55,10 @@ Full production deployment has not yet been validated.
 ### Test the login
 
 1. Sign in as a user in a required role (admin or staff by default), scan the QR code with an authenticator app, and enter its current code.
-2. Save the recovery codes, sign out, and sign in again; an OTP should be required.
+2. Setup opens the recovery-code page. Click **Generate recovery codes**, use **Copy codes** to save them,
+   then click **Continue** to reach your original destination. Continue stays disabled until
+   copying succeeds and the server records the acknowledgement.
+   Sign out and sign in again; an OTP should be required.
 3. Check that a wrong OTP is rejected and a recovery code works only once.
 4. Sign in as an ordinary user without a required role; login should not ask for 2FA.
 5. Check Studio/admin access and your SSO/API workflows on staging.
@@ -219,8 +222,8 @@ ownership. Configure the publisher from the intended owning account.
 Push a version tag matching both package versions to trigger publishing:
 
 ```bash
-git tag -a v1.0.1 -m "Release 1.0.1"
-git push origin v1.0.1
+git tag -a v1.0.2 -m "Release 1.0.2"
+git push origin v1.0.2
 ```
 
 Create the tag only once. For later releases, update both package versions and use
@@ -239,7 +242,7 @@ To test installation manually in a fresh virtual environment:
 
 ```bash
 python -m pip install 'tutor>=22,<23' 'packaging>=23'
-python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.1
+python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.2
 python -m pip check
 tutor plugins list
 ```
@@ -247,6 +250,28 @@ tutor plugins list
 Dependencies come from PyPI; only this plugin comes from TestPyPI. Do this after
 the upload succeeds. TestPyPI accounts and publishers are separate from PyPI.
 An already uploaded version cannot be overwritten; use a new version for changes.
+
+### Recovery code policy
+
+Recovery setup is required: generate codes, then use **Copy codes**.
+**Continue** remains disabled until the server records that action. If the tab is
+closed, setup resumes after the next 2FA login. Existing generated codes are shown
+again while setup is incomplete; they are not regenerated automatically.
+
+The completion state is stored per account, not in the browser. Protected pages,
+API access and login completion remain gated until it is saved. Each new code set
+requires a new acknowledgement; a stale tab cannot acknowledge a replacement set.
+Users already enrolled when this update is installed must save their codes once,
+because previous versions did not record this action. Existing codes remain valid.
+
+A verified 2FA session is required, but there is no extra authenticator prompt.
+Replacement still requires confirmation and immediately invalidates old codes.
+Each recovery code can be used once. Codes remain accessible through Account
+Security after setup. Run the plugin init migrations during installation/upgrade.
+
+Completion records a successful clipboard copy, not proof that the user stored
+the codes elsewhere. JavaScript is required for this control.
+
 
 ## License
 

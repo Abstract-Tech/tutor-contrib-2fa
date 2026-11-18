@@ -75,6 +75,7 @@ MIGRATE = """
 set -e
 ./manage.py lms migrate otp_totp --noinput
 ./manage.py lms migrate otp_static --noinput
+./manage.py lms migrate openedx_two_factor --noinput
 {% endif %}
 """
 

@@ -82,7 +82,7 @@ def test_installed_plugin_renders_images_settings_and_migration_job(tmp_path):
         assert tasks == [
             [
                 "lms",
-                "set -e\n./manage.py lms migrate otp_totp --noinput\n./manage.py lms migrate otp_static --noinput",
+                "set -e\n./manage.py lms migrate otp_totp --noinput\n./manage.py lms migrate otp_static --noinput\n./manage.py lms migrate openedx_two_factor --noinput",
             ]
         ]
 

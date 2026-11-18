@@ -4,6 +4,7 @@ import base64
 import html
 import re
 import secrets
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 from urllib.parse import parse_qs, urlsplit
 
@@ -109,27 +110,97 @@ class LoginVerification:
             {"two_factor_setup_view-current_step": "generator", "generator-token": token},
         )
         require(response.status_code == 302, "Enrollment rejected the authenticator code.")
+        recovery_path = "/2fa/account/two_factor/backup/tokens/"
+        require(
+            response.headers.get("Location") == recovery_path,
+            "Initial enrollment did not redirect to recovery codes.",
+        )
+        require(self.get(recovery_path).status_code == 200, "Recovery code page failed.")
         require(
             TOTPDevice.objects.filter(user=self.user, confirmed=True).exists(),
             "Enrollment did not save a confirmed device.",
         )
         require(
-            self.get("/2fa/").status_code == 302, "Verified login did not resume its destination."
+            self.get("/2fa/").headers.get("Location") == recovery_path,
+            "Recovery setup was bypassed.",
         )
-        require(self.get("/2fa/").status_code == 200, "Verified account page failed.")
         require(
-            bool(self.session.cookies.get_dict().get("edx-jwt-cookie-header-payload")),
-            "Verified login did not issue Open edX cookies.",
+            self.get("/api/user/v1/accounts/" + self.user.username).status_code == 403,
+            "API access bypassed recovery setup.",
+        )
+
+    def acknowledge_recovery(self, response):
+        match = re.search(r'data-receipt="([^"]+)"', response.text)
+        require(match is not None, "Recovery acknowledgement receipt is missing.")
+        response = self.post(
+            "/2fa/account/two_factor/backup/tokens/",
+            {"action": "acknowledge", "receipt": html.unescape(match.group(1))},
+        )
+        require(
+            response.status_code == 200 and response.json().get("saved"),
+            "Recovery acknowledgement failed.",
         )
 
     def check_recovery(self):
+        path = "/2fa/account/two_factor/backup/tokens/"
+
+        def generate(_):
+            # Independent HTTP sessions sharing the authenticated browser cookies.
+            with requests.Session() as session:
+                session.cookies.update(self.session.cookies)
+                session.headers.update(self.session.headers)
+                return session.post(
+                    self.base_url + path,
+                    data={"action": "generate"},
+                    timeout=30,
+                    allow_redirects=False,
+                    headers={"X-CSRFToken": session.cookies.get_dict().get("csrftoken", "")},
+                )
+
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            responses = list(pool.map(generate, range(2)))
         require(
-            self.post("/2fa/account/two_factor/backup/tokens/", {}).status_code == 302,
-            "Recovery code generation failed.",
+            sorted(response.status_code for response in responses) == [200, 400],
+            "Concurrent recovery generation was not limited to one successful request.",
         )
         device = StaticDevice.objects.get(user=self.user, name="backup")
         token = device.token_set.first()
         require(token is not None, "No recovery codes were generated.")
+        code = token.token
+        path = "/2fa/account/two_factor/backup/tokens/"
+        require(
+            code in self.get(path).text,
+            "Incomplete recovery setup did not resume with existing codes.",
+        )
+        self.acknowledge_recovery(
+            next(response for response in responses if response.status_code == 200)
+        )
+        require(self.get("/2fa/").status_code == 302, "Saved recovery setup did not resume login.")
+        require(self.get("/2fa/").status_code == 200, "Verified account page failed.")
+        require(
+            code in self.get(path).text,
+            "Recovery page did not display unused codes.",
+        )
+        require(
+            self.post(path, {}).status_code == 400,
+            "Recovery management accepted a missing action.",
+        )
+        response = self.get(path)
+        require(
+            response.status_code == 200 and code in response.text,
+            "Verified recovery viewing failed.",
+        )
+        response = self.post(
+            path,
+            {"action": "generate", "confirm": "on"},
+        )
+        require(response.status_code == 200, "Recovery replacement failed.")
+        self.acknowledge_recovery(response)
+        require(
+            not device.token_set.filter(token=code).exists(), "Old recovery code was not revoked."
+        )
+        token = device.token_set.first()
+        require(token is not None, "Replacement codes were not generated.")
         code = token.token
         self.get("/logout")
         self.login()

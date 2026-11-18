@@ -4,6 +4,6 @@
 <h1>{% trans "Two-factor authentication is active" %}</h1>
 <p>{% blocktrans with username=request.user.username %}You are signed in as <strong>{{ username }}</strong>. This session has passed verification.{% endblocktrans %}</p>
 <p><a class="btn" href="/dashboard">{% trans "Continue to learning" %}</a></p>
-<p><a href="{% url 'two_factor:backup_tokens' %}">{% trans "Generate or view recovery codes" %}</a>. {% trans "Save them somewhere safe in case you lose your phone." %}</p>
+<p><a href="{% url 'two_factor:backup_tokens' %}">{% trans "Recovery codes" %}</a>. {% trans "Save them somewhere safe in case you lose your phone." %}</p>
 <p>{% trans "To test again, sign out and sign back in. You will be asked for a fresh code." %}</p>
 {% endblock %}

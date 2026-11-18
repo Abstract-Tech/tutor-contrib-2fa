@@ -1,5 +1,8 @@
+import uuid
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
@@ -11,12 +14,16 @@ from two_factor.views import SetupView
 
 from .continuation import take_destination
 from .middleware import verified
+from .models import RecoverySetup
 from .policy import can_enroll, requires_mfa
+from .recovery_state import recovery_pending
 
 
 def finish(request, response):
     from openedx.core.djangoapps.user_authn.cookies import set_logged_in_cookies
 
+    if recovery_pending(request.user):
+        return response
     if request.session.pop("openedx_2fa_started", None) is not None:
         request.session.cycle_key()
     return set_logged_in_cookies(request, response, request.user)
@@ -31,6 +38,8 @@ def home(request):
         return redirect(
             "openedx_2fa_challenge" if default_device(request.user) else "two_factor:setup"
         )
+    if recovery_pending(request.user):
+        return redirect("two_factor:backup_tokens")
     destination = take_destination(request)
     if destination:
         return finish(request, redirect(destination))
@@ -66,4 +75,8 @@ def challenge(request):
 
 class TwoFactorSetupView(SetupView):
     def get_success_url(self):
-        return "/2fa/"
+        RecoverySetup.objects.update_or_create(
+            user=self.request.user, defaults={"saved_at": None, "revision": uuid.uuid4()}
+        )
+        # Keep the saved login destination until recovery setup is acknowledged.
+        return reverse("two_factor:backup_tokens")

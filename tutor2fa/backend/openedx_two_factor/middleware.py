@@ -19,6 +19,7 @@ from two_factor.utils import default_device
 from .continuation import SESSION_KEY, remember_destination
 from .oauth import AUTHORIZE_PATHS, remember_authorization, remember_token, verified_code_exchange
 from .policy import requires_mfa
+from .recovery_state import recovery_pending
 
 LOGIN_PATHS = {
     "/login_ajax",
@@ -84,7 +85,32 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
                 return JsonResponse({"error": "mfa_enrollment_not_available"}, status=403)
             return None
         if verified(request):
-            return None
+            if not recovery_pending(request.user):
+                return None
+            allowed = {
+                "/2fa/",
+                "/2fa/challenge/",
+                "/2fa/account/two_factor/",
+                "/2fa/account/two_factor/backup/tokens/",
+                "/logout",
+                "/logout/",
+                "/csrf/api/v1/token",
+                "/csrf/api/v1/token/",
+            }
+            if path in allowed:
+                return None
+            if path == "/login_refresh":
+                return mfa_required(status=401)
+            destination = request.META.get("HTTP_SEC_FETCH_DEST")
+            if (
+                request.method != "GET"
+                or path.startswith(("/api/", "/user_api/", "/oauth2/"))
+                and path not in AUTHORIZE_PATHS
+                or destination not in {None, "document"}
+            ):
+                return mfa_required()
+            remember_destination(request, request.get_full_path())
+            return HttpResponseRedirect(gate_url())
         if path == "/login_refresh":
             # frontend-platform treats 401 as signed out; 403 aborts MFE startup.
             # Never issue refreshed JWTs to an unverified session.
@@ -140,7 +166,9 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
         remember_token(request, response)
         if not hasattr(request, "user") or not request.user.is_authenticated:
             return response
-        if verified(request) or not requires_mfa(request.user):
+        if (verified(request) and not recovery_pending(request.user)) or not requires_mfa(
+            request.user
+        ):
             remember_authorization(request, response)
             return response
         # Password login/registration may have issued Open edX JWT cookies: withhold

@@ -516,3 +516,58 @@ body.two-factor-page .two-factor-card nav a {
     align-items: flex-start;
   }
 }
+
+/* Recovery codes remain selectable; controls are excluded from paper/PDF copies. */
+.recovery-actions[hidden] { display: none; }
+@media print {
+  .recovery-actions { display: none !important; }
+  body.two-factor-page { display: block; background: white; padding: 0; min-height: auto; }
+  .two-factor-card { box-shadow: none; border: 0; margin: 0; max-width: none; width: auto; }
+  #recovery-codes { break-inside: avoid; }
+}
+
+/* Recovery controls override the wizard's field sizing and hidden Back button. */
+body.two-factor-page .two-factor-card form > #recovery-continue:disabled {
+  display: inline-flex !important;
+  cursor: not-allowed;
+  opacity: 1;
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  color: #6b7280;
+}
+body.two-factor-page .two-factor-card .recovery-replace {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+body.two-factor-page .two-factor-card form .recovery-replace input[type="checkbox"] {
+  flex: 0 0 16px;
+  width: 16px !important;
+  height: 16px;
+  min-height: 16px;
+  margin: 5px 0 0;
+  padding: 0;
+  accent-color: var(--two-factor-primary);
+}
+body.two-factor-page .two-factor-card .recovery-hint {
+  margin-top: 16px;
+  font-size: 0.875rem;
+  color: #667085;
+}
+body.two-factor-page .two-factor-card .recovery-copy-success {
+  color: var(--two-factor-success);
+}
+body.two-factor-page .two-factor-card #copy-recovery-codes {
+  padding: 10px 20px;
+  min-height: 44px;
+  border: 1px solid var(--two-factor-primary);
+  border-radius: 0.3rem;
+  background: var(--two-factor-primary);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
