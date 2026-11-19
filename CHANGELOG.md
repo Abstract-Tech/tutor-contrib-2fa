@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3 — 2026-11-19
+
+- Allow API calls that carry only the LMS JWT cookie (e.g. from Studio) for users the MFA policy does not cover, such as AI Studio testers. Staff and admins are still blocked until they pass 2FA; unverifiable tokens stay blocked.
+
 ## 1.0.2 — 2026-11-18
 
 - Require recovery-code generation and successful copying after initial 2FA setup.

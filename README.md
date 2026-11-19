@@ -13,7 +13,7 @@ version 1.0.0. See the configuration section when upgrading from 0.1.0.
 Install in the same Python environment as Tutor:
 
 ```bash
-pip install tutor-contrib-2fa==1.0.2
+pip install tutor-contrib-2fa==1.0.3
 ```
 
 No separate integration package or manual settings plugin is needed.
@@ -242,7 +242,7 @@ To test installation manually in a fresh virtual environment:
 
 ```bash
 python -m pip install 'tutor>=22,<23' 'packaging>=23'
-python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.2
+python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.3
 python -m pip check
 tutor plugins list
 ```
