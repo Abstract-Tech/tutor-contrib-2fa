@@ -564,3 +564,24 @@ def test_recovery_acknowledgement_rejects_missing_foreign_stale_receipts(client,
     client.post(RECOVERY_URL, {"action": "generate", "confirm": True})
     assert RecoverySetup.objects.get(user=user).saved_at is None
     assert client.get("/2fa/").url == RECOVERY_URL
+
+
+def test_jwt_cookie_api_allowed_for_user_not_requiring_mfa(client, user, monkeypatch):
+    """A tester calling Studio with only the LMS JWT cookie (no CMS session) is not blocked."""
+    from openedx_two_factor import middleware
+
+    user.is_staff = False
+    user.save()
+    client.cookies["edx-jwt-cookie-header-payload"] = "token"
+    monkeypatch.setattr(middleware, "jwt_cookie_user", lambda request: user)
+    assert client.get("/api/protected/").status_code == 200
+
+
+def test_jwt_cookie_api_blocked_for_staff_and_unverifiable(client, user, monkeypatch):
+    from openedx_two_factor import middleware
+
+    client.cookies["edx-jwt-cookie-header-payload"] = "token"
+    monkeypatch.setattr(middleware, "jwt_cookie_user", lambda request: user)  # staff user
+    assert client.get("/api/protected/").status_code == 403
+    monkeypatch.setattr(middleware, "jwt_cookie_user", lambda request: None)  # invalid JWT
+    assert client.get("/api/protected/").status_code == 403

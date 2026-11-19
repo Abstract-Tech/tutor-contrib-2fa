@@ -9,7 +9,7 @@ import time
 from urllib.parse import urlencode
 
 from django.conf import settings
-from django.contrib.auth import logout
+from django.contrib.auth import get_user_model, logout
 from django.http import HttpResponseRedirect, JsonResponse
 from django.utils.deprecation import MiddlewareMixin
 from django_otp import DEVICE_ID_SESSION_KEY
@@ -46,6 +46,33 @@ def verified(request):
 def gate_url():
     base = getattr(settings, "OPENEDX_2FA_LMS_URL", "").rstrip("/")
     return base + "/2fa/"
+
+
+def jwt_cookie_user(request):
+    """The active user behind a valid Open edX JWT cookie, or None.
+
+    Studio/CMS APIs are called cross-origin with only the LMS JWT cookie and no CMS session, so the
+    middleware cannot see the user yet (DRF decodes the JWT later). Verify the signature here to
+    learn who it is. Anything unverifiable returns None and the caller fails closed.
+    """
+    try:
+        from edx_rest_framework_extensions.auth.jwt.cookies import (
+            jwt_cookie_header_payload_name,
+            jwt_cookie_signature_name,
+        )
+        from edx_rest_framework_extensions.auth.jwt.decoder import jwt_decode_handler
+
+        header_payload = request.COOKIES.get(jwt_cookie_header_payload_name())
+        signature = request.COOKIES.get(jwt_cookie_signature_name())
+        if not header_payload or not signature:
+            return None
+        payload = jwt_decode_handler(f"{header_payload}.{signature}")
+        username = payload.get("preferred_username") or payload.get("username")
+        if not username:
+            return None
+        return get_user_model().objects.filter(username=username, is_active=True).first()
+    except Exception:  # noqa: BLE001 - any failure to verify must keep the request blocked
+        return None
 
 
 def mfa_required(status=403):
@@ -128,6 +155,12 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
             and path not in LOGIN_PATHS
             and not path.startswith(("/2fa/", "/logout"))
         ):
+            # A JWT-cookie-only API call (no Authorization header) from a user the policy does not
+            # cover (e.g. an AI Studio tester) needs no MFA; DRF still authenticates it afterwards.
+            if not has_credentials:
+                jwt_user = jwt_cookie_user(request)
+                if jwt_user is not None and not requires_mfa(jwt_user):
+                    return None
             return mfa_required()
         if not request.user.is_authenticated:
             return None
