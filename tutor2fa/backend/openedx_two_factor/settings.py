@@ -9,4 +9,6 @@ def plugin_settings(settings):
     # At this hook, Studio has resolved its Derived template directory values.
     settings.OPENEDX_2FA_ENABLED = False
     settings.OPENEDX_2FA_REQUIRED_ROLES = ["admin", "staff"]
+    settings.OPENEDX_2FA_BEARER_APPLICATIONS = []
+    settings.OPENEDX_2FA_TOKEN_PATHS = []
     configure(vars(settings))

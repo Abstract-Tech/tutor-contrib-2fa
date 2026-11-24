@@ -15,6 +15,8 @@ hooks.Filters.CONFIG_DEFAULTS.add_items(
         ("TWO_FACTOR_VERSION", __version__),
         ("ENABLE_2FA", True),
         ("TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES", ["admin", "staff"]),
+        ("TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS", []),
+        ("TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS", []),
         ("TWO_FACTOR_AUTH_VERSION", "1.18.1"),
     ]
 )
@@ -36,6 +38,28 @@ def validate_config(config):
         raise TutorError(
             "TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES must be a list of non-empty, "
             "role names without surrounding whitespace."
+        )
+
+    apps = config.get("TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS", [])
+    if not isinstance(apps, list) or any(
+        not isinstance(name, str) or not name.strip() or name != name.strip() for name in apps
+    ):
+        raise TutorError(
+            "TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS must be a list of OAuth application "
+            "names without surrounding whitespace."
+        )
+
+    paths = config.get("TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS", [])
+    if not isinstance(paths, list) or any(
+        not isinstance(path, str)
+        or not path.startswith("/api/")
+        or path != path.strip()
+        or "*" in path
+        for path in paths
+    ):
+        raise TutorError(
+            "TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS must be a list of exact paths that start with /api/ "
+            "(no spaces, no wildcards)."
         )
 
     try:

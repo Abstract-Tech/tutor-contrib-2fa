@@ -13,7 +13,7 @@ version 1.0.0. See the configuration section when upgrading from 0.1.0.
 Install in the same Python environment as Tutor:
 
 ```bash
-pip install tutor-contrib-2fa==1.0.3
+pip install tutor-contrib-2fa==1.0.4
 ```
 
 No separate integration package or manual settings plugin is needed.
@@ -112,6 +112,32 @@ roles or groups; adding a name does not create permissions. Built-in names keep
 the definitions above, even if a Django group has the same name. A typo in a custom
 name matches nobody, so test the intended account after changing the list.
 
+### Let an OAuth application read a user's account
+
+While 2FA is on, the LMS refuses every API call that carries a bearer token but no browser
+session. That includes a storefront server that signed a user in with the LMS and then reads their
+name and e-mail (`GET /api/user/v1/accounts/<username>`): the login works, the lookup fails with
+`403 mfa_required`.
+
+To allow this for specific applications, list their OAuth application **names**:
+
+```yaml
+TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS:
+  - payload-admin
+```
+
+The default is an empty list, which keeps every bearer call blocked. A call is allowed only when
+all of these hold:
+
+- the token was issued by a listed application through the authorization-code flow, so the browser
+  login, including 2FA for users the policy covers, had already happened;
+- the request is a `GET` or `HEAD` for exactly `/api/user/v1/accounts/<username>`;
+- the token is still valid and belongs to the user who passed 2FA, and for users the policy covers
+  the confirmed authenticator device is still there.
+
+The proof is kept in the shared cache for the lifetime of the token. After a cache loss the call
+is blocked again and the user has to sign in again. The setting applies to the LMS only.
+
 After editing the policy:
 
 ```bash
@@ -154,6 +180,26 @@ tutor images build openedx
 Replace `<version>` with the exact release you want. For development, also rebuild
 `openedx-dev`. Then repeat the stop, migrate and start commands above for your
 environment. Test the selected version on staging before production use.
+
+### Let a token-protected API path through
+
+Some APIs are called by a service with its own shared token and no browser session, for example the Heartbeat
+platform health API. The gate would answer `mfa_required` for them. List the exact paths in `config.yml`:
+
+```yaml
+TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS:
+  - /api/platform_health/v1/summary
+```
+
+The default is an empty list, so every `/api/` call stays blocked. A call is let through only when all of these hold:
+
+- the method is `GET`,
+- the path is exactly one of the listed paths (no wildcards, no sub-paths),
+- the request carries an `Authorization: Bearer <token>` header.
+
+The gate does not check that token. The listed view must check it itself and refuse requests without it.
+Only list paths of views that do that. Other Tutor plugins may add their own paths to this list in their LMS settings patch; the plugin merges them with the list above.
+Run `tutor config save` and rebuild or restart the LMS after changing the list.
 
 ### Scope
 
@@ -242,7 +288,7 @@ To test installation manually in a fresh virtual environment:
 
 ```bash
 python -m pip install 'tutor>=22,<23' 'packaging>=23'
-python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.3
+python -m pip install --no-deps --index-url https://test.pypi.org/simple/ tutor-contrib-2fa==1.0.4
 python -m pip check
 tutor plugins list
 ```

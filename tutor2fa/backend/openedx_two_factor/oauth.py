@@ -8,6 +8,7 @@ client credentials, redirect URI, PKCE, expiry and single-use code redemption.
 import hashlib
 import json
 import math
+import re
 from urllib.parse import parse_qs, urlsplit
 
 from django.conf import settings
@@ -21,6 +22,8 @@ from .policy import requires_mfa
 
 AUTHORIZE_PATHS = {"/oauth2/authorize", "/oauth2/authorize/"}
 TOKEN_PATHS = {"/oauth2/access_token", "/oauth2/access_token/"}
+# The only API a token may call without browser cookies: reading one user's account.
+BEARER_READ_PATH = re.compile(r"^/api/user/v1/accounts/[^/]+/?$")
 
 
 def proof_key(code):
@@ -77,6 +80,7 @@ def verified_code_exchange(request):
     else:
         device_id = None
     request._openedx_2fa_grant = (user_id, device_id, grant.application.client_id)
+    request._openedx_2fa_application = grant.application.name
     return True
 
 
@@ -94,6 +98,7 @@ def remember_token(request, response):
     if token:
         # Only needed during the immediate SSO callback, not for API authentication.
         cache.set(token_proof_key(token), proof, timeout=60)
+        remember_bearer_token(request, token, payload)
 
 
 def restore_studio_mfa(backend, user=None, response=None, **kwargs):
@@ -134,3 +139,58 @@ def configure_studio_pipeline():
         )
     step = "openedx_two_factor.oauth.restore_studio_mfa"
     settings.SOCIAL_AUTH_EDX_OAUTH2_PIPELINE = [item for item in pipeline if item != step] + [step]
+
+
+def bearer_applications():
+    """Names of OAuth applications whose tokens may read an account (OPENEDX_2FA_BEARER_APPLICATIONS)."""
+    return set(getattr(settings, "OPENEDX_2FA_BEARER_APPLICATIONS", []))
+
+
+def bearer_proof_key(token):
+    return "openedx-2fa:bearer-token:" + hashlib.sha256(token.encode()).hexdigest()
+
+
+def remember_bearer_token(request, token, payload):
+    """Keep the MFA proof for the lifetime of a token issued to an allow-listed application."""
+    if getattr(request, "_openedx_2fa_application", None) not in bearer_applications():
+        return
+    user_id, device_id, _ = request._openedx_2fa_grant
+    lifetime = int(payload.get("expires_in") or 0)
+    if lifetime > 0:
+        cache.set(bearer_proof_key(token), (user_id, device_id), timeout=lifetime)
+
+
+def verified_bearer_request(request):
+    """Permit one read-only account lookup made with a token from an MFA-verified browser login.
+
+    Only tokens issued by an allow-listed application are accepted, and only while the cached
+    proof, the token, its owner and (when the policy covers the user) the confirmed device all
+    still match. Everything else, including any cache miss, stays blocked.
+    """
+    if request.method not in {"GET", "HEAD"} or not BEARER_READ_PATH.match(request.path):
+        return False
+    scheme, _, token = request.META.get("HTTP_AUTHORIZATION", "").partition(" ")
+    if scheme.lower() != "bearer" or not token or len(token) > 255:
+        return False
+    proof = cache.get(bearer_proof_key(token))
+    if proof is None:
+        return False
+    from oauth2_provider.models import get_access_token_model
+
+    user_id, device_id = proof
+    access = (
+        get_access_token_model()
+        .objects.select_related("application", "user")
+        .filter(token=token, user_id=user_id)
+        .first()
+    )
+    if (
+        access is None
+        or access.is_expired()
+        or access.application.name not in bearer_applications()
+    ):
+        return False
+    if requires_mfa(access.user):
+        device = Device.from_persistent_id(device_id) if device_id else None
+        return bool(device and device.confirmed and device.user_id == user_id)
+    return True

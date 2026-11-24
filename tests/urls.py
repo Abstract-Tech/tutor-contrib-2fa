@@ -31,6 +31,13 @@ urlpatterns = [
     path("logout", sign_out),
     path("dashboard", lambda request: HttpResponse("protected")),
     path("api/protected/", lambda request: HttpResponse("protected")),
+    path("api/user/v1/accounts/", lambda request: HttpResponse("accounts list")),
+    path("api/user/v1/accounts/<str:username>", lambda request, username: HttpResponse("account")),
+    path(
+        "api/user/v1/accounts/<str:username>/extra",
+        lambda request, username: HttpResponse("extra"),
+    ),
+    path("api/platform_health/v1/summary", lambda request: JsonResponse({"learners": {}})),
     path("api/mfe_config/v1", lambda request: JsonResponse({"LMS_BASE_URL": "http://lms"})),
     path("api/mfe_config/v1/", lambda request: JsonResponse({"LMS_BASE_URL": "http://lms"})),
     path("oauth2/authorize", AuthorizationView.as_view()),

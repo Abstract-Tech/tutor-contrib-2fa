@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4 — 2026-11-24
+
+- Add `TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS`. A `GET` of one of the listed exact `/api/` paths that carries a `Bearer` header is no longer stopped by the 2FA gate; the view must check its own token (e.g. `/api/platform_health/v1/summary`). The default is an empty list, so nothing changes unless it is set.
+- Add `TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS`. Tokens of the listed OAuth applications may read one user account (`GET /api/user/v1/accounts/<username>`) without a browser session, after a browser login that already passed 2FA. Everything else with a bearer token stays blocked, and the default list is empty.
+
 ## 1.0.3 — 2026-11-19
 
 - Allow API calls that carry only the LMS JWT cookie (e.g. from Studio) for users the MFA policy does not cover, such as AI Studio testers. Staff and admins are still blocked until they pass 2FA; unverifiable tokens stay blocked.

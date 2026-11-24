@@ -126,7 +126,10 @@ def test_settings_use_public_or_development_lms_url():
                 Environment()
                 .from_string(patch)
                 .render(
-                    ENABLE_2FA=True, TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES=["admin", "staff"]
+                    ENABLE_2FA=True,
+                    TWO_FACTOR_AUTHENTICATION_REQUIRED_ROLES=["admin", "staff"],
+                    TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS=[],
+                    TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS=[],
                 )
             )
             settings = {
@@ -216,6 +219,70 @@ def test_custom_roles_render_as_data_for_both_services(tmp_path):
             source = (tmp_path / f"env/apps/openedx/settings/{service}/{mode}.py").read_text()
             compile(source, "<settings>", "exec")
             assert "OPENEDX_2FA_REQUIRED_ROLES = ['instructor', 'reviewer']" in source
+
+
+def test_bearer_applications_default_and_validation():
+    import pytest
+    from tutor.exceptions import TutorError
+
+    plugin.validate_config({})
+    for apps in ([], ["payload-admin"], ["a", "b"]):
+        plugin.validate_config({"TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS": apps})
+    for apps in ("payload-admin", None, True, [1], [""], [" "], [" payload-admin"], [{}]):
+        with pytest.raises(TutorError, match="TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS"):
+            plugin.validate_config({"TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS": apps})
+
+
+def test_bearer_applications_render_for_the_lms_only(tmp_path):
+    tutor(tmp_path, "plugins", "enable", "2fa")
+    tutor(
+        tmp_path,
+        "config",
+        "save",
+        "--set",
+        'TWO_FACTOR_AUTHENTICATION_BEARER_APPLICATIONS=["payload-admin"]',
+    )
+    for mode in ("development", "production"):
+        source = (tmp_path / f"env/apps/openedx/settings/lms/{mode}.py").read_text()
+        compile(source, "<settings>", "exec")
+        assert "OPENEDX_2FA_BEARER_APPLICATIONS = ['payload-admin']" in source
+        cms = (tmp_path / f"env/apps/openedx/settings/cms/{mode}.py").read_text()
+        assert "OPENEDX_2FA_BEARER_APPLICATIONS = ['payload-admin']" not in cms
+
+
+def test_token_paths_are_checked_and_rendered_for_the_lms_only(tmp_path):
+    import pytest
+    from tutor.exceptions import TutorError
+
+    plugin.validate_config({})
+    plugin.validate_config(
+        {"TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS": ["/api/platform_health/v1/summary"]}
+    )
+    for paths in ("/api/x", None, [1], ["api/x"], ["/dashboard"], [" /api/x"], ["/api/*"]):
+        with pytest.raises(TutorError, match="TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS"):
+            plugin.validate_config({"TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS": paths})
+
+    tutor(tmp_path, "plugins", "enable", "2fa")
+    tutor(
+        tmp_path,
+        "config",
+        "save",
+        "--set",
+        'TWO_FACTOR_AUTHENTICATION_TOKEN_PATHS=["/api/platform_health/v1/summary"]',
+    )
+    for mode in ("development", "production"):
+        source = (tmp_path / f"env/apps/openedx/settings/lms/{mode}.py").read_text()
+        compile(source, "<settings>", "exec")
+        assert "+ ['/api/platform_health/v1/summary']" in source
+        cms = (tmp_path / f"env/apps/openedx/settings/cms/{mode}.py").read_text()
+        assert "OPENEDX_2FA_TOKEN_PATHS" not in cms
+
+
+def test_bearer_applications_default_to_none(tmp_path):
+    tutor(tmp_path, "plugins", "enable", "2fa")
+    tutor(tmp_path, "config", "save")
+    source = (tmp_path / "env/apps/openedx/settings/lms/production.py").read_text()
+    assert "OPENEDX_2FA_BEARER_APPLICATIONS = []" in source
 
 
 def test_old_enable_key_requires_explicit_migration():

@@ -17,7 +17,13 @@ from django_otp.models import Device
 from two_factor.utils import default_device
 
 from .continuation import SESSION_KEY, remember_destination
-from .oauth import AUTHORIZE_PATHS, remember_authorization, remember_token, verified_code_exchange
+from .oauth import (
+    AUTHORIZE_PATHS,
+    remember_authorization,
+    remember_token,
+    verified_bearer_request,
+    verified_code_exchange,
+)
 from .policy import requires_mfa
 from .recovery_state import recovery_pending
 
@@ -79,6 +85,20 @@ def mfa_required(status=403):
     return JsonResponse({"error": "mfa_required", "redirect_url": gate_url()}, status=status)
 
 
+def token_path_request(request):
+    """A GET of a path the operator listed, carrying a Bearer header.
+
+    The listed view checks the token itself (e.g. the platform health API), so the gate only lets it reach the view.
+    """
+    scheme, _, given = request.META.get("HTTP_AUTHORIZATION", "").partition(" ")
+    return (
+        request.method == "GET"
+        and request.path in getattr(settings, "OPENEDX_2FA_TOKEN_PATHS", [])
+        and scheme.lower() == "bearer"
+        and bool(given)
+    )
+
+
 class RequireTwoFactorMiddleware(MiddlewareMixin):
     def process_view(self, request, view_func, view_args, view_kwargs):
         if not getattr(settings, "OPENEDX_2FA_ENABLED", False):
@@ -88,6 +108,8 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
         # before they know the login/refresh endpoints; stale JWT cookies must
         # not turn this request into an MFA-gated API request.
         if path in PUBLIC_CONFIG_PATHS and request.method in {"GET", "HEAD"}:
+            return None
+        if token_path_request(request):
             return None
         if (
             path in PUBLIC_ASSET_PATHS
@@ -161,6 +183,10 @@ class RequireTwoFactorMiddleware(MiddlewareMixin):
                 jwt_user = jwt_cookie_user(request)
                 if jwt_user is not None and not requires_mfa(jwt_user):
                     return None
+            elif verified_bearer_request(request):
+                # An allow-listed app (e.g. a storefront) reading the account of a user who passed
+                # browser MFA when the token was issued.
+                return None
             return mfa_required()
         if not request.user.is_authenticated:
             return None
